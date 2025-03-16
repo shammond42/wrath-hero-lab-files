@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_3PPPack_UltimatePsionics - Adjustment Powers"/>
+  <thing id="pForcScrn" name="Force Screen" description="Use the counter to set the Shield Bonus provided." compset="InPlay">
+    <fieldval field="pDuration" value="1 min./level (D)"/>
+    <fieldval field="pMinimum" value="4"/>
+    <usesource source="pPsiUn"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="DescInfo" tag="puForcScr1"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give a Shield Bonus to AC
+      #applybonus[tACShield,hero.child[ArmorClass],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pForcScrn0" name="Force Screen (Kineticist Talent)" description="You create an invisible mobile disk of force that hovers in front of you. \n\nAs long as you maintain your psionic focus, the force screen provides a +2 shield bonus to Armor Class (which applies against incorporeal touch attacks, since the force screen is a force effect). Since it hovers in front of you, the effect has no armor check penalty associated with it.\n\nAs a Talent, this cannot be augmented or have metapsionics applied to it." compset="InPlay">
+    <fieldval field="pDuration" value="1 min./level (D)"/>
+    <fieldval field="pMinimum" value="2"/>
+    <fieldval field="pMaximum" value="2"/>
+    <usesource source="pPsiUn"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Give a Shield Bonus to AC
+      #applybonus[tACShield,hero.child[ArmorClass],field[pAdjust].value]]]></eval>
+    </thing>
+  <thing id="pPUCallWep" name="Call Weaponry" description="If you have the &quot;Psi-Warrior: Trance (Mind Knight&apos;s Path)&quot; class ability then the weapon you select here will gain a bonus based on your class ability.\n\n{b}Counter:{/b} Set the bonus attack/damage you get for agumenting the power." compset="InPlay">
+    <usesource source="pPsiUn"/>
+    <tag group="Adjustment" tag="YourWep"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="DescInfo" tag="puPUCalWe1"/>
+    <eval phase="PostLevel" priority="20000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+      ~if nothing's been chosen, get out now
+      doneif (field[pChosen].ischosen <> 1)
+
+      ~ Set bonus based on counter
+      field[abValue].value += field[pAdjust].value
+      ~ Set bonus from the "Psi-Warrior: Trance (Mind Knight's Path)"
+      ~ Class ability.
+      field[abValue2].value += #value[cPWaTraMin]
+
+      ~ Compentance Bonus
+      #applybonus[BonComp,field[pChosen].chosen,field[abValue2].value]
+      ~ Augment bonus
+      field[pChosen].chosen.field[Bonus].value += field[abValue].value]]></eval>
+    </thing>
+  <thing id="pPACZFury" name="Zealous Fury" description="For this adjustment, the incrementer value is the amount of the penalty reduction * 5 that is removed from the BAB calculations." compset="InPlay">
+    <fieldval field="pMaximum" value="3"/>
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="pPsiUn"/>
+    <tag group="DescInfo" tag="puZeaFu4"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value = 0)
+
+      var XI as number
+      while (XI < field[pAdjust].value)
+        XI += 1
+
+        ~Assign our precision tag
+        perform hero.assign[Hero.Precision]
+      loop]]></eval>
+    </thing>
+  <thing id="pPUBiteOfW" name="Bite of the Wolf" description="For this adjustment, the incrementer value is the amount of extra power points times 5. Meaning if you the counter is set to 2 it means you spent an extra ten power points and the bite attack gains an extra 2d8 damage." compset="InPlay">
+    <fieldval field="pMinimum" value="0"/>
+    <usesource source="pPsiUn"/>
+    <tag group="DescInfo" tag="puBiteWlf1"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <bootstrap thing="wBite">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="wMain" tag="1d8"/>
+      </bootstrap>
+    <eval phase="Final" priority="50000"><![CDATA[
+      ~ If we're not enabled, get out now!
+      doneif (field[pIsOn].value = 0)
+      ~ If we no bonus points spent get out now!
+      doneif (field[pAdjust].value = 0)
+
+      foreach pick in hero from BaseNatWep where "Target.wBite"
+        If (eachpick.root.tagis[thingid.pPUBiteOfW] = 1) Then
+          #extradamage[eachpick," plus " & field[pAdjust].value & "d8",field[name].text]
+        Endif
+      nexteach]]></eval>
+    </thing>
+  <thing id="pPUClwOfBe" name="Claws of the Beast" description="For this adjustment, the incrementer value is the amount of Augmentation. Meaning if you the counter is set to 2 then the claw damage will be increased two steps." compset="InPlay">
+    <fieldval field="pMinimum" value="0"/>
+    <fieldval field="pMaximum" value="3"/>
+    <usesource source="pPsiUn"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <tag group="DescInfo" tag="puClawBea1"/>
+    <bootstrap thing="wClaw">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      <autotag group="Helper" tag="NatSizeDmg"/>
+      <autotag group="wMain" tag="1d4"/>
+      <autotag group="Value" tag="2"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ If we're not enabled, get out now!
+      doneif (field[pIsOn].value = 0)
+      ~ If we no bonus points spent get out now!
+      doneif (field[pAdjust].value = 0)
+
+      var iX as number
+
+      foreach pick in hero from BaseNatWep where "Target.wClaw"
+        If (eachpick.root.tagis[thingid.pPUClwOfBe] = 1) Then
+
+          while (iX < field[pAdjust].value)
+            iX += 1
+            perform eachpick.assign[Helper.DamageUp]
+          loop
+
+        Endif
+      nexteach]]></eval>
+    </thing>
+  <thing id="pPUPhyAcce" name="Physical Acceleration" compset="InPlay">
+    <fieldval field="pDuration" value="1 round/level"/>
+    <fieldval field="abValue" value="30"/>
+    <fieldval field="abValue2" value="2"/>
+    <usesource source="pPsiUn"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="DescInfo" tag="puPhyAc4"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PreLevel" priority="10005" name="Physical Acceleration attack, save and AC"><![CDATA[
+      ~ Check to see if Haste
+      If (hero.childfound[pHaste].field[pIsOn].value = 1) Then
+        perform assign[Helper.SpcDisable]
+      Endif
+
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ if we're not active, just get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ This procedure adds +1 to attack, +1 to Reflex saves, and foreaches
+      ~ through all non-natural attacks to assign an extra attack.
+      call HasteComb]]>
+      <after name="Haste attack, save and AC"/>
+      </eval>
+    <eval phase="Final" priority="9900" name="Physical Acceleration speed"><![CDATA[
+      ~ If we've been Disabled, get out now
+      doneif (tagis[Helper.SpcDisable] <> 0)
+      ~ if we're not active, just get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ This procedure detects if we have a special speed (like swim) and then
+      ~ increases it by 30 or double (whichever is less).
+      call HasteMove]]></eval>
+    </thing>
+  <thing id="pPUFormDoo" name="Form of Doom" compset="InPlay">
+    <fieldval field="abValue" value="5"/>
+    <fieldval field="abValue2" value="5"/>
+    <fieldval field="abValue3" value="4"/>
+    <fieldval field="abValue4" value="10"/>
+    <fieldval field="abValue5" value="10"/>
+    <usesource source="pPsiUn"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="Helper" tag="NoIncr"/>
+    <tag group="DescInfo" tag="puForDoom6"/>
+    <bootstrap thing="wTentacle">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      <autotag group="wMain" tag="2d8"/>
+      <autotag group="Value" tag="4"/>
+      <autotag group="Helper" tag="NatOverSec"/>
+      </bootstrap>
+    <bootstrap thing="raFrightPr">
+      <containerreq phase="First" priority="500"><![CDATA[fieldval:pIsOn <> 0]]></containerreq>
+      <assignval field="abRange" value="30"/>
+      <assignval field="abDC" value="16"/>
+      </bootstrap>
+    <eval phase="Render" priority="9000"><![CDATA[
+      ~ if we're not active, just get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ Override DC to be 16 + Cha
+      hero.childfound[raFrightPr].field[abDC].value = 16 + #attrmod[aCHA]]]></eval>
+    <eval phase="PreLevel" priority="10000" index="2">~ if we&apos;re not active, just get out now
+      doneif (field[pIsOn].value = 0)
+
+      ~ +10 bonus to jump
+      hero.child[mNatural].field[Bonus].value += field[abValue].value
+
+      ~ damage reduction 5/–
+      #applydr[xDamRd,field[abValue2].value]
+
+      ~ +4 bonus to your Strength
+      hero.child[aSTR].field[Bonus].value += field[abValue3].value
+
+      ~ +10 feet to your land speed
+      hero.child[Speed].field[Bonus].value += field[abValue4].value
+
+      ~ +10 bonus on Climb checks 
+      #skillbonus[skClimb] += field[abValue5].value
+
+      ~ +5 natural armor bonus
+      herofield[tJumpBonus].value += field[abValue5].value</eval>
+    </thing>
+  </document>

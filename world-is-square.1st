@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Structure">
+<!--
+May 01, 2016 - Will Martin
+- Added custom tags for Weapon Focus with groups.
+
+November 4, 2017 - Will Martin
+- Expanded configuration options.
+-->
+
+<!-- ============================================== -->
+<!-- CUSTOM GROUPS AND TAGS FOR WORLD IS SQUARE     -->
+<!-- ============================================== -->
+<!-- World is Square custom tags -->
+
+<group id="WepGFoc" name="Weapon Group Focus">
+	<value id="Axes"  name="Axes"/>
+	<value id="Bows"  name="Bows"/>
+	<value id="Close"  name="Close Weapons"/>
+	<value id="Crossbows"  name="Crossbows"/>
+	<value id="Double"  name="Double Weapons"/>
+	<value id="Firearms"  name="Firearms"/>
+	<value id="Flails"  name="Flails"/>
+	<value id="Hammers"  name="Hammers"/>
+	<value id="BladeHeavy"  name="Heavy Blades"/>
+	<value id="BladeLight"  name="Light Blades"/>
+	<value id="Monk"  name="Monk"/>
+	<value id="Natural"  name="Natural Weapons"/>
+	<value id="PoleArms"  name="Pole Arms"/>
+	<value id="Siege"  name="Siege Weapons"/>
+	<value id="Spears"  name="Spears"/>
+	<value id="Thrown"  name="Thrown Weapons"/>
+	<value id="Tribal"  name="Tribal Weapons"/>
+</group>
+
+<group id="GWepGFoc" name="Grtr Wpn Grp Focus">
+	<value id="Axes"  name="Axes"/>
+	<value id="Bows"  name="Bows"/>
+	<value id="Close"  name="Close Weapons"/>
+	<value id="Crossbows"  name="Crossbows"/>
+	<value id="Double"  name="Double Weapons"/>
+	<value id="Firearms"  name="Firearms"/>
+	<value id="Flails"  name="Flails"/>
+	<value id="Hammers"  name="Hammers"/>
+	<value id="BladeHeavy"  name="Heavy Blades"/>
+	<value id="BladeLight"  name="Light Blades"/>
+	<value id="Monk"  name="Monk"/>
+	<value id="Natural"  name="Natural Weapons"/>
+	<value id="PoleArms"  name="Pole Arms"/>
+	<value id="Siege"  name="Siege Weapons"/>
+	<value id="Spears"  name="Spears"/>
+	<value id="Thrown"  name="Thrown Weapons"/>
+	<value id="Tribal"  name="Tribal Weapons"/>
+</group>
+
+<group id="WepGSpec" name="Weapon Group Spec">
+	<value id="Axes"  name="Axes"/>
+	<value id="Bows"  name="Bows"/>
+	<value id="Close"  name="Close Weapons"/>
+	<value id="Crossbows"  name="Crossbows"/>
+	<value id="Double"  name="Double Weapons"/>
+	<value id="Firearms"  name="Firearms"/>
+	<value id="Flails"  name="Flails"/>
+	<value id="Hammers"  name="Hammers"/>
+	<value id="BladeHeavy"  name="Heavy Blades"/>
+	<value id="BladeLight"  name="Light Blades"/>
+	<value id="Monk"  name="Monk"/>
+	<value id="Natural"  name="Natural Weapons"/>
+	<value id="PoleArms"  name="Pole Arms"/>
+	<value id="Siege"  name="Siege Weapons"/>
+	<value id="Spears"  name="Spears"/>
+	<value id="Thrown"  name="Thrown Weapons"/>
+	<value id="Tribal"  name="Tribal Weapons"/>
+</group>
+
+<group id="GWepGrSpec" name="Gr Weapon Group Spec">
+	<value id="Axes"  name="Axes"/>
+	<value id="Bows"  name="Bows"/>
+	<value id="Close"  name="Close Weapons"/>
+	<value id="Crossbows"  name="Crossbows"/>
+	<value id="Double"  name="Double Weapons"/>
+	<value id="Firearms"  name="Firearms"/>
+	<value id="Flails"  name="Flails"/>
+	<value id="Hammers"  name="Hammers"/>
+	<value id="BladeHeavy"  name="Heavy Blades"/>
+	<value id="BladeLight"  name="Light Blades"/>
+	<value id="Monk"  name="Monk"/>
+	<value id="Natural"  name="Natural Weapons"/>
+	<value id="PoleArms"  name="Pole Arms"/>
+	<value id="Siege"  name="Siege Weapons"/>
+	<value id="Spears"  name="Spears"/>
+	<value id="Thrown"  name="Thrown Weapons"/>
+	<value id="Tribal"  name="Tribal Weapons"/>
+</group>
+
+<group id="GImpCrit" name="Group Improved Crit">
+	<value id="Axes"  name="Axes"/>
+	<value id="Bows"  name="Bows"/>
+	<value id="Close"  name="Close Weapons"/>
+	<value id="Crossbows"  name="Crossbows"/>
+	<value id="Double"  name="Double Weapons"/>
+	<value id="Firearms"  name="Firearms"/>
+	<value id="Flails"  name="Flails"/>
+	<value id="Hammers"  name="Hammers"/>
+	<value id="BladeHeavy"  name="Heavy Blades"/>
+	<value id="BladeLight"  name="Light Blades"/>
+	<value id="Monk"  name="Monk"/>
+	<value id="Natural"  name="Natural Weapons"/>
+	<value id="PoleArms"  name="Pole Arms"/>
+	<value id="Siege"  name="Siege Weapons"/>
+	<value id="Spears"  name="Spears"/>
+	<value id="Thrown"  name="Thrown Weapons"/>
+	<value id="Tribal"  name="Tribal Weapons"/>
+</group>
+
+<group id="WiSRules" name="World is Square tags">
+	<value id="PayFeatTax" name="Pay the feat taxes."/>
+	<value id="Finesse" name="PC qualifies for Weapon Finesse."/>
+</group>
+
+
+<!-- World is Square custom sources -->
+<source
+    id="WiSParent"
+    name="World is Square"
+	parent="HouseRules"
+    selectable="no"
+    sortorder="0"
+    description="Rules for eliminating feat taxes, as proposed by Michael Iantorno. Hero Lab implementation by Will Martin.">
+    </source>
+
+  <source
+    id="WiSRules"
+    name="Enable all World is Square rules"
+    parent="WotR2Parent"
+	sortorder="10"
+    description="Turns on complete World is Square rule set.">
+    </source>
+
+  <source
+    id="WiSCombat"
+    name="Grant Default Combat Feats"
+    parent="WiSParent"
+	sortorder="2"
+    description="Grants Agile Maneuvers, Combat Expertise, Weapon Finesse, Power Attack, Deadly Aim, Point Black Shot to all PCs that meet BAB requirements.">
+    </source>
+
+  <source
+    id="WiSWeapons"
+    name="Group Weapon Feats"
+    parent="WiSParent"
+	sortorder="3"
+    description="Weapon Focus, Specialization, and Improved Crit use weapon groups.">
+    </source>
+
+  <source
+    id="WiSMan"
+    name="Combine Combat Maneuvers"
+    parent="WiSParent"
+	sortorder="4"
+    description="Replaces the usual combat maneuver feats with Unarmed Combatant, Deft Maneuvers, and Powerful Maneuvers.">
+    </source>
+
+
+  <source
+    id="WiSMisc"
+    name="Dodge and Two-Weapon fighting"
+    parent="WiSParent"
+	sortorder="5"
+    description="combines Dodge and Mobility into a single feat, and combines causes the Two Weapon fighting feat chain to scale with level.">
+    </source>
+
+  <source
+    id="WiSNPCTax"
+    name="NPCs pay normal feat taxes"
+    parent="WiSParent"
+	sortorder="6"
+    description="NPC characters must purchase feats like Power Attack normally.">
+    </source>
+
+</document>

@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+<fileconstants thingidrequirement="PU">
+  </fileconstants>
+
+  <thing id="mechS2PU" name="Ultimate Psionics Mechanic" compset="Mechanics">
+    <usesource source="pPsionics"/>
+
+    <!-- Helper Tags -->
+    <tag group="wRangeInc"  tag="15"          name="15"/>
+    <tag group="abAction"   tag="PUExpFocus"  name="Expend Psi-Focus" abbrev="Exp PsiFocus"/>
+    <tag group="abAction"   tag="PUManFocus"  name="Maintain Psi-Focus"/>
+    <tag group="abCategory" tag="PUConjure"   name="Conjure"/>
+
+    <!--
+      Psionic Disciplines setup as Subschools of Magic for Equipment Tags
+      Note: We can't add iSchool.? tags which is what these should be.
+    -->
+    <tag group="iSubschool" tag="PUAthanati"  name="Athanatism"/>
+    <tag group="iSubschool" tag="PUMetacrea"  name="Metacreativity"/>
+    <tag group="iSubschool" tag="PUClairse"   name="Clairsentience"/>
+    <tag group="iSubschool" tag="PUPsyKine"   name="Psychokinesis"/>
+    <tag group="iSubschool" tag="PUPsyMeta"   name="Psychometabolism"/>
+    <tag group="iSubschool" tag="PUPsyPort"   name="Psychoportation"/>
+    <tag group="iSubschool" tag="PUTelepath"  name="Telepathy"/>
+
+    <!-- Psionic Gear Type Custom Tags -->
+    <tag group="gType"      tag="PUPsionics"  name="Psionics"/>
+    <tag group="gType"      tag="PUAstrCons"  name="Astral Construct"/>
+    <tag group="gType"      tag="PUPsicrsta"  name="Psicrystals"/>
+
+    <!-- Pisonic Power Custom Tags -->
+    <tag group="sDescript"  tag="PUSpirit"    name="Spirit"/>
+    <tag group="psiClass"   tag="PUVitMetGu"  name="Vitalist Method - Guardian"/>
+    <tag group="psiClass"   tag="PUVitMetMe"  name="Vitalist Method - Mender"/>
+    <tag group="psiClass"   tag="PUVitMetSo"  name="Vitalist Method - Soulthief"/>
+
+    <!-- Soulknife Class Custom Tags -->
+    <tag group="wGroup"     tag="cSknMindBl"  name="Soulknife Mind Blade"/>
+    <tag group="abCategory" tag="PUBladeSk"   name="Soulknife Blade Skill"   abbrev="Blade Skill"/>
+    <tag group="abCategory" tag="PUFeHeBlSk"  name="Feral Heart Blade Skill" abbrev="Blade Skill"/>
+    <tag group="abCategory" tag="PUSoboBlSk"  name="Soulbolt Blade Skill"    abbrev="Blade Skill"/>
+    <tag group="IsWeapon"   tag="wMindBlade"  name="Mind Blade"/>
+    <tag group="WepFocus"   tag="wMindBlade"  name="Mind Blade"/>
+    <tag group="Target"     tag="wMindBlade"  name="Mind Blade"/>
+    <tag group="wFtrGroup"  tag="WPMndBld"    name="Weapon Proficiency - Mind Blade" abbrev="WP - Mind Blade"/>
+
+    <!-- Pison Class Custom Tags -->
+    <tag group="abCategory" tag="PUPsiDisc"   name="Psion Discipline" abbrev="Discipline"/>
+
+    <!-- Dread Class Custom Tags -->
+    <tag group="Activated"  tag="PUTerrorAt" name="Terror Attack" abbrev="Terror Atk"/> <!-- Assigned to all terror attacks that affect the devastating touch attack weapon. -->
+    <tag group="abCategory" tag="PUTerror"   name="Dread Terror" abbrev="Terror"/>
+
+    <!-- Aegis Class Custom Tags -->
+    <tag group="Custom"     tag="AegisLvls"   name="Astral Class Levels"/> <!-- Set on Hero @ First/50 -->
+    <tag group="Custom"     tag="WearAstS"    name="Wearing Astral Suit"/> <!-- Activation on Hero @ First/90 -->
+    <tag group="Custom"     tag="ASChosen"    name="Astral Suit Chosen"/>  <!-- Set on Hero @ First/100 -->
+    <tag group="Custom"     tag="HasAstSkin"  name="Has Astral Suit"/>     <!-- Set on Hero @ First/100 -->
+
+    <!-- Vitalist Class Custom Tags -->
+    <tag group="abCategory" tag="PUVitTouch"  name="Vitalists Touch"      abbrev="Vit Touch"/>
+
+    <!-- Marksman cHelpPU3 Class Custom Tags -->
+    <tag group="abCategory" tag="PUMarkStyl"  name="Marksman Combat Style" abbrev="Style"/>
+
+    <!-- Psychic Warrior Class Custom Tags -->
+    <tag group="abCategory" tag="PUPsyPath"   name="Psychic Warrior Path" abbrev="Path"/>
+    <tag group="abCategory" tag="PUPsyWarMa"  name="Psy Warrior Maneuver" abbrev="Maneuver"/>
+    <tag group="abCategory" tag="PUPsyWarTr"  name="Psy Warrior Trance"   abbrev="Trance"/>
+
+    <!-- Astral Construct Race Custom Tags -->
+    <tag group="AllowRCust" tag="PUMenuA"     name="Menu A" abbrev="A"/>
+    <tag group="AllowRCust" tag="PUMenuB"     name="Menu B" abbrev="B"/>
+    <tag group="AllowRCust" tag="PUMenuC"     name="Menu C" abbrev="C"/>
+
+    <bootstrap thing="PUPathSk"></bootstrap>
+    <bootstrap thing="PUClassFnd"></bootstrap>
+    <bootstrap thing="PU0lvlPowe"></bootstrap>
+    <bootstrap thing="PUGiftBlad"></bootstrap>
+    <bootstrap thing="abPUActEne">
+      <containerreq phase="First" priority="3000"><![CDATA[Hero.Psionic]]></containerreq>
+    </bootstrap>
+
+    <bootstrap thing="zPUArtiste"></bootstrap>
+    <bootstrap thing="zPUBully"></bootstrap>
+    <bootstrap thing="zPUFocused"></bootstrap>
+    <bootstrap thing="zPUFriendl"></bootstrap>
+    <bootstrap thing="zPUHero"></bootstrap>
+    <bootstrap thing="zPULiar"></bootstrap>
+    <bootstrap thing="zPUMeticul"></bootstrap>
+    <bootstrap thing="zPUNimble"></bootstrap>
+    <bootstrap thing="zPUPoised"></bootstrap>
+    <bootstrap thing="zPUResolve"></bootstrap>
+    <bootstrap thing="zPUSage"></bootstrap>
+    <bootstrap thing="zPUSingleM"></bootstrap>
+    <bootstrap thing="zPUSneaky"></bootstrap>
+    <bootstrap thing="zPUSympath"></bootstrap>
+
+    <!-- Favored Class Bonuses for CORE races -->
+
+    <!-- Human -->
+    <bootstrap thing="fcPUHumAeg"></bootstrap>
+    <bootstrap thing="fcPUHumCry"></bootstrap>
+    <bootstrap thing="fcPUHumDrd"></bootstrap>
+    <bootstrap thing="fcPUHumMar"></bootstrap>
+    <bootstrap thing="fcPUHumPsi"></bootstrap>
+    <bootstrap thing="fcPUHumPsW"></bootstrap>
+    <bootstrap thing="fcPUHumSlk"></bootstrap>
+    <bootstrap thing="fcPUHumTac"></bootstrap>
+    <bootstrap thing="fcPUHumVit"></bootstrap>
+    <bootstrap thing="fcPUHumWld"></bootstrap>
+    <!-- Dwarf -->
+    <bootstrap thing="fcPUDwfDrd"></bootstrap>
+    <bootstrap thing="fcPUDwfPsW"></bootstrap>
+    <bootstrap thing="fcPUDwfTac"></bootstrap>
+    <bootstrap thing="fcPUHumMar"></bootstrap>
+    <bootstrap thing="fcPUDwfVit"></bootstrap>
+    <!-- Elf -->
+    <bootstrap thing="fcPUElfMar"></bootstrap>
+    <bootstrap thing="fcPUElfPsi"></bootstrap>
+    <bootstrap thing="fcPUElfSlk"></bootstrap>
+    <bootstrap thing="fcPUElfVit"></bootstrap>
+    <!-- Gnome -->
+    <bootstrap thing="fcPUGnoAeg"></bootstrap>
+    <bootstrap thing="fcPUGnoPsi"></bootstrap>
+    <bootstrap thing="fcPUGnoTac"></bootstrap>
+    <bootstrap thing="fcPUGnoVit"></bootstrap>
+    <!-- Half-Elf -->
+    <bootstrap thing="fcPUHElAeg"></bootstrap>
+    <bootstrap thing="fcPUHElSlk"></bootstrap>
+    <bootstrap thing="fcPUHElTac"></bootstrap>
+    <bootstrap thing="fcPUHElWil"></bootstrap>
+    <!-- Half-Orc -->
+    <bootstrap thing="fcPUHOrWil"></bootstrap>
+    <bootstrap thing="fcPUHOrPsW"></bootstrap>
+    <bootstrap thing="fcPUHOrDre"></bootstrap>
+    <bootstrap thing="fcPUHOrSkn"></bootstrap>
+    <!-- Halfling -->
+    <bootstrap thing="fcPUHlfCry"></bootstrap>
+    <bootstrap thing="fcPUHlfSlk"></bootstrap>
+    <bootstrap thing="fcPUHlfVit"></bootstrap>
+    </thing>
+
+  <thing id="PUGiftBlad" name="High Psionics Gifted Blade" compset="Simple">
+    <usesource source="srcGiftBla"/>
+    <bootstrap thing="arPUGiftB2">
+      <containerreq phase="GlobalTest" priority="10050">HighPsi.GiftBlade</containerreq>
+      </bootstrap>
+
+    <eval phase="GlobalTest" priority="10000"><![CDATA[
+      ~ If Soulknife found then apply tag, which triggers archetype bootstrap
+      doneif (hero.haschild[BaseClHelp, "thingid.cHelpSkn"] = 0)
+      perform hero.assign[HighPsi.GiftBlade]]]></eval>
+
+    </thing>
+
+  <thing id="PU0lvlPowe" name="Zero Level Powers"
+    description="This makes all zero level powers cost no power points when Psi-Focused."
+    compset="Simple" uniqueness="unique">
+    <usesource source="pPsiUn"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      var v_focus as number
+      call PUPsiFocus
+      ~ If not Psi Focused get out now
+      doneif (v_focus <> 1)
+
+      ~ Find all zero level powers/talents and make cost 0 PP
+      foreach pick in hero from BasePower where "sLevel.0 & Helper.Secondary"
+        eachpick.field[psiCost].value = 0
+      nexteach]]></eval>
+    </thing>
+
+  <thing id="PUPathSk" name="Path Skills Setup" description="This puts the PathSkill.? tags on skills." compset="Simple" uniqueness="unique">
+    <usesource source="pPsiUn"/>
+    <eval phase="First" priority="50"><![CDATA[
+      ~ Find all skills on the character and make a new "PathSkill" tag on each one
+      foreach pick in hero from BaseSkill
+        perform eachpick.pulltags[ClassSkill.?,PathSkill]
+        perform eachpick.pushtags[PathSkill.?]
+        perform delete[PathSkill.?]
+      nexteach]]></eval>
+    </thing>
+  <thing id="PUClassFnd" name="Psionic Class Found" description="This checks to see if a psionic class has been selected and if found sets the tag Psionics.Class on the hero very early." compset="Simple" uniqueness="unique">
+    <usesource source="pPsiUn"/>
+    <eval phase="First"><![CDATA[
+      var psiLevel as number
+      var iX       as number
+      ~ Find each Psionic Based class and set a Psionics.Class tag on the hero.
+      ~ This lets us know we have taken a Psionic Class. This is needed for
+      ~ several different bootstrap conditions that need to check very early.
+      foreach pick in hero from BaseClHelp
+        ~ If we have a psionic attribute then we have to assume we are a psionic class
+        if (eachpick.islinkage[psiattr] <> 0) Then
+          ~ Set the psionic class tag on the class
+          perform eachpick.assign[Psionics.Class]
+          ~ Total up our Psionic Levels
+          psiLevel += eachpick.field[cTotalLev].value
+          ~ Set hero.Psionic
+          call SetHeroPsi
+        Endif
+      nexteach
+
+      ~ Total up Soulknife levels as Psionic levels
+      psiLevel += hero.childfound[cHelpSkn].field[cTotalLev].value
+
+      ~ Assign the correct number of Psionics.Class tags to the hero
+      while (iX < psiLevel)
+        iX += 1
+        perform hero.assign[Psionics.Class]
+      loop]]></eval>
+    </thing>
+
+  <thing id="fcPUPwrPnt" name="+1 Power Point" description="+1 Power Point" compset="FavClass" uniqueness="unique">
+    <comment><![CDATA[This is bootstrapped to the "Psionic Aptitude" racial ability. This way when the racial ability is bootstrapped to a race this FC comes along for the ride. It then allows for the ability to select +1 Power Point. This should allow for people making custom races to have it work correctly for them also. Note: This does not work correctly if it is source marked. Note2: DO NOT CLICK the "All Characters?" option.]]></comment>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      ~ Give a bonus to Power Points each time we are taken &
+      field[abValue].value += field[fcCount].value
+      #resmax[resPowerPt] += field[abValue].value
+
+      ~ To correctly show up we need to apply this helper tag.
+      ~ This tag allows this FC to show for any class/race. But
+      ~ as we are only bootstrapped to some races via a Racial
+      ~ Special we are limited to which races/classes get us.
+      perform assign[Helper.Bootstrap]]]></eval>
+    </thing>
+
+
+  <!-- ============================================================================================ -->
+  <!-- Psicrystal Personalities helpers                                                             -->
+  <!-- ============================================================================================ -->
+  <thing id="zPUArtiste" name="Artiste" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="AllCraft"/>
+    </thing>
+  <thing id="zPUBully" name="Bully" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="skIntim"/>
+    </thing>
+  <thing id="zPUFocused" name="Focused" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="skPUAhypno"/>
+    </thing>
+  <thing id="zPUFriendl" name="Friendly" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="skDiplo"/>
+    </thing>
+  <thing id="zPUHero" name="Hero" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Save Benefit"/>
+    <tag group="PsicrysBon" tag="2"/>
+    <tag group="PsicrystID" tag="svFort"/>
+    </thing>
+  <thing id="zPULiar" name="Liar" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="skBluff"/>
+    </thing>
+  <thing id="zPUMeticul" name="Meticulous" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="skPercep"/>
+    </thing>
+  <thing id="zPUNimble" name="Nimble" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Other" name="Other Benefit"/>
+    <tag group="PsicrysBon" tag="2"/>
+    <tag group="PsicrystID" tag="Initiative"/>
+    </thing>
+  <thing id="zPUPoised" name="Poised" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="skAcrobat"/>
+    </thing>
+  <thing id="zPUResolve" name="Resolved" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Save" name="Save Benefit"/>
+    <tag group="PsicrysBon" tag="2"/>
+    <tag group="PsicrystID" tag="svWill"/>
+    </thing>
+  <thing id="zPUSage" name="Sage" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Other" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="Knowledge"/>
+    </thing>
+  <thing id="zPUSingleM" name="Single-minded" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Other" name="Other Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="Concentr"/>
+    </thing>
+  <thing id="zPUSneaky" name="Sneaky" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="skStealth"/>
+    </thing>
+  <thing id="zPUSympath" name="Sympathetic" description="Psicrystal Personalities helper" compset="Simple">
+    <usesource source="pPsiUn"/>
+    <tag group="Psicrystal" tag="Personalty" name="Psicrystal Personalty Selector"/>
+    <tag group="PsicryType" tag="Skill" name="Skill Benefit"/>
+    <tag group="PsicrysBon" tag="3"/>
+    <tag group="PsicrystID" tag="skSenseMot"/>
+    </thing>
+
+
+  <!-- ============================================================================================ -->
+  <!-- Soulknife Mind Blade Weapon & Armor Selection Helpers                                        -->
+  <!-- ============================================================================================ -->
+  <thing id="zPUMndBld1" name="Mind Blade (Light)" description="Mind Blade Selection helper. These are bootstrapped to classes and NOT to a mechanic." compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindBlade" name="Mind Blade Melee"/>
+    <tag group="MindBlade" tag="Light"/>
+    <tag group="MindBladeA" tag="Light"/>
+    </thing>
+  <thing id="zPUMndBld2" name="Mind Blade (1H)" description="Mind Blade Selection helper. These are bootstrapped to classes and NOT to a mechanic." compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindBlade"/>
+    <tag group="MindBlade" tag="OneHanded"/>
+    <tag group="MindBladeA" tag="OneHanded"/>
+    </thing>
+  <thing id="zPUMndBld3" name="Mind Blade (2H)" description="Mind Blade Selection helper. These are bootstrapped to classes and NOT to a mechanic." compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindBlade"/>
+    <tag group="MindBlade" tag="TwoHanded"/>
+    <tag group="MindBladeA" tag="TwoHanded"/>
+    </thing>
+  <thing id="zPUMndBld5" name="Mind Dagger" description="Mind Blade Selection helper. These are bootstrapped to classes and NOT to a mechanic." compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindBlade"/>
+    <tag group="MindBlade" tag="Dagger"/>
+    <tag group="MindBlade" tag="BoltDagger"/>
+    <tag group="MindBladeA" tag="Dagger"/>
+    <tag group="MindBladeA" tag="BoltDagger"/>
+    </thing>
+  <thing id="zPUMndBld6" name="Mind Blade (1H &amp; Light)" description="Mind Blade Selection helper. These are bootstrapped to classes and NOT to a mechanic." compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindBlade"/>
+    <tag group="MindBlade" tag="1HLight"/>
+    <tag group="MindBladeA" tag="1HLight"/>
+    </thing>
+  <thing id="zPUMndBld4" name="Mind Arrow" description="Mind Blade Selection helper. These are bootstrapped to classes and NOT to a mechanic." compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindArrow" name="Mind Blade Range"/>
+    <tag group="MindBlade" tag="Arrow"/>
+    <tag group="MindBladeA" tag="Arrow"/>
+    </thing>
+  <thing id="zPUMndBlt2" name="Mind Bolt (Med. Range)" description="Mind Bolt Selection helper. These are bootstrapped to classes and NOT to a mechanic." compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindArrow"/>
+    <tag group="MindBlade" tag="BoltMed"/>
+    <tag group="MindBladeA" tag="BoltMed"/>
+    </thing>
+  <thing id="zPUMndBlt3" name="Mind Bolt (Short Range)" description="Mind Bolt Selection helper. These are bootstrapped to classes and NOT to a mechanic." compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindArrow"/>
+    <tag group="MindBlade" tag="BoltShort"/>
+    <tag group="MindBladeA" tag="BoltShort"/>
+    </thing>
+  <thing id="zPUMndBlt1" name="Mind Bolt (Long Range)" description="Mind Bolt Selection helper. These are bootstrapped to classes and NOT to a mechanic." compset="Simple">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindArrow"/>
+    <tag group="MindBlade" tag="BoltLong"/>
+    <tag group="MindBladeA" tag="BoltLong"/>
+    </thing>
+  <!-- Mind Armor selection helpers -->
+  <thing id="zPUMndArm1" name="Mind Armor (Light)" description="Mind Armor Selection helper." compset="SelectHelp">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindArmor" name="Mind Armor"/>
+    <tag group="MindBlade" tag="ArmorLight"/>
+    </thing>
+  <thing id="zPUMndArm2" name="Mind Armor (Medium)" description="Mind Armor Selection helper." compset="SelectHelp">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindArmor"/>
+    <tag group="MindBlade" tag="ArmorMed"/>
+    </thing>
+  <thing id="zPUMndArm3" name="Mind Armor (Heavy)" description="Mind Armor Selection helper." compset="SelectHelp">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <tag group="PackSelect" tag="MindArmor"/>
+    <tag group="MindBlade" tag="ArmorHeavy"/>
+    </thing>
+
+
+  <thing id="abPUPsiTal" name="Psionic Talent" description="This is a helper object for the Psionic Talent feat so that our logic is only done &quot;once&quot; no matter how many times we are added to the hero." compset="Ability" uniqueness="unique">
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ Calculate Bonus points for each feat taken. First time is 2PP
+      ~ and second time we get +3 (total of 5PP) and third time
+      ~ we get +4 for a total of 9PP.
+      field[abValue].value += hero.tagcount[Ability.fPUPsiTal]
+
+      var iX as number
+
+      ~ Calcaulte the correct number of PP resources
+      while (iX < field[abValue].value)
+        field[abValue2].value += 2 + iX
+        iX += 1
+      loop
+
+      ~ Increase the Power Point resource
+      #resmax[resPowerPt] += field[abValue2].value]]></eval>
+    </thing>
+
+  <thing id="abPUActEne" name=" Active Energy Type" description="The current selected type of energy (cold, electricity, fire, or sonic). Most psionic powers with the [Energy] descriptor deal damage based on the active energy type. Kineticists may change their active energy type freely, and wilders may temporarily change their active energy type during a wild surge; otherwise, a psionic character may change his active energy type when gaining psionic focus. The psionic character need not maintain psionic focus to maintain an active energy type."
+  summary="Lets you set your psionic active energy type."
+  compset="Ability"
+  uniqueness="unique">
+    <fieldval field="usrCandid1" value="component.SelectHelp &amp; Psionics.PsiActEne"/>
+    <tag group="Helper" tag="ActivMenu"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="First" priority="4000"><![CDATA[
+      ~ if nothing chosen get out now!
+      doneif (field[usrChosen1].ischosen = 0)
+
+      ~ Set the energy type on the hero
+      perform field[usrChosen1].chosen.forward[PsiActEne.?]
+      ]]></eval>
+    </thing>
+
+  <!-- Generic Custom Helper ability allowing anyone to type in a name -->
+  <thing id="cPUCustom" name="- Custom -" description="Adding this ability will let you create your own custom ability with a name of your choice." compset="CustomSpec">
+    <usesource source="pPsionics"/>
+    <tag group="SpecSource" tag="cHelpSkn"/>
+    <tag group="DomainTerm" tag="Name"/>
+    <tag group="User" tag="NeedDomain"/>
+    <tag group="User" tag="NoAutoName"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <eval phase="Render" priority="10000"><![CDATA[
+      ~ Set the livename &
+      field[livename].text = field[domDomain].text
+      if (tagis[component.shortname] <> 0) then
+        field[shortname].text = field[domDomain].text
+      endif]]></eval>
+    </thing>
+
+
+  <!-- ***************************************************************************************  -->
+  <!-- Archetype Headers                                                                        -->
+  <!-- ***************************************************************************************  -->
+  <thing id="arHdPUPsi" name="Psion" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Psion" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPsi"/>
+    </thing>
+  <thing id="arHdPUPWa" name="Psychic Warrior" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Psychic Warrior" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPWa"/>
+    </thing>
+  <thing id="arHdPUSkn" name="Soulknife" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Soulknife" class header.]]></comment>
+    <link linkage="varies" thing="cHelpSkn"/>
+    </thing>
+  <thing id="arHdPUWld" name="Wilder" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Wilder" class header.]]></comment>
+    <link linkage="varies" thing="cHelpWld"/>
+    </thing>
+  <thing id="arHdPUAeg" name="Aegis" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Aegis" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPU0"/>
+    </thing>
+  <thing id="arHdPUCry" name="Cryptic" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Cryptic" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPU1"/>
+    </thing>
+  <thing id="arHdPUDrd" name="Dread" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Dread" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPU2"/>
+    </thing>
+  <thing id="arHdPUMrk" name="Marksman" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Marksman" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPU3"/>
+    </thing>
+  <thing id="arHdPUTac" name="Tactician" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Tactician" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPU4"/>
+    </thing>
+  <thing id="arHdPUVit" name="Vitalist" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Vitalist" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPU5"/>
+    </thing>
+
+  <thing id="arHdPUPsiU" name="Psion Uncarnate" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Psion Uncarnate" class header.]]></comment>
+    <link linkage="varies" thing="cHelpPsU"/>
+    </thing>
+  <thing id="arHdPUBoSa" name="Body Snatcher" compset="ClassVary" uniqueness="unique" isshowonly="yes">
+    <comment><![CDATA[This is a helper object for the "Body Snatch" class header.]]></comment>
+    <link linkage="varies" thing="cHelpBSn"/>
+    </thing>
+
+  <thing id="minHdPUPsc" name="Psionics" compset="Minion" isshowonly="yes">
+    <tag group="gType" tag="PUPsionics"/>
+    <tag group="gType" tag="PUPsicrsta"/>
+    <tag group="gType" tag="PUAstrCons"/>
+    </thing>
+
+
+  <!--
+    When the "Free Gifted Blade for soulknives" source is turned on this hides
+    the normal gifted blade archetype from being selected. This prevents a user
+    from double taking the Gifted Blade archetype.
+   -->
+  <preclude id="arPUGiftBl" source="srcGiftBla"/>
+
+  <!-- Add tags to the standard Energy Selection Helpers for Psionic Active Energy Type -->
+  <extthing thing="selEnCold"  group="Psionics" tag="PsiActEne"/> <!-- For building the custom expression -->
+  <extthing thing="selEnElec"  group="Psionics" tag="PsiActEne"/>
+  <extthing thing="selEnFire"  group="Psionics" tag="PsiActEne"/>
+  <extthing thing="selEnSonic" group="Psionics" tag="PsiActEne"/>
+  <!-- These tags will get pushed to the Hero -->
+  <extthing thing="selEnCold"  group="PsiActEne" tag="Cold"/>
+  <extthing thing="selEnElec"  group="PsiActEne" tag="Elec"/>
+  <extthing thing="selEnFire"  group="PsiActEne" tag="Fire"/>
+  <extthing thing="selEnSonic" group="PsiActEne" tag="Sonic"/>
+
+  </document>

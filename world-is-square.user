@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="fwsDeftMan" name="Deft Maneuvers" description="You are skilled at quick, sly maneuvers.\n\n{b}Prerequisite{/b}: Int 13.\n\n{b}Benefit{/b}: You do not provoke an attack of opportunity when performing a trip, disarm, dirty trick, reposition, or steal combat maneuver.  You receive a +2 bonus on CMB checks made to perform these manuevers, and to your CMD when an opponent targets you with one of these maneuvers.\n\nIn addition, you may feint in combat as a move action, rather than a standard action.\n\n{b}Normal{/b}: You provoke an attack of opportunity when performing a the combat maneuvers listed above." compset="Feat" summary="You don&apos;t provoke attacks of opportunity when tripping." uniqueness="useronce">
+    <fieldval field="abValue" value="2"/>
+    <usesource source="WiSRules"/>
+    <usesource source="WiSMan"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="BonusFor" tag="ManFeatImp" name="Maneuver Feat, Improved" abbrev="Maneuver Feat, Improved"/>
+    <tag group="HasFeat" tag="fImpTrip"/>
+    <tag group="HasFeat" tag="fImpDis"/>
+    <tag group="HasFeat" tag="fImpDirTri"/>
+    <tag group="HasFeat" tag="fImpFeint"/>
+    <tag group="HasFeat" tag="fImpReposi"/>
+    <tag group="HasFeat" tag="fImpSteal"/>
+    <tag group="BonusFor" tag="Monk6" name="Monk Level 6" abbrev="Monk Level 6"/>
+    <tag group="Custom" tag="RPMoAReq" name="RPMoAReq" abbrev="RPMoAReq"/>
+    <bootstrap thing="ctImprTrip">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImprDisa">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImpDirTr">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImprRepo">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImprStea">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImprFein">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="Final" priority="10000"><![CDATA[
+~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ add a +2 bonus to the maneuvers (both CMB and CMD)
+hero.child[manTrip].field[manBonus].value += field[abValue].value
+hero.child[manDisarm].field[manBonus].value += field[abValue].value
+hero.child[manDirtTri].field[manBonus].value += field[abValue].value
+hero.child[manReposit].field[manBonus].value += 2
+hero.child[manSteal].field[manBonus].value += field[abValue].value]]></eval>
+    <prereq message="Intelligence 13 required." severity="warning">
+      <validate><![CDATA[
+        ~ Certain feats can also be taken if you are using the combat stamina rule from Pathfinder Unchained.
+        validif (#hasfeat[fCombStam] <> 0)
+
+        ~The Dirty Fighting feat can substitute for Int 13 for improved maneuver feats
+        validif (#hasfeat[fDirtyFigh] <> 0)
+
+        call CmbFtInt13]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fwsPowMan" name="Powerful Maneuvers" description="You are skilled at maneuvers requiring raw power.\n\n{b}Prerequisite{/b}: Str 13,  base attack bonus +1.\n\n{b}Benefit{/b}: You do not provoke an attack of opportunity when performing a bull rush, drag, overrun or sunder combat maneuver.  You receive a +2 bonus on CMB checks made to perform these manuevers, and to your CMD when an opponent targets you with one of these maneuvers.\n\n{b}Normal{/b}: You provoke an attack of opportunity when performing a the combat maneuvers listed above." compset="Feat" summary="You don&apos;t provoke attacks of opportunity when bull rushing." uniqueness="useronce">
+    <fieldval field="abValue" value="2"/>
+    <fieldval field="reqStr" value="13"/>
+    <usesource source="WiSRules"/>
+    <usesource source="WiSMan"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="BonusFor" tag="ManFeatImp" name="Maneuver Feat, Improved" abbrev="Maneuver Feat, Improved"/>
+    <tag group="BonusFor" tag="Monk6" name="Monk Level 6" abbrev="Monk Level 6"/>
+    <tag group="HasFeat" tag="fImpBull"/>
+    <tag group="HasFeat" tag="fImpDrag"/>
+    <tag group="HasFeat" tag="fImpOver"/>
+    <tag group="HasFeat" tag="fImpSunder"/>
+    <tag group="Custom" tag="RPMoAReq" name="RPMoAReq" abbrev="RPMoAReq"/>
+    <tag group="Helper" tag="AnimCompOK" name="AnimCompOK" abbrev="AnimCompOK"/>
+    <bootstrap thing="ctImprOver">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImprSund">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImpBulRu">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImprDrag">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="Final" priority="10000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ add a +2 bonus to the Bull Rush maneuver (both CMB and CMD)
+hero.child[manBullRus].field[manBonus].value += field[abValue].value
+hero.child[manDrag].field[manBonus].value += field[abValue].value
+hero.child[manOverrun].field[manBonus].value += field[abValue].value
+hero.child[manSunder].field[manBonus].value += field[abValue].value]]></eval>
+    <exprreq message="Base attack bonus +1 required." severity="warning"><![CDATA[#BAB[] >= 1]]></exprreq>
+    </thing>
+  <thing id="fwsGTwoWep" name="Greater Two-Weapon Fighting" description="You are incredibly skilled at fighting with two weapons at the same time.\n\n{b}Prerequisites{/b}: Dex 17, Two-Weapon Fighting, base attack bonus +6.\n\n{b}Benefit{/b}: In addition to the standard single extra attack you get with an off-hand weapon, you get a second attack with it, albeit at a –5 penalty.  Once your BAB reaches +11, you also gain a third attack with your off-hand weapon, albeit at a -10 penalty.\n\n{b}Normal{/b}: Without this feat, you can only get a single extra attack with an off-hand weapon." compset="Feat" summary="You get a third attack with your off-hand weapon, albeit at a -10 penalty." uniqueness="useronce">
+    <fieldval field="reqDex" value="17"/>
+    <usesource source="WiSRules"/>
+    <usesource source="WiSMisc"/>
+    <tag group="HasFeat" tag="fImpTwoWep"/>
+    <tag group="ReqFeat" tag="fTwoWep"/>
+    <tag group="BonusFor" tag="RgrTwoW6" name="Ranger Two-Weapon Style Level 6" abbrev="Ranger Two-Weapon Style Level 6"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="BonusFor" tag="GRFreeboot" name="Freebooter" abbrev="Freebooter"/>
+    <bootstrap thing="ctGrTwWeFi">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImTwWeFi">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+
+perform hero.assign[Hero.TwoWepImp]
+
+if (hero.child[Attack].field[tAtkBase].value >= 11) then
+    perform hero.assign[Hero.TwoWepGrt]
+endif]]></eval>
+    <exprreq message="Two-Weapon Fighting required." severity="warning"><![CDATA[#hasfeat[fTwoWep] <> 0]]></exprreq>
+    <exprreq message="Base attack bonus +6 required." severity="warning"><![CDATA[#BAB[] >= 6]]></exprreq>
+    </thing>
+  <thing id="mechWepFin" name="Weapon Finesse for All" compset="Mechanics">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSCombat"/>
+    <bootstrap thing="cfgWorldSq">
+      <containerreq phase="First" priority="200"><![CDATA[hero#WiSRules.PayFeatTax <> 1]]></containerreq>
+      </bootstrap>
+    <eval phase="First"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSWeapons] = 0)
+
+~ We're an NPC, and subject to feat taxes, so we're done
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+~This also counts as Weapon Finesse for feat pre-reqs
+perform hero.assign[HasFeat.fWepFin]]]></eval>
+    </thing>
+  <thing id="cfgWorldSq" name="World Is Square" compset="Configure" uniqueness="unique">
+    <fieldval field="cfgLevel" value="20"/>
+    <bootstrap thing="cFinWpAtAt">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cRulesChan">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <eval phase="First" priority="500">perform forward[CfgLive.?]</eval>
+    </thing>
+  <thing id="cFinWpAtAt" name="Finesse Weapon Attack Attribute" description="The “light weapons” category has been renamed to “finesse weapons.” Characters can choose to use either their dexterity bonus or their strength bonus to hit with these weapons, no feat required. “Finesse” is also now a weapon attribute like “brace” or “trip,” allowing a weapon in another category to be finessed (like the rapier)." compset="ClSpecial">
+    <fieldval field="usrCandid1" value="component.BaseAttr &amp; (IsAttr.aSTR | IsAttr.aDEX)"/>
+    <tag group="User" tag="NoAutoName"/>
+    <eval phase="First" priority="1000"><![CDATA[doneif (field[usrChosen1].ischosen = 0)
+
+perform field[usrChosen1].chosen.pulltags[MelAttOver.?]
+
+if (compare(field[usrChosen1].chosen.field[name].text, "Dexterity") = 0) then
+	perform hero.assign[Hero.Finesse]
+endif
+
+foreach pick in hero where "wCategory.Melee & (wClass.Light | Helper.Finesse)"
+	perform eachpick.pushtags[MelAttOver.?]
+nexteach]]></eval>
+    <eval phase="Render" priority="10000" index="2"><![CDATA[~ Report user's choice of attribute in stat block output.
+hero.childfound[cFinWpAtAt].field[abSumm].text = "Finesse weapons use "&field[usrChosen1].chosen.field[name].text&" on attack rolls."]]></eval>
+    </thing>
+  <thing id="cRulesChan" name="Rules Changes" description="By all metrics, Pathfinder is the most satisfying pen-and-paper game I’ve ever played. The class balance feels good, the math isn’t overwhelming, and the community support is outstanding. However, it suffers from one syndrome that haunts the creation of every new character: feat taxes.\n\nMany veteran players lament that you need three feats to go to the bathroom in Pathfinder. It’s a cheeky musing, but one rooted in truth. Pathfinder’s feats are arranged in sprawling tiers, often requiring an investment of three or more feats to unlock a single more advanced one. While it’s satisfying to work towards a goal, many rungs on the feat ladder are considered either undesirable or overtly mundane. These are feat taxes.\n\nBelow I’ve highlighted a number of revisions to Pathfinder’s feat tree to help ease the situation. I’ve focused mainly on combat feats, arguably the worst offenders. Feel free to incorporate these changes into your own house rules or make your own suggestions in the comments.\n\n{b}Martial Mastery{/b}\nGone. Combat feats like Weapon Focus now apply to weapon groups instead of a specific weapon by default.\n\n{b}Agile Maneuvers{/b}\nGone. A character adds their dexterity to the CMB if they’re wielding a finesse weapon and their strength otherwise.\n\n{b}Combat Expertise{/b}\nGone. Now simple a combat option for any class with at least +1 BAB.\n\n{b}Improved Trip, Improved Disarm, Improved Dirty Trick, Improved Feint, Improved Reposition, Improved Steal{/b}\nGone. Replaced with Deft Maneuvers.\n\n{b}Deft Maneuvers{/b}\nNew. You do not provoke an attack of opportunity when performing a trip, disarm, dirty trick, feint, reposition, or steal combat maneuver. In addition, you receive a +2 bonus on checks with these combat maneuvers. Now a prerequisite for the relevant greater combat maneuver feats.\n\n{b}Power Attack{/b}\nGone. Now simply a combat option for any class with at least +1 BAB.\n\n{b}Improved Bull Rush, Improved Drag, Improved Overrun, Improved Sunder{/b}\nGone. Replaced with Powerful Maneuvers.\n\n{b}Powerful Maneuvers{/b}\nNew. You do not provoke an attack of opportunity when performing a bull rush, drag, overrun, or sunder combat maneuver. In addition, you receive a +2 bonus on checks with these combat maneuvers. Now a prerequisite for the relevant greater combat maneuver feats.\n\n{b}Point-Blank Shot{/b}\nGone. Precise Shot replaces it as a prerequisite for further archery feats.\n\n{b}Deadly Aim{/b}\nGone. Now simple a combat option for any class with at least +1 BAB.\n\n{b}Mobility{/b}\nGone. Merged with Dodge.\n\n{b}Dodge{/b}\nRevised. You gain a +1 dodge bonus to your AC. This bonus increases to +4 against attacks of opportunity caused when you move out of or within a threatened tile. A condition that makes you lose your Dex bonus to AC also makes you lose the benefits of this feat.\n\n{b}Improved Two-Weapon Fighting{/b}\nGone. Merged with Greater Two-Weapon Fighting\n\n{b}Greater Two-Weapon Fighting{/b}\nRevised. Prerequisites now Dex 17, Two-Weapon Fighting, BAB +6. In addition to the standard single extra attack you get with an off-hand weapon, you get a second attack with it, albeit at a –5 penalty. Once your BAB reaches +11, you also gain a third attack with your off-hand weapon, albeit at a –10 penalty." compset="ClSpecial">
+    <tag group="Hide" tag="Statblock"/>
+    </thing>
+  <thing id="mechComExp" name="Bonus Feats: Combat Expertise" description="This grants Combat Expertise to all PCs with a BAB of +1 or higher." compset="Mechanics" summary="Grants Combat Expertise to all PCs with BAB +1 or higher.">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSCombat"/>
+    <bootstrap thing="fComExpert">
+      <containerreq phase="First" priority="200"><![CDATA[hero#WiSRules.PayFeatTax <> 1]]></containerreq>
+      </bootstrap>
+    <eval phase="Final"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSCombat] = 0)
+
+~ We're an NPC, and subject to feat taxes, so we're done
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+perform hero.child[fComExpert].assign[thing.skipprereq]
+
+~ If the hero does not yet have BAB +1 or higher, then
+~ disable the feat.
+if (hero.child[Attack].field[tAtkBase].value < 1) then
+    perform hero.child[fComExpert].assign[Helper.FtHide]
+    perform hero.child[fComExpert].assign[Helper.FtDisable]
+endif]]></eval>
+    </thing>
+  <thing id="mechPowAtt" name="Bonus Feats: Power Attack" description="This grants Power Attack to all PCs with a BAB of +1 or higher." compset="Mechanics" summary="Grants Power Attack to all PCs with BAB +1 or higher.">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSCombat"/>
+    <bootstrap thing="fPowerAtt">
+      <containerreq phase="First" priority="200"><![CDATA[hero#WiSRules.PayFeatTax <> 1]]></containerreq>
+      </bootstrap>
+    <eval phase="Final"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSCombat] = 0)
+
+~ If we're an NPC, and subject to feat taxes, get out now!
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+perform hero.child[fPowerAtt].assign[thing.skipprereq]
+
+~ If the hero does not yet have BAB +1 or higher, then
+~ disable the feat.
+if (hero.child[Attack].field[tAtkBase].value < 1) then
+    perform hero.child[fPowerAtt].assign[Helper.FtHide]
+    perform hero.child[fPowerAtt].assign[Helper.FtDisable]
+endif]]></eval>
+    </thing>
+  <thing id="mechDeaAim" name="Bonus Feats: Deadly Aim" description="This grants Deadly Aim to all PCs with a BAB of +1 or higher." compset="Mechanics" summary="Grants Deadly Aim to all PCs with BAB +1 or higher.">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSCombat"/>
+    <bootstrap thing="fDeadAim">
+      <containerreq phase="First" priority="200"><![CDATA[hero#WiSRules.PayFeatTax <> 1]]></containerreq>
+      </bootstrap>
+    <eval phase="Final"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSCombat] = 0)
+
+~ If we're an NPC, and subject to feat taxes, get out now!
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+perform hero.child[fDeadAim].assign[thing.skipprereq]
+
+~ If the hero does not yet have BAB +1 or higher, then
+~ disable the feat.
+if (hero.child[Attack].field[tAtkBase].value < 1) then
+    perform hero.child[fDeadAim].assign[Helper.FtHide]
+    perform hero.child[fDeadAim].assign[Helper.FtDisable]
+endif]]></eval>
+    </thing>
+  <thing id="mechPBS" name="Bonus Feats: Point Blank Shot" description="Grants all PCs Point Blank Shot automatically.  It will not appear on their list of feats, and its effects will not apply, but they will still count as having it for feat pre-requisite purposes." compset="Mechanics" summary="Grants all PCs Point Blank Shot automatically.">
+    <usesource source="WiSRules" parent="UserParent" name="World is Square Rules"/>
+    <usesource source="WiSCombat"/>
+    <bootstrap thing="fPointBlnk">
+      <containerreq phase="First" priority="200"><![CDATA[hero#WiSRules.PayFeatTax <> 1]]></containerreq>
+      </bootstrap>
+    <eval phase="Final"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSCombat] = 0)
+
+~ If we're an NPC, and subject to feat taxes, get out now!
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+~ Prevent Point Blank Shot from showing up in the list,
+~ and suppress its effects.
+perform hero.child[fPointBlnk].assign[Helper.FtHide]
+perform hero.child[fPointBlnk].assign[Helper.FtDisable]
+perform hero.child[fPointBlnk].assign[thing.skipprereq]]]></eval>
+    </thing>
+  <thing id="mechAgMan" name="Bonus Feats: Agile Maneuvers" description="This grants the feat Agile Maneuvers, then suppresses it if the hero&apos;s STR modifier is higher than their DEX modifier." compset="Mechanics" summary="Grants Agile Maneuvers when appropriate.">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSCombat"/>
+    <bootstrap thing="fAgileMan">
+      <containerreq phase="First" priority="200"><![CDATA[hero#WiSRules.PayFeatTax <> 1]]></containerreq>
+      </bootstrap>
+    <eval phase="PostAttr" name="WiS: Apply Agile Maneuvers"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSCombat] = 0)
+
+~ If we're an NPC, and subject to feat taxes, get out now!
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+perform hero.child[fAgileMan].assign[thing.skipprereq]
+
+~ Suppress Agile Maneuvers when the hero's DEX modifier
+~ is lower than their STR modifier.
+
+if (#attrmod[aDEX] <= #attrmod[aSTR]) then
+    perform hero.child[fAgileMan].assign[Helper.FtHide]
+    perform hero.child[fAgileMan].assign[Helper.FtDisable]
+endif]]></eval>
+    </thing>
+  <thing id="fwsWepFoc" name="Weapon Focus" description="Choose one weapon group. You become better at using that type of weapon.\n\n{b}Prerequisites:{/b} base attack bonus +1.\n\n{b}Benefit:{/b} You gain a +1 bonus on all attack rolls you make using weapons from the selected group.  The bonus only applies to weapons with which you are proficient.\n\n{b}Special:{/b} You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new weapon group." compset="Feat">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <tag group="fShowWhat" tag="WeaponsGrp"/>
+    <tag group="HasFeat" tag="fWepFoc"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="AnimCompOK"/>
+    <tag group="BonusFor" tag="GRFreeboot"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~if we haven't chosen anything yet, just get out now
+doneif (field[usrChosen1].ischosen + tagis[Target.?] = 0)
+
+~get the wFtrGroup tag from our choice or Target tag
+if (tagis[Target.?] <> 0) then
+	perform this.pulltags[Target.?,wFtrGroup]
+else
+	perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+endif
+
+~if we didn't find a wFtrGroup tag, there's nothing more we can do
+doneif (tagis[wFtrGroup.?] = 0)
+
+~ Get the list of weapons in the group.
+var searchexp as string
+searchexp = tagids[wFtrGroup.?,"|"]
+
+~ Tag the hero has having weapon focus for each weapon
+~ in order to satisfy pre-requisites for feats that
+~ require weapon focus with a specific weapon.
+~ First we pull the WepFocus tags from the weapons in the group ...
+foreach thing in BaseWep where tagids[wFtrGroup.?,"|"]
+	perform eachthing.pulltags[WepFocus.?]
+nexteach
+
+~ Then push them onto the hero.
+perform hero.pushtags[WepFocus.?]
+
+~ Iterate through the weapons currently in the hero's possession
+~ and apply the bonus to those that the hero is proficient with.
+foreach pick in hero from BaseWep
+	var proceed as number
+	proceed = 0
+
+	~ Must be part of this.
+    if (eachpick.tagmatch[wFtrGroup,wFtrGroup,initial] <> 0) then
+		proceed += 1
+	endif
+
+	~ Hero must be proficient with the weapon.
+    if (eachpick.tagcount[Helper.Proficient] <> 0) then
+		proceed += 1
+	endif
+
+	~ Yay, passed both tests.  Award them their shiny +1.
+    if (proceed > 1) then
+		perform eachpick.assign[Broadcast.WepFocus]
+    endif
+nexteach
+
+~ Finally, tag the hero as having group weapon focus.
+var boundary as number
+var group as string
+boundary = pos(searchexp, ".") + 1
+group = mid(searchexp, boundary, length(searchexp))
+
+perform hero.assignstr["WepGFoc." & group]]]></eval>
+    <exprreq message="Base attack bonus +1 required."><![CDATA[#BAB[] >= 1]]></exprreq>
+    </thing>
+  <thing id="fwsWepSpec" name="Weapon Specialization" description="You are skilled at dealing damage with one type of weapon. Choose a weapon group for which you have already selected the Weapon Focus feat. You deal extra damage when using weapons from that group.\n\n{b}Prerequisites{/b}: Weapon Focus with selected group, fighter level 4th.\n\n{b}Benefit{/b}: You gain a +2 bonus on all damage rolls you make using weapons from the selected group.   The damage bonus only applies to weapons you are proficient with.\n\n{b}Special{/b}: You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a different weapon group." compset="Feat" summary="You gain a +2 bonus on all damage rolls you make using the selected.">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <tag group="fShowWhat" tag="WeaponsGrp"/>
+    <tag group="HasFeat" tag="fWepSpec"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <bootstrap thing="ctWeapSpec">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="aaWeapSpec"></bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~if we haven't chosen anything yet, just get out now
+doneif (field[usrChosen1].ischosen = 0)
+
+~get the wFtrGroup tag from our choice
+perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+
+~if we didn't find a wFtrGroup tag, there's nothing more we can do
+doneif (tagis[wFtrGroup.?] = 0)
+
+~ Get the list of weapons in the group.
+var searchexp as string
+searchexp = tagids[wFtrGroup.?,"|"]
+
+~ Tag the hero has having weapon specialization for each weapon
+~ in order to satisfy pre-requisites for feats that require
+~ weapon specialization with a specific weapon.
+~ First we pull the WepSpec tags from the weapons in the group ...
+foreach thing in BaseWep where tagids[wFtrGroup.?,"|"]
+	perform eachthing.pulltags[WepSpec.?]
+nexteach
+
+~ Then push them onto the hero.
+perform hero.pushtags[WepSpec.?]
+
+~ Iterate through the weapons currently in the hero's possession
+~ and apply the bonus to those that the hero is proficient with.
+foreach pick in hero from BaseWep
+	var proceed as number
+	proceed = 0
+
+	~ Must be part of this.
+    if (eachpick.tagmatch[wFtrGroup,wFtrGroup,initial] <> 0) then
+		proceed += 1
+	endif
+
+	~ Hero must be proficient with the weapon.
+    if (eachpick.tagcount[Helper.Proficient] <> 0) then
+		proceed += 1
+	endif
+
+	~ Yay, passed both tests.  Award them their shiny +2.
+    if (proceed > 1) then
+		perform eachpick.assign[Broadcast.WepSpec]
+    endif
+nexteach
+
+~ Finally, tag the hero as having group weapon specialization.
+var boundary as number
+var group as string
+boundary = pos(searchexp, ".") + 1
+group = mid(searchexp, boundary, length(searchexp))
+
+perform hero.assignstr["WepGSpec." & group]]]></eval>
+    <evalrule phase="Validation" priority="5000" message="Weapon Specialization without matching Weapon Focus" summary="Weapon Specialization without Weapon Focus"><![CDATA[
+	perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+	validif (hero.tagmatch[wFtrGroup,WepGFoc,initial] <> 0)]]></evalrule>
+    <exprreq message="Weapon Focus required." severity="warning"><![CDATA[tagis[WepFocus.?] <> 0]]></exprreq>
+    <prereq message="Fighter level 4th required.">
+      <validate><![CDATA[
+        ~ If we're disabled, do nothing, we're valid
+        validif (tagis[Helper.FtDisable] <> 0)
+
+        ~ We're valid if we have 4 fighter levels or equivalent.
+        validif (#featprereqlevelcount[Fighter] >= 4)
+
+        ~ We're valid if we have chosen the Quarterstaff and we have the
+        ~ Quarterstaff Mastery feat.
+        ~ If we haven't chosen anything, get out now
+        if (altpick.tagis[IsWeapon.wQtrstaff] + altpick.tagis[Target.wQtrstaff] <> 0) then
+          validif (#hasfeat[fQuartMast] <> 0)
+          endif]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fwsDodge" name="Dodge" description="Your training and reflexes allow you to react swiftly to avoid an opponents&apos; attacks.\n\n{b}Prerequisite{/b}: Dex 13.\n\n{b}Benefit{/b}: You gain a +1 dodge bonus to your AC. This bonus increases to +4 against attacks of opportunity caused when you move out of or within a threatened tile. A condition that makes you lose your Dex bonus to AC also makes you lose the benefits of this feat." compset="Feat" summary="+1 AC, +4 AC vs AoO due to motion." uniqueness="useronce">
+    <fieldval field="abValue" value="1"/>
+    <fieldval field="reqDex" value="13"/>
+    <fieldval field="abValue2" value="3"/>
+    <usesource source="WiSRules"/>
+    <usesource source="WiSMisc"/>
+    <tag group="BonusFor" tag="Monk1" name="Monk Level 1" abbrev="Monk Level 1"/>
+    <tag group="HasFeat" tag="fDodge"/>
+    <tag group="HasFeat" tag="fMobility"/>
+    <tag group="Helper" tag="AnimCompOK" name="AnimCompOK" abbrev="AnimCompOK"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="BonusFor" tag="GRFreeboot" name="Freebooter" abbrev="Freebooter"/>
+    <bootstrap thing="ctDodge">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctMobility">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="PostLevel" priority="10000" name="Apply Dodge feat&apos;s AC Bonus"><![CDATA[~don't proceed if we're disabled
+doneif (tagis[Helper.FtDisable] <> 0)
+
+hero.child[ArmorClass].field[tACDodge].value += field[abValue].value
+
+#situational[hero.child[ArmorClass],signed(field[abValue2].value) & " Dodge bonus vs. Attacks of Opportunity because you moved out of or within a threatened area",field[thingname].text]
+
+field[abSumm].text = signed(field[abValue2].value) & " to AC vs. AoO provoked by moving out of or through a threatened area."]]></eval>
+    </thing>
+  <thing id="fwsGrWFoc" name="Greater Weapon Focus" description="Choose one weapon group for which you have already selected Weapon Focus. You are a master with this type of weapon.\n\n{b}Prerequisites{/b}: Weapon Focus with selected group, base attack bonus +1, 8th-level fighter.\n\n{b}Benefit{/b}: You gain a +1 bonus on attack rolls you make using weapons from the selected group. This bonus stacks with other bonuses on attack rolls, including those from Weapon Focus.  The bonus only applies to weapons with which you are proficient.\n\n{b}Special{/b}: You can gain Greater Weapon Focus multiple times. Its effects do not stack. Each time you take the feat, it applies to a new." compset="Feat" summary="You gain a +1 bonus on all attack rolls you make using the selected weapon. This bonus stacks with other bonuses on attack rolls, including the one from Weapon Focus (see below).">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="fShowWhat" tag="WeaponsGrp"/>
+    <tag group="HasFeat" tag="fGrtWepFoc"/>
+    <tag group="BonusFor" tag="GRFreeboot" name="Freebooter" abbrev="Freebooter"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <bootstrap thing="ctGreWeaFo">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~if we haven't chosen anything yet, just get out now
+doneif (field[usrChosen1].ischosen = 0)
+
+~get the wFtrGroup tag from our choice
+perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+
+~if we didn't find a wFtrGroup tag, there's nothing more we can do
+doneif (tagis[wFtrGroup.?] = 0)
+
+~ Get the list of weapons in the group.
+var searchexp as string
+searchexp = tagids[wFtrGroup.?,"|"]
+
+~ Tag the hero has having greater weapon focus for each weapon
+~ in order to satisfy pre-requisites for feats that require
+~ weapon greater focus with a specific weapon.
+~ First we pull the WepGrFoc tags from the weapons in the group ...
+foreach thing in BaseWep where tagids[wFtrGroup.?,"|"]
+	perform eachthing.pulltags[WepGrFoc.?]
+nexteach
+
+~ Then push them onto the hero.
+perform hero.pushtags[WepGrFoc.?]
+
+~ Iterate through the weapons currently in the hero's possession
+~ and apply the bonus to those that the hero is proficient with.
+foreach pick in hero from BaseWep
+	var proceed as number
+	proceed = 0
+
+	~ Must be part of this.
+    if (eachpick.tagmatch[wFtrGroup,wFtrGroup,initial] <> 0) then
+		proceed += 1
+	endif
+
+	~ Hero must be proficient with the weapon.
+    if (eachpick.tagcount[Helper.Proficient] <> 0) then
+		proceed += 1
+	endif
+
+	~ Yay, passed both tests.  Award them their shiny +1.
+    if (proceed > 1) then
+		perform eachpick.assign[Broadcast.WepGrFoc]
+    endif
+nexteach
+
+~ Finally, tag the hero as having greater focus.
+var boundary as number
+var group as string
+boundary = pos(searchexp, ".") + 1
+group = mid(searchexp, boundary, length(searchexp))
+
+perform hero.assignstr["GWepGFoc." & group]]]></eval>
+    <evalrule phase="Validation" priority="5000" message="Greater Weapon Focus without Weapon Focus" summary="Greater Weapon Focus without Weapon Focus"><![CDATA[perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+validif (hero.tagmatch[wFtrGroup,WepGFoc,initial] <> 0)]]></evalrule>
+    <exprreq message="Weapon Focus required." severity="warning"><![CDATA[tagis[WepFocus.?] <> 0]]></exprreq>
+    <prereq message="Fighter level 8th required.">
+      <validate><![CDATA[
+        validif (#featprereqlevelcount[Fighter] >= 8)
+
+        ~If we have the Disciple of the sword feat, our pre-requisites can
+        ~be met by cleric or inquisitor levels, but only for longswords
+        if (#hasfeat[fDiscSword] <> 0) then
+          ~ We are a pick, so keep checking
+          if (@ispick <> 0) then
+            ~ If we have a target tag forcing us to choose longsword, check levels?
+            if (tagis[Target.wLongsword] <> 0) then
+                validif (#featprereqlevelcount[Cleric] >= 8)
+                validif (#featprereqlevelcount[Inquisito] >= 8)
+            ~ Otherwise, do we have a choice made by dropdown, and is it a longsword?
+            elseif (altpick.field[usrChosen1].ischosen <> 0) then
+              if (altpick.field[usrChosen1].chosen.tagis[IsWeapon.wLongsword] <> 0) then
+                validif (#featprereqlevelcount[Cleric] >= 8)
+                validif (#featprereqlevelcount[Inquisito] >= 8)
+                endif
+              endif
+          ~ Otherwise, if we are still a thing, defer judgement until we are a pick.
+          else
+            @valid = 1
+            endif
+          endif]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fwsGrWepSp" name="Greater Weapon Specialization" description="Choose one group for which you possess the Weapon Specialization feat. Your attacks with weapons in the chosen group are more devastating than normal.\n\n{b}Prerequisites{/b}: Greater Weapon Focus with selected group, Weapon Focus with selected group, Weapon Specialization with selected group, 12th-level fighter.\n\n{b}Benefit{/b}: You gain a +2 bonus on all damage rolls you make using weapons in the selected group. This bonus to damage stacks with other damage roll bonuses, including any you gain from Weapon Specialization.\n\n{b}Special{/b}: You can gain Greater Weapon Specialization multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." compset="Feat" summary="You gain a +2 bonus on all damage rolls you make using the selected weapon. This bonus stacks with other bonuses on damage rolls, including the one from Weapon Specialization (see below).">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <tag group="fShowWhat" tag="WeaponsGrp"/>
+    <tag group="HasFeat" tag="fGrtWepSpc"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <bootstrap thing="ctGreWeaSp">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~if we haven't chosen anything yet, just get out now
+doneif (field[usrChosen1].ischosen = 0)
+
+~get the wFtrGroup tag from our choice
+perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+
+~if we didn't find a wFtrGroup tag, there's nothing more we can do
+doneif (tagis[wFtrGroup.?] = 0)
+
+~ Get the list of weapons in the group.
+var searchexp as string
+searchexp = tagids[wFtrGroup.?,"|"]
+
+~ Tag the hero has having greater weapon specialization for each weapon
+~ in order to satisfy pre-requisites for feats that require
+~ greater weapon specialization with a specific weapon.
+~ First we pull the WepGrSpec tags from the weapons in the group ...
+foreach thing in BaseWep where tagids[wFtrGroup.?,"|"]
+	perform eachthing.pulltags[WepGrSpec.?]
+nexteach
+
+~ Then push them onto the hero.
+perform hero.pushtags[WepGrSpec.?]
+
+~ Iterate through the weapons currently in the hero's possession
+~ and apply the bonus to those that the hero is proficient with.
+foreach pick in hero from BaseWep
+	var proceed as number
+	proceed = 0
+
+	~ Must be part of this.
+    if (eachpick.tagmatch[wFtrGroup,wFtrGroup,initial] <> 0) then
+		proceed += 1
+	endif
+
+	~ Hero must be proficient with the weapon.
+    if (eachpick.tagcount[Helper.Proficient] <> 0) then
+		proceed += 1
+	endif
+
+	~ Yay, passed both tests.  Award them their shiny +2.
+    if (proceed > 1) then
+		perform eachpick.assign[Broadcast.WepGrSpec]
+    endif
+nexteach
+
+~ Finally, tag the hero as having greater specialization.
+var boundary as number
+var group as string
+boundary = pos(searchexp, ".") + 1
+group = mid(searchexp, boundary, length(searchexp))
+
+perform hero.assignstr["GWepGrSpec." & group]]]></eval>
+    <evalrule phase="Validation" priority="5000" message="Greater Weapon Specialization without Greater Weapon Focus" summary="Greater Weapon Specialization without Greater Weapon Focus"><![CDATA[perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+validif (hero.tagmatch[wFtrGroup,GWepGFoc,initial] <> 0)]]></evalrule>
+    <evalrule phase="Validation" priority="5000" index="2" message="Greater Weapon Specialization without Weapon Focus" summary="Greater Weapon Specialization without Weapon Focus"><![CDATA[perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+validif (hero.tagmatch[wFtrGroup,WepGFoc,initial] <> 0)]]></evalrule>
+    <evalrule phase="Validation" priority="5000" index="3" message="Greater Weapon Specialization without Weapon Specialization" summary="Greater Weapon Specialization without Weapon Specialization"><![CDATA[perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+validif (hero.tagmatch[wFtrGroup,WepGSpec,initial] <> 0)]]></evalrule>
+    <prereq message="Fighter level 12th required.">
+      <validate><![CDATA[
+        validif (#featprereqlevelcount[Fighter] >= 12)
+
+        ~If we have the Disciple of the sword feat, our pre-requisites can
+        ~be met by cleric or inquisitor levels, but only for longswords
+        if (#hasfeat[fDiscSword] <> 0) then
+          ~ We are a pick, so keep checking
+          if (@ispick <> 0) then
+            ~ If we have a target tag forcing us to choose longsword, check levels?
+            if (tagis[Target.wLongsword] <> 0) then
+                validif (#featprereqlevelcount[Cleric] >= 12)
+                validif (#featprereqlevelcount[Inquisito] >= 12)
+            ~ Otherwise, do we have a choice made by dropdown, and is it a longsword?
+            elseif (altpick.field[usrChosen1].ischosen <> 0) then
+              if (altpick.field[usrChosen1].chosen.tagis[IsWeapon.wLongsword] <> 0) then
+                validif (#featprereqlevelcount[Cleric] >= 12)
+                validif (#featprereqlevelcount[Inquisito] >= 12)
+                endif
+              endif
+          ~ Otherwise, if we are still a thing, defer judgement until we are a pick.
+          else
+            @valid = 1
+            endif
+          endif]]></validate>
+      </prereq>
+    </thing>
+  <thing id="fwsRayFoc" name="Weapon Focus (ray)" description="{b}Prerequisites{/b}: base attack bonus +1.\n\n{b}Benefit{/b}: You gain a +1 bonus on all attack rolls you make using rays." compset="Feat" summary="You gain a +1 bonus on all attack rolls you make using rays." uniqueness="unique">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="BonusFor" tag="GRFreeboot" name="Freebooter" abbrev="Freebooter"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="Helper" tag="AnimCompOK" name="AnimCompOK" abbrev="AnimCompOK"/>
+    <bootstrap thing="ctWeapFocu">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="PostLevel" priority="5000" name="Weapon Focus (ray) assigns Broadcast.WepFocus"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+
+~ Tag the hero has having weapon focus for rays.
+perform hero.assign[WepFocus.wRay]
+
+foreach pick in hero from BaseWep
+    if (eachpick.tagis[WepFocus.wRay] <> 0) then
+		perform eachpick.assign[Broadcast.WepFocus]
+	endif
+nexteach]]></eval>
+    <evalrule phase="Validation" priority="5000" message="Weapon Focus without proficiency" summary="Weapon Focus without proficiency"><![CDATA[
+      var herotaggrp as string
+      var thisname as string
+      var reqthinnam as string
+      var checkprof as number
+
+      ~ Check that we have selected something with the appropriate selections.
+      herotaggrp = "WepProf"
+      thisname = "Weapon Focus"
+      reqthinnam = "proficiency"
+      checkprof = 1
+
+      call chkselreq]]></evalrule>
+    <exprreq message="Base attack bonus +1 required."><![CDATA[#BAB[] >= 1]]></exprreq>
+    </thing>
+  <thing id="fwsImpCrit" name="Improved Critical" description="Attacks made with weapons in you your chosen group are quite deadly.\n\n{b}Prerequisite{/b}: Base attack bonus +8.\n\n{b}Benefit{/b}: When using weapons in the group you selected, your threat range is doubled.\n\n{b}Special{/b}: You can gain Improved Critical multiple times. The effects do not stack. Each time you take the feat, it applies to a new weapon group.\n\nThis effect doesn&apos;t stack with any other effect that expands the threat range of a weapon." compset="Feat" summary="When using weapons in the group you selected, your threat range is doubled.">
+    <fieldval field="reqBAB" value="8"/>
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <tag group="fShowWhat" tag="WeaponsGrp"/>
+    <tag group="BonusFor" tag="Monk10" name="Monk Level 10" abbrev="Monk Level 10"/>
+    <tag group="HasFeat" tag="fImpCrit"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <bootstrap thing="ctImprCrit">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~if we haven't chosen anything yet, just get out now
+doneif (field[usrChosen1].ischosen = 0)
+
+~get the wFtrGroup tag from our choice
+perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+
+~if we didn't find a wFtrGroup tag, there's nothing more we can do
+doneif (tagis[wFtrGroup.?] = 0)
+
+~ Get the list of weapons int he group.
+var searchexp as string
+searchexp = tagids[wFtrGroup.?,"|"]
+
+~ Tag the hero has having improved critical for each weapon
+~ in order to satisfy pre-requisites for feats that
+~ require weapon focus with a specific weapon.
+foreach thing in BaseWep where searchexp
+	if (eachthing.tagis[ImpCrit.?] <> 0) then
+		perform hero.assignstr[eachthing.tagids[ImpCrit.?, ","]]
+	endif
+nexteach
+
+~ Iterate through the weapons currently in the hero's possession
+~ and apply the bonus to those that the hero is proficient with.
+foreach pick in hero from BaseWep
+	var proceed as number
+	proceed = 0
+
+	~ Must be part of this.
+    if (eachpick.tagmatch[wFtrGroup,wFtrGroup,initial] <> 0) then
+		proceed += 1
+	endif
+
+	~ Hero must be proficient with the weapon.
+    if (eachpick.tagcount[Helper.Proficient] <> 0) then
+		proceed += 1
+	endif
+
+	~ Yay, passed both tests.  Award them their shiny +1.
+    if (proceed > 1) then
+		perform eachpick.assign[Broadcast.ImpCrit]
+    endif
+nexteach
+
+~ Finally, tag the hero as having group improved critical.
+var boundary as number
+var group as string
+boundary = pos(searchexp, ".") + 1
+group = mid(searchexp, boundary, length(searchexp))
+
+perform hero.assignstr["GImpCrit." & group]]]></eval>
+    </thing>
+  <thing id="mechNPCtax" name="NPCs Pay Feat Taxes" description="This tags NPC heros as having to pay feat taxes normally." compset="Mechanics" summary="NPCs pay feat taxes.">
+    <eval phase="First" priority="60" name="WiS: Assign NPC Feat Tax tag"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSMan] + hero.tagis[source.WiSCombat] + hero.tagis[source.WiSMisc] <> 1)
+doneif (hero.tagis[source.WiSNPCTax] <> 1)
+
+if (hero.tagis[CharType.typNPC] <> 0) then
+    perform hero.assign[WiSRules.PayFeatTax]
+endif]]></eval>
+    </thing>
+  <thing id="fwsUnaCom" name="Unarmed Combatant" description="You are skilled at grappling and fighting while unarmed.\n\n{b}Benefit{/b}: You are considered to be armed even when unarmed—you do not provoke attacks of opportunity when you attack foes while unarmed. Your unarmed strikes can deal lethal or nonlethal damage, at your choice.\n\nYou do not provoke an attack of opportunity when performing a grapple combat maneuver. In addition, you receive a +2 bonus on checks made to grapple a foe. You also receive a +2 bonus to your Combat Maneuver Defense whenever an opponent tries to grapple you.\n\n{b}Normal{/b}: Without this feat, you are considered unarmed when attacking with an unarmed strike, and you can deal only nonlethal damage with such an attack. You provoke an attack of opportunity when performing a grapple combat maneuver." compset="Feat" summary="Always considered armed, no attack of opportunity on grapple attempts." uniqueness="useronce">
+    <fieldval field="reqDex" value="13"/>
+    <fieldval field="abValue" value="2"/>
+    <usesource source="WiSRules"/>
+    <usesource source="WiSMan"/>
+    <tag group="fCategory" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="BonusFor" tag="GRFreeboot" name="Freebooter" abbrev="Freebooter"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="HasFeat" tag="fImpUnarm"/>
+    <tag group="HasFeat" tag="fImpGrapp"/>
+    <bootstrap thing="ctImpUnaSt">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <bootstrap thing="ctImprGrap">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <eval phase="Final" priority="10000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ tell the hero that on our printouts, we want to see the unarmed strike
+~ as one of the weapons
+perform hero.assign[Hero.PrintUnarm]
+perform hero.child[wUnarmed].delete[wSpecial.Nonlethal]
+
+~ add a +2 bonus to the Grapple maneuver (both CMB and CMD)
+hero.child[manGrapple].field[manBonus].value += field[abValue].value]]></eval>
+    </thing>
+  <thing id="fwsMyImpCr" name="Improved Critical" description="Your critical strikes with your chosen weapon group are deadlier than most.\n\n{b}Prerequisite{/b}: Improved Critical, base attack bonus +8.\n\n{b}Benefit{/b}: Your critical multiplier with weapons in your chosen group is increased by 1 (to a maximum of x6).\n\n{b}Special{/b}: You can gain this feat multiple times. The effects do not stack. Each time you take this feat, it applies to a different non-mythic Improved Critical feat." compset="Feat">
+    <fieldval field="reqBAB" value="8"/>
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <tag group="fMythAssoc" tag="fImpCrit" name="Improved Critical" abbrev="Improved Critical"/>
+    <tag group="fShowWhat" tag="WeaponsGrp"/>
+    <tag group="ChooseSrc1" tag="Thing" name="All Things" abbrev="All Things"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <tag group="HasFeat" tag="fMyImpCrit"/>
+    <tag group="ReqFeat" tag="fwsImpCrit" name="Improved Critical" abbrev="Improved Critical"/>
+    <tag group="fCategory" tag="Mythic" name="Mythic" abbrev="Mythic"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[~ If we're disabled, do nothing
+doneif (tagis[Helper.FtDisable] <> 0)
+
+~ If we haven't chosen anything, get out now
+doneif (field[usrChosen1].ischosen + tagis[Target.?] = 0)
+
+~get the wFtrGroup tag from our choice or Target tag
+if (tagis[Target.?] <> 0) then
+	perform this.pulltags[Target.?,wFtrGroup]
+else
+	perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+endif
+
+~ Loop through and do it for each weapon we're proficient with from the chosen group
+foreach pick in hero from BaseWep
+	var proceed as number
+	proceed = 0
+
+	~ Must be part of this group.
+    if (eachpick.tagmatch[wFtrGroup,wFtrGroup,initial] <> 0) then
+		proceed += 1
+	endif
+
+	~ Hero must be proficient with the weapon.
+    if (eachpick.tagis[Helper.Proficient] <> 0) then
+		proceed += 1
+	endif
+
+	~ Yay, passed both tests.  Increase their crit multiplier.
+    if (proceed > 1) then
+		perform eachpick.assign[Broadcast.CritMult]
+		perform eachpick.pulltags[MythImpCri.?]
+    endif
+nexteach
+
+perform hero.pushtags[MythImpCri.?]]]></eval>
+    </thing>
+  <thing id="mechIUnaSt" name="Bonus Feats: Unarmed Combatant" description="This grants Unarmed Combatant to monks, brawlers, and unchained monks in place of Improved Unarmed Strike." compset="Mechanics">
+    <usesource source="WiSMan"/>
+    <usesource source="WiSRules"/>
+    <bootstrap thing="fwsUnaCom">
+      <containerreq phase="First" priority="200">Classes.Monk | Classes.MonkUnc | Classes.Brawler</containerreq>
+      </bootstrap>
+    <eval phase="Final"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSMan] = 0)
+
+~ We're an NPC, and subject to feat taxes, so we're done
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+~ Check if we're a monk, brawler, or unchained monk
+var proceed as number
+proceed = hero.tagcount[Classes.Monk] + hero.tagcount[Classes.Brawler] + hero.tagcount[Classes.MonkUnc]
+
+doneif (proceed = 0)
+
+perform hero.child[fwsUnaCom].assign[thing.skipprereq]]]></eval>
+    </thing>
+  <thing id="mechFeralC" name="Feral Child" description="This grants Unarmed Combatant to druids with the Feral Child archetype." compset="Mechanics">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSMan"/>
+    <bootstrap thing="fwsUnaCom">
+      <containerreq phase="First" priority="200">ClassVary.arDrdFerCh</containerreq>
+      </bootstrap>
+    <eval phase="Final"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSMan] = 0)
+
+~ We're an NPC, and subject to feat taxes, so we're done
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+~ Check if we're a Feral Child Druid
+var proceed as number
+proceed = hero.tagcount[ClassVary.arDrdFerCh]
+
+doneif (proceed = 0)
+
+perform hero.child[fwsUnaCom].assign[thing.skipprereq]]]></eval>
+    </thing>
+  <thing id="mechKapDan" name="Kapenia Dancer" description="This grants Weapon Focus (Flails) to Magi with the Kapenia Dancer archetype." compset="Mechanics">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <bootstrap thing="fwsWepFoc">
+      <containerreq phase="First" priority="200">ClassVary.arMagKapen</containerreq>
+      <autotag group="Target" tag="Flails"/>
+      </bootstrap>
+    <eval phase="Final"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSWeapons] = 0)
+
+~ We're an NPC, and subject to feat taxes, so we're done
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+~ Check if we're a Kapenia Dancer
+doneif (hero.tagcount[ClassVary.arMagKapen] = 0)
+
+perform hero.child[fwsWepFoc].assign[thing.skipprereq]]]></eval>
+    </thing>
+  <thing id="wisTags" name="Tag Definition Helper" description="Just something to define some tags we want to use elsewhere." compset="Ability">
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <tag group="Target" tag="Close" name="Close" abbrev="Close Weapons"/>
+    <tag group="Target" tag="Crossbows" name="Crossbows" abbrev="Crossbows"/>
+    <tag group="Target" tag="Double" name="Double" abbrev="Double Weapons"/>
+    <tag group="Target" tag="Firearms" name="Firearms" abbrev="Firearms"/>
+    <tag group="Target" tag="Flails" name="Flails" abbrev="Flails"/>
+    <tag group="Target" tag="Hammers" name="Hammers" abbrev="Hammers"/>
+    <tag group="Target" tag="BladeHeavy" name="Heavy Blades" abbrev="Heavy Blades"/>
+    <tag group="Target" tag="BladeLight" name="Light Blades" abbrev="Light Blades"/>
+    <tag group="Target" tag="Monk" name="Monk" abbrev="Monk"/>
+    <tag group="Target" tag="Natural" name="Natural" abbrev="Natural Weapons"/>
+    <tag group="Target" tag="PoleArms" name="PoleArms" abbrev="Pole Arms"/>
+    <tag group="Target" tag="Siege" name="Siege" abbrev="Siege Weapons"/>
+    <tag group="Target" tag="Spears" name="Spears" abbrev="Spears"/>
+    <tag group="Target" tag="Thrown" name="Thrown" abbrev="Thrown Weapons"/>
+    <tag group="MythImpCri" tag="selWGrpAxe" name="Axes" abbrev="Axes"/>
+    <tag group="MythImpCri" tag="selWGrpBow" name="Bows" abbrev="Bows"/>
+    <tag group="MythImpCri" tag="selWGrpClo" name="Close" abbrev="Close Weapons"/>
+    <tag group="MythImpCri" tag="selWGrpXBo" name="Crossbows" abbrev="Crossbows"/>
+    <tag group="MythImpCri" tag="selWGrpDbl" name="Double" abbrev="Double Weapons"/>
+    <tag group="MythImpCri" tag="selWGrpGun" name="Firearms" abbrev="Firearms"/>
+    <tag group="MythImpCri" tag="selWGrpFla" name="Flails" abbrev="Flails"/>
+    <tag group="MythImpCri" tag="selWGrpHam" name="Hammers" abbrev="Hammers"/>
+    <tag group="MythImpCri" tag="selWGrpHBl" name="Heavy Blades" abbrev="Heavy Blades"/>
+    <tag group="MythImpCri" tag="selWGrpLBl" name="Light Blades" abbrev="Light Blades"/>
+    <tag group="MythImpCri" tag="selWGrpMnk" name="Monk" abbrev="Monk"/>
+    <tag group="MythImpCri" tag="selWGrpNat" name="Natural" abbrev="Natural Weapons"/>
+    <tag group="MythImpCri" tag="selWGrpPol" name="PoleArms" abbrev="Pole Arms"/>
+    <tag group="MythImpCri" tag="selWGrpSie" name="Siege" abbrev="Siege Weapons"/>
+    <tag group="MythImpCri" tag="selWGrpSpr" name="Spears" abbrev="Spears"/>
+    <tag group="MythImpCri" tag="selWGrpThr" name="Thrown" abbrev="Thrown Weapons"/>
+    <tag group="Target" tag="Axes" name="Axes" abbrev="Axes"/>
+    <tag group="Target" tag="Bows" name="Bows" abbrev="Bows"/>
+    </thing>
+  <thing id="mechWFoc" name="Bonus Feats: Weapon Focus" description="This grants Weapon Focus to warpriests." compset="Mechanics">
+    <usesource source="WiSRules" parent="WiSParent" name="Enable all World is Square rules"/>
+    <usesource source="WiSWeapons"/>
+    <bootstrap thing="fwsWepFoc">
+      <containerreq phase="First" priority="200">Classes.Warpriest</containerreq>
+      </bootstrap>
+    <eval phase="Final"><![CDATA[doneif (hero.tagis[source.WiSRules] + hero.tagis[source.WiSWeapons] = 0)
+
+~ We're an NPC, and subject to feat taxes, so we're done
+doneif (hero.tagis[WiSRules.PayFeatTax] <> 0)
+
+~ Check if we're a warpriest
+doneif (hero.tagcount[Classes.Warpriest] = 0)
+
+perform hero.child[fwsWepFoc].assign[thing.skipprereq]]]></eval>
+    </thing>
+  <thing id="fwsFeralCom" name="Feral Combat Training" description="You were taught a style of martial arts that relies on the natural weapons from your racial ability or class feature.\n\n{b}Prerequisites{/b}: Improved Unarmed Strike, Weapon Focus with selected natural weapon.\n\n{b}Benefit{/b}: Choose one of your natural weapons. While using the selected natural weapon, you can apply the effects of feats that have Improved Unarmed Strike as a prerequisite.\n\n{b}Special{/b}: If you are a monk, you can use the selected natural weapon with your flurry of blows class feature." compset="Feat" uniqueness="useronce">
+    <fieldval field="usrCandid1" value="component.BaseNatWep &amp; wGroup.Natural"/>
+    <usesource source="WiSRules"/>
+    <usesource source="WiSWeapons"/>
+    <tag group="ReqFeat" tag="fImpUnarm"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <bootstrap thing="ctFerComTr">
+      <containerreq phase="First" priority="1000">Dependant.UseStamina</containerreq>
+      </bootstrap>
+    <evalrule phase="PostLevel" priority="5001" message="Weapon Focus with selected natural weapon required." summary="Weapon Focus with selected natural weapon required."><![CDATA[      @valid = 0
+      doneif (field[usrChosen1].ischosen + tagis[Target.?] = 0)
+
+      var sel as string
+
+      sel = field[usrChosen1].chosen.idstring
+
+      validif (hero.tagcountstr["WepFocus." & sel] <> 0)]]></evalrule>
+    <exprreq message="Requires Weapon Focus with natural weapons."><![CDATA[tagis[WepGFoc.Natural] <> 0]]></exprreq>
+    </thing>
+  <preclude id="fGrtTwoWep" source="WiSRules"/>
+  <preclude id="fImpUnarm" source="WiSRules"/>
+  <preclude id="fImpGrapp" source="WiSRules"/>
+  <preclude id="fWepFoc" source="WiSRules"/>
+  <preclude id="fGrtWepFoc" source="WiSRules"/>
+  <preclude id="fMobility" source="WiSRules"/>
+  <preclude id="fGrtWepSpc" source="WiSRules"/>
+  <preclude id="fImpTwoWep" source="WiSRules"/>
+  <preclude id="fMyImpCrit" source="WiSRules"/>
+  <preclude id="fWepFoc" source="WiSWeapons"/>
+  <preclude id="fWepSpec" source="WiSWeapons"/>
+  <preclude id="fMyImpCrit" source="WiSWeapons"/>
+  <preclude id="fImpCrit" source="WiSWeapons"/>
+  <preclude id="fGrtWepSpc" source="WiSWeapons"/>
+  <preclude id="fGrtWepFoc" source="WiSWeapons"/>
+  <preclude id="fDodge" source="WiSMisc"/>
+  <preclude id="fGrtTwoWep" source="WiSMisc"/>
+  <preclude id="fImpGrapp" source="WiSMan"/>
+  <preclude id="fImpTwoWep" source="WiSMisc"/>
+  <preclude id="fImpUnarm" source="WiSMan"/>
+  <preclude id="fMobility" source="WiSMisc"/>
+  <preclude id="fDodge" source="WiSRules"/>
+  <preclude id="fImpCrit" source="WiSRules"/>
+  <preclude id="fWepFin" source="WiSRules"/>
+  <preclude id="fWepFin" source="WiSCombat"/>
+  <preclude id="fWepSpec" source="WiSRules"/>
+  <preclude id="fFeralComb" source="WiSRules"/>
+  <preclude id="fFeralComb" source="WiSWeapons"/>
+  </document>

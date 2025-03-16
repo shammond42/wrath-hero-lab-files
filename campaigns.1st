@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <source
+    id="pCampaigns"
+    name="Campaigns"
+    selectable="no"
+    parent="UserParent"
+    sortorder="0"
+    description="Campaign specific custom data files.">
+  </source>
+</document>

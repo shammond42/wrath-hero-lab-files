@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="wPUXephKni" name="Xephyr Knife" description="This specialized dagger is used by xephs to protect themselves while traveling in more dangerous areas. Its hooked blade is capable of causing deadly wounds, and the weapon is slightly larger than a standard dagger.\n\nA xephyr dagger functions as a normal dagger, except it is an exotic weapon." compset="Weapon">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gSizeCost" value="15"/>
+    <usesource source="pPsiUn"/>
+    <tag group="wClass"     tag="Light"/>
+    <tag group="wCritMin"   tag="18"/>
+    <tag group="wCritMult"  tag="2"/>
+    <tag group="wFtrGroup"  tag="BladeLight"/>
+    <tag group="wFtrGroup"  tag="Thrown"/>
+    <tag group="wMain"      tag="1d6_5"/>
+    <tag group="wProfReq"   tag="Exotic"/>
+    <tag group="wRangeInc"  tag="10"/>
+    <tag group="wType"      tag="P"/>
+    <tag group="wType"      tag="S"/>
+    <tag group="EquipType"  tag="Metal"/>
+    <tag group="wCategory"  tag="Melee"/>
+    <tag group="wCategory"  tag="RangeThrow"/>
+    <tag group="IsWeapon"   tag="wDagger"/>
+    <tag group="ProductId"  tag="HLCommunit"/>
+    </thing>
+  </document>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_BasicPack_ModulePaizo - The Emerald Spire Superdungeon"/>
+  <fileinfo>
+    <info_author>Data Input by Bodrin
+
+16/07/2014
+16th July 2014
+
+bodrinbarlow@gmail.com</info_author>
+    <info_history>
+January 25, 2015 - Tim Shadow
+-Merged into basic pack.
+
+September 7, 2014 - Tim Shadow
+-Removed the ability for the Token to be equipped as its Slot is "none".
+-Changed the name of this file to be for "Players".
+
+v1.0 Intial data input - Bodrin
+
+16/07/2014
+16th July 2014
+
+bodrinbarlow@gmail.com</info_history>
+    </fileinfo>
+  <thing id="ioTESSpTrT" name="Spire Transport Token" description="This small token is a thumb-sized cylinder of unbreakable greenish glass. A {i}Spire transport token{/i} allows the bearer to use the Emerald Spire&apos;s transport function. The bearer can teleport to a level only if she knows and speaks its identifying rune.\n\n{b}CONSTRUCTION REQUIRMENTS{/b}\n{b}Cost{/b} 300 gp\nCraft Wondrous Item, {i}dimension door{/i}, a small shard chipped from the Emerald Spire" compset="Wondrous" summary="Allows the bearer to use the Emerald Spire&apos;s transport function">
+    <comment>Data Input by Bodrin
+
+16/07/2014
+16th July 2014
+
+bodrinbarlow@gmail.com</comment>
+    <fieldval field="gCost" value="600"/>
+    <fieldval field="iCL" value="7"/>
+    <usesource source="srcEmerSpi"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="Helper" tag="PFSUserOK"/><tag group="ProductId" tag="HLCommunit"/>
+    <tag group="gType" tag="Wonder"/>
+    </thing>
+  <thing id="ioTESWstSt" name="Western Star Ioun Stone" description="This blue crystal is perfectly cut into a five-pointed star. As a standard action, its user can alter her appearance as with a {i}disguise self{/i} spell. When so disguised, the user may render this ioun stone and any other ioun stones in her possession invisible.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craf Wondrous Item, {i}disguise self{/I}; Cost 2,000 gp" compset="Wondrous" summary="Alter appearance as with {i}disguise self{/i}.">
+    <fieldval field="gCost" value="4000"/>
+    <fieldval field="iCL" value="1"/>
+    <fieldval field="gCraftCost" value="2000"/>
+    <usesource source="srcEmerSpi"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="SpInfo" tag="spDisgSel1" name="Disguise Self" abbrev="Disguise Self"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="Helper" tag="IounStone"/>
+    <tag group="Helper" tag="PFSUserOK"/><tag group="ProductId" tag="HLCommunit"/>
+    <tag group="iSchool" tag="Illusion" name="Illusion" abbrev="Illu"/>
+    <bootstrap thing="spDisgSel1">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="AtWill"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+    doneif (field[gIsEquip].value = 0)
+      #skillbonus[skDisguise] += 10]]></eval>
+    </thing>
+  </document>

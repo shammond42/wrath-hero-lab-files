@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <loadonce key="COM_3PPPack_RGG - Races of Wind and Wing"/>
+  <fileinfo>
+    <info_author>Poizen37</info_author>
+    <info_history>Includes:
+* Aellar Race
+* Aellar Feats
+
+Also Included from Genius Guide to Wind and Wing Racial Options:
+* Aeller Alternate Race Traits</info_history>
+    <info_todo>Kestrel
+* fix age and weight columns
+* add no-hands benefit to Talon Shield
+
+ALL
+* Favored Class Options from the Racial Options web enhancement</info_todo>
+    </fileinfo>
+  <thing id="rauEgleSl" name="Eagle Soul" description="Aellar gain a +3 bonus to Perception and Survival skill checks." compset="RaceSpec" summary="Aellar gain a +3 bonus to Perception and Survival skill checks.">
+    <eval phase="PreLevel" priority="10000"><![CDATA[~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+
+      #skillbonus[skPercep] += 3
+      #skillbonus[skSurvival] += 3]]></eval>
+    </thing>
+  <thing id="rauAelBl" name="Elf Blood" description="You are counted as and elf for any effect relating to race." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec" name="ShowSpec" abbrev="ShowSpec"/>
+    </thing>
+  <thing id="fuNFalc" name="Night Falcon" description="{b}Prerequisite:{/b} Aellar.\n\n{b}Benefit:{/b} Your low-light vision is twice as keen as a typical aellar. You can see four times as far as humans in conditions of dim light" compset="Feat" summary="Your vision is especially keen at night." uniqueness="useronce">
+    <usesource source="RoWW"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Aellar race required"><![CDATA[#hasrace[ruAellar] <> 0]]></exprreq>
+    </thing>
+  <thing id="fuSlshAttk" name="Slashing Attack" description="{b}Prerequisites:{/b} Aellar, Flyby Attack*.\n\n{b}Benefit:{/b} When you use Flyby Attack to attack a foe, and you move at least 5 feet both before and after the attack, your movement does not provoke an attack of opportunity from the target you attack\n\n*This feat is found in the Pathfinder Roleplaying Game Bestiary." compset="Feat" summary="You have trained yourself to make quick airborne melee attacks without lowering your guard." uniqueness="useronce">
+    <usesource source="RoWW"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Flyby Attack required"><![CDATA[#hasfeat[fFlybyAt] <> 0]]></exprreq>
+    <exprreq message="Aellar race required"><![CDATA[#hasrace[ruAellar] <> 0]]></exprreq>
+    </thing>
+  <thing id="fuSwift" name="Swift" description="{b}Prerequisite:{/b} Aellar.\n\n{b}Benefit:{/b} Your flight speed increases to 40 feet." compset="Feat" summary="You fairly fly with the speed of the wind." uniqueness="useronce">
+    <usesource source="RoWW"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PostAttr" priority="6000">perform hero.child[xFly].assign[Value.40]</eval>
+    <exprreq message="Aellar race required"><![CDATA[#hasrace[ruAellar] <> 0]]></exprreq>
+    </thing>
+  <thing id="ruAellar" name="Aellar" description="Also known as winged elves, aellar are a race of elf-kith who are born with a pair of large, birdlike wings and hollow bones. Found in small communities in remote parts of the world, aellar think of themselves as elves first, and winged creatures second. They share the elven love of the outdoors (though for aellar open skies are often an important part of that affinity), long lifespans, and natural grace. They do not have the strong connection to magic of their wingless cousins, but are often still driven toward magic-using careers out of sheer convenience (an aellar wizard need not worry about carrying heavy armor or running out of arrows to be effective in ranged aerial combat).\n\nThe origin of the aellar is tied to the races of great eagles, but the exact details are not well known. Most elves, if asked about their winged relatives, claim aellar are the offspring of elven druids who worshiped a god of the air and sky for whom the eagle was a sacred animal. According to this version of events, the goddess blessed a temple of her most faithful followers with great eagle wings as a mark of her favor, and all aellar are descended from these devoted faithful.\n\nAellar themselves acknowledge a similar, but crucially different, tale of their first ancestors. According to their myths, the mother of all aellar was a druid who revered a goddess of sky and wing, but she was not herself blessed to be a winged elf. Instead she fell in love with the king of eagles, a noble and intelligent creature, and asked her goddess to turn her into a giant eagle as well. Her goddess granted her this boon. But when the new king and queen of all raptors hatched their first eggs, what tumbled out were aellar: winged elves clearly still tied to their mother’s humanoid origin.\n \nThe fact that other elves often find that story distasteful, and aellar can’t understand why, speaks to one of the greatest differences between aellar and other elves. Aellar believe in the sanctity of the individual, and they rarely judge the desires or actions of others. To an aellar, there is no more shame in being the offspring of an elf and a giant eagle than in being the offspring of a left-handed mother and a blonde father. Although many elven races believe strongly in a right way of doing things, and they often seek to prevent outsiders from entering their homelands to preserve their “better” culture, aellar aren’t bothered by any belief or behavior that does not directly harm others, and they often invite interesting outsiders into their homes in hopes of learning from them." compset="Race">
+    <fieldval field="rHeightMnF" value="60"/>
+    <fieldval field="rHeightMnM" value="62"/>
+    <fieldval field="rWeightMnM" value="80"/>
+    <fieldval field="rWeightMnF" value="70"/>
+    <fieldval field="rAgeMin" value="55"/>
+    <fieldval field="rDEX" value="2"/>
+    <fieldval field="rWIS" value="2"/>
+    <fieldval field="rCHA" value="-2"/>
+    <usesource source="RoWW"/>
+    <tag group="WeightMult" tag="2"/>
+    <tag group="RaceType" tag="Extra"/>
+    <tag group="AgeC1Dice" tag="3"/>
+    <tag group="AgeC1Size" tag="6"/>
+    <tag group="AgeC2Dice" tag="5"/>
+    <tag group="AgeC2Size" tag="6"/>
+    <tag group="AgeC3Dice" tag="6"/>
+    <tag group="AgeC3Size" tag="6"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="HasType" tag="tpHumanoid"/>
+    <tag group="HeightDice" tag="2"/>
+    <tag group="Language" tag="lAuran"/>
+    <tag group="Language" tag="lCelestial"/>
+    <tag group="Language" tag="lDraconic"/>
+    <tag group="Language" tag="lGnome"/>
+    <tag group="Language" tag="lOrc"/>
+    <tag group="Language" tag="lSylvan"/>
+    <tag group="ClassSkill" tag="skFly"/>
+    <tag group="HeightSize" tag="8"/>
+    <bootstrap thing="lElven"></bootstrap>
+    <bootstrap thing="stElf"></bootstrap>
+    <bootstrap thing="raLowLight"></bootstrap>
+    <bootstrap thing="rauEgleSl"></bootstrap>
+    <bootstrap thing="rauAelBl"></bootstrap>
+    <bootstrap thing="rauAelFly"></bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Average"/>
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    </thing>
+  <thing id="fuWarhwk" name="Warhawk" description="{b}Prerequisites:{/b} Aellar, familiarity with all martial weapons.\n\n{b}Benefit:{/b} You gain a +1 bonus to all melee attack rolls and melee damage rolls while flying." compset="Feat" summary="You were born to fight in the skies." uniqueness="useronce">
+    <usesource source="RoWW"/>
+    <tag group="fCategory" tag="Combat"/>
+    <tag group="fCategory" tag="General"/>
+    <tag group="User" tag="Activation"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[if (field[abilActive].value <> 0) then
+ hero.child[Attack].field[tAtkMelee].value += 1
+
+ hero.child[Damage].field[tDamPower].value += 1
+endif]]></eval>
+    <exprreq message="Aellar race required"><![CDATA[#hasrace[ruAellar] <> 0]]></exprreq>
+    <exprreq message="Proficiency in all Martial Weapons required"><![CDATA[#hasfeat[fWepMart] <> 0]]></exprreq>
+    </thing>
+  <thing id="rauAelFly" name="Flight (Wings)" description="Aellar have a 30-foot flight rate, and Fly is always a class skill for an aellar. An aellar cannot fly when in heavy armor, when carrying a medium or heavier load, or when carrying a shield. Aellar cannot fly in any space that would squeeze a Huge creature. If an aellar enters such an area, he falls (see Wing Space, above, for more details)." compset="RaceSpec" uniqueness="useronce">
+    <tag group="AbilType" tag="Extra"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="Final" priority="11000">field[abValue].value += hero.child[Speed].field[tSpeedMod].value + (hero.tagcount[Ability.rauAelFly] - 1) * 20
+
+#value[xFly] = maximum(field[abValue].value, #value[xFly])</eval>
+    </thing>
+  <thing id="rMKestrl" name="Kestrel" description="Kestrels are the offspring resulting from the breeding of harpies with either halflings or (less often) gnomes. Although when harpies breed with most other humanoids and monstrous humanoids, they produce more harpies, for some reason both halflings and gnomes sometimes produce a crossbreed when mating with harpies. Many harpies kill such offspring at hatching, because even as younglings kestrels look different than their monstrous mothers, but sometimes a kestrel is spared through the action of a clever father, interfering adventurer, or unusually maternal mother. In a very few cases, harpy flocks encourage the production of kestrels to act as a servant class, because the harpies consider them more trustworthy than wingless slaves. These servants are not given the authority of true harpies." compset="Race">
+    <comment>Age column 1 is 1d3, no tag exists
+
+weight multiplier is 0.5, no tag exists</comment>
+    <fieldval field="rCHA" value="2"/>
+    <fieldval field="rSTR" value="-2"/>
+    <fieldval field="rSpeed" value="15"/>
+    <fieldval field="rAgeMin" value="16"/>
+    <fieldval field="rDEX" value="2"/>
+    <fieldval field="rHeightMnM" value="34"/>
+    <fieldval field="rHeightMnF" value="48"/>
+    <fieldval field="rWeightMnM" value="20"/>
+    <fieldval field="rWeightMnF" value="23"/>
+    <usesource source="RoWW"/>
+    <tag group="HasType" tag="tpHumanoid"/>
+    <tag group="AgeC1Dice" tag="1"/>
+    <tag group="AgeC1Size" tag="4"/>
+    <tag group="AgeC2Dice" tag="1"/>
+    <tag group="AgeC2Size" tag="4"/>
+    <tag group="AgeC3Dice" tag="2"/>
+    <tag group="AgeC3Size" tag="4"/>
+    <tag group="RaceType" tag="Extra"/>
+    <tag group="RaceSize" tag="Small11"/>
+    <tag group="HeightDice" tag="2"/>
+    <tag group="HeightSize" tag="4"/>
+    <tag group="ClassSkill" tag="skFly"/>
+    <tag group="WeightMult" tag="1"/>
+    <bootstrap thing="wClaw">
+      <autotag group="wMain" tag="1d3_3"/>
+      <autotag group="Value" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="lAbyssal"></bootstrap>
+    <bootstrap thing="lGiant"></bootstrap>
+    <bootstrap thing="lGnome"></bootstrap>
+    <bootstrap thing="raRwKfly"></bootstrap>
+    <bootstrap thing="lHalfling"></bootstrap>
+    <bootstrap thing="raRwKblood"></bootstrap>
+    <bootstrap thing="raKstlSlow"></bootstrap>
+    <bootstrap thing="raRwWWr"></bootstrap>
+    <bootstrap thing="raDarkVis"></bootstrap>
+    <bootstrap thing="raRwkLilt"></bootstrap>
+    <bootstrap thing="raRwkClaw"></bootstrap>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Average"/>
+      <autotag group="Value" tag="30"/>
+      </bootstrap>
+    </thing>
+  <thing id="raRwKfly" name="Flight (Wings)" description="Kestrels have a 30-foot flight rate, and Fly is always a class skill for a kestrel. A kestrel cannot fly when in medium or heavier armor, when carrying a medium or heavier load, or when carrying a shield (other than a talonshield— see below). A kestrel cannot fly in any space that would squeeze a Medium creature. If a kestrel enters such an area, she falls (see Wing Space, above, for more details)." compset="RaceSpec" uniqueness="useronce">
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="AbilType" tag="Extra"/>
+    <eval phase="Final" priority="11000">field[abValue].value += hero.child[Speed].field[tSpeedMod].value + (hero.tagcount[Ability.rauAelFly] - 1) * 20
+
+#value[xFly] = maximum(field[abValue].value, #value[xFly])</eval>
+    </thing>
+  <thing id="raKstlSlow" name="Slow Ground Speed" description="As a result of their light stature and awkward gait on their talons, Kestrels have a base ground speed of 15 feet. When calculating their speed in armor, they move 5 feet slower than a creature with a 20- foot base speed." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="raRwKblood" name="Mixed Blood" description="A kestrel counts as both a harpy and whatever race her father was (gnome or halfling) for any effect related to race" compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="raRwWWr" name="Wind Warriors" description="Due to training and natural maneuverability, a kestrel gains a +1 dodge bonus to AC while flying." compset="RaceSpec">
+    <comment>Add activation tab?</comment>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="User" tag="Activation"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[if (field[abilActive].value <> 0) then
+
+    hero.child[ArmorClass].field[tACDodge].value += 1
+
+endif]]></eval>
+    </thing>
+  <thing id="raRwkLilt" name="Lilting Voice" description="Kestrels gain a +2 racial bonus to Diplomacy and Perform (oratory and singing) checks. A kestrel bard gains a +1 bonus to the DC of her fascinate bardic ability." compset="RaceSpec">
+    <comment>add bonus to fascinate</comment>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="PreLevel" priority="10000"><![CDATA[~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+
+      #skillbonus[skDiplo] += 2
+      #skillbonus[skPerfOrat] += 2
+      #skillbonus[skPerfSing] += 2]]></eval>
+    <eval phase="PostLevel" priority="10000" index="2"><![CDATA[~if we've been replaced, get out now
+      doneif (tagis[Helper.SpcReplace] <> 0)
+
+      #dc[cBrdPFas] += 1]]></eval>
+    </thing>
+  <thing id="raRwkClaw" name="Claws" description="Kestrel’s foot talons are natural weapons, dealing 1d3 damage + one-half the kestrel’s Strength modifier. A kestrel who is not flying suffers a –2 circumstance penalty to attacks made with her talons. A kestrel cannot use any other weapon in the same round she uses her talons. Any Disguise check made to mask a kestrel as a creature that does not have taloned feet suffers a –4 circumstance penalty." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="fRwkSwoop" name="Swoop" description="{b}Prerequisite{/b}: Kestrel.\n\n{b}Benefit{/b}: When flying under your own power (not through some magic item, device, or spell), you can use your Fly check in place of any Acrobatics check you must make. You also gain a bonus equal to half your level to any Fly check made to dive through a tight space (see Wing Space)." compset="Feat" summary="You can dive, spin, and soar with ease." uniqueness="useronce">
+    <usesource source="RoWW"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <exprreq message="Kestrel race required"><![CDATA[#hasrace[rMKestrl] <> 0]]></exprreq>
+    </thing>
+  <thing id="wRwkBlades" name="Talon Blades" description="These leather straps attach short, sharp blades to the natural talons of a harpy or kestrel. Only creatures with natural talon attacks (or claw attacks at the GM’s discretion) can use talon blades, and the weapon’s damage replaces (does not stack with) the natural talon attack of the wearer. Feats that apply to the creature’s talons (such as Weapon Focus) also apply to talon blades if the wearer is proficient with martial weapons." compset="Weapon">
+    <fieldval field="gSizeCost" value="15"/>
+    <fieldval field="gWeight" value="1"/>
+    <usesource source="RoWW"/>
+    <tag group="wCritMin" tag="19"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wMain" tag="1d6_5"/>
+    <tag group="Helper" tag="Finesse"/>
+    <tag group="wFtrGroup" tag="BladeLight"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wType" tag="S"/>
+    <tag group="wEasyRace" tag="rHarpy"/>
+    <tag group="wEasyRace" tag="rRoWKestrl"/>
+    <tag group="EquipType" tag="Metal"/>
+    </thing>
+  <thing id="mRwkShld" name="Talon Shield" description="Used by some harpies and adapted by kestrels, a talon shield is a special wooden buckler designed to be grasped by one taloned foot, which protects the wielder when flying. A talon shield has the advantage of not requiring a hand to hold it, but the drawback of only working when the wielder is in flight. Talon shield versions of larger kinds of shield are not practical. Only creatures with taloned feet (most birds, harpies, kestrel) can use a talon shield, and only if they are proficient with all shields (other than tower shields). A creature not proficient with a talon shield gains no AC bonus from having one, in addition to taking the normal nonproficiency penalties." compset="Armor">
+    <comment>add no-hands bonus</comment>
+    <fieldval field="gSizeCost" value="30"/>
+    <fieldval field="gWeight" value="5"/>
+    <usesource source="RoWW"/>
+    <tag group="EquipType" tag="Wood"/>
+    <tag group="ShldClass" tag="Buckler"/>
+    <tag group="ArmorMaxDx" tag="1000"/>
+    <tag group="ArmorCheck" tag="1"/>
+    <tag group="ArmorAC" tag="1"/>
+    <tag group="ArmorArcFl" tag="5"/>
+    <tag group="ArmorClass" tag="Shield"/>
+    <tag group="PieceArcFl" tag="0"/>
+    <bootstrap thing="wBuckler"></bootstrap>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      ~ Work out if we're equipped, or, if we're the child of a magic item, if
+      ~ our parent is equipped
+      var result as number
+      result = field[gIsEquip].value
+      if (container.ishero = 0) then
+        result += container.parent.field[gIsEquip].value
+        endif
+
+      ~ Taking an off-hand is ok with this shield, but you get -1 to hit
+      if (result <> 0) then
+        result = hero.assign[Hero.ShldOffOK]
+        result = hero.assign[Hero.OffShlP1]
+        endif]]></eval>
+    </thing>
+  <thing id="rMSilfide" name="Silfide" compset="Race">
+    <fieldval field="rCON" value="2"/>
+    <fieldval field="rINT" value="2"/>
+    <fieldval field="rDEX" value="-2"/>
+    <fieldval field="rAgeMin" value="100"/>
+    <fieldval field="rHeightMnF" value="57"/>
+    <fieldval field="rHeightMnM" value="58"/>
+    <fieldval field="rWeightMnM" value="110"/>
+    <fieldval field="rWeightMnF" value="95"/>
+    <usesource source="RoWW"/>
+    <tag group="Language" tag="lAuran"/>
+    <tag group="Language" tag="lCelestial"/>
+    <tag group="Language" tag="lDraconic"/>
+    <tag group="Language" tag="lElven"/>
+    <tag group="Language" tag="lInfernal"/>
+    <tag group="Language" tag="lSylvan"/>
+    <tag group="Language" tag="lUndercomm"/>
+    <tag group="AgeC1Dice" tag="5"/>
+    <tag group="AgeC1Size" tag="6"/>
+    <tag group="AgeC2Dice" tag="7"/>
+    <tag group="AgeC2Size" tag="6"/>
+    <tag group="AgeC3Dice" tag="8"/>
+    <tag group="AgeC3Size" tag="8"/>
+    <tag group="Language" tag="lAklo"/>
+    <tag group="HasType" tag="tpHumanoid"/>
+    <tag group="RaceType" tag="Extra"/>
+    <tag group="RaceSize" tag="Medium0"/>
+    <tag group="WeightMult" tag="4"/>
+    <tag group="HeightDice" tag="2"/>
+    <tag group="HeightSize" tag="10"/>
+    <bootstrap thing="raMWndRide"></bootstrap>
+    <bootstrap thing="raMAirBlst"></bootstrap>
+    <bootstrap thing="raMFlAffin"></bootstrap>
+    </thing>
+  <thing id="raMAirBlst" name="Air Blast" description="A silfide can summon a lance of air and use it to shove back foes. This functions as a bull rush maneuver that can be used on any target within 30 feet of the silfide, with a CMB equal to the silfide’s level + his Intelligence bonus. Using air blast provokes an attack of opportunity unless the silfide has Improved Bull Rush or a similar ability. A silfide can use this ability a number of times per day equal to 3 + his Intelligence modifier." compset="RaceSpec">
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="raMWndRide" name="Wind Rider" description="A silfide can summon and ride a column of air as a spell-like ability. This acts as the levitate spell, with the silfide’s character level as the caster level. A silfide can use this ability for a total of 2 minutes per day. This duration need not be consecutive, but it must be used in 1-minute increments." compset="RaceSpec">
+    <tag group="SpecType" tag="SpellLike"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="raMFlAffin" name="Flight Affinity" description="A silfide able to cast 3rd-level spells always has access to {i}fly{/i}. A spontaneous silfide spellcaster gains {i}fly{/i} as a bonus spell known as soon as he can cast 3rd-level spells. A silfide that prepares 3rd level or higher spells automatically knows the {i}fly{/i} spell and can channel stored spell energy into the spell without preparing it ahead of time. The silfide can “lose” any prepared spell 3rd level or higher to cast {i}fly{/i}.\n\n{b}Note{/b}: This abiity has not been implemented for spontaneous casters. A Silfide only version of fly spell added that is available to all classes, restricted to Silfides. Use adjustments to give the character a free spell known." compset="RaceSpec">
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="spMSilfFly" name="Fly (Silfide)" description="The subject can fly at a speed of 60 feet (or 40 feet if it wears medium or heavy armor, or if it carries a medium or heavy load). It can ascend at half speed and descend at double speed, and its maneuverability is good. Using a fly spell requires only as much concentration as walking, so the subject can attack or cast spells normally. The subject of a fly spell can charge but not run, and it cannot carry aloft more weight than its maximum load, plus any armor it wears. The subject gains a bonus on Fly skill checks equal to 1/2 your caster level. Should the spell duration expire while the subject is still aloft, the magic fails slowly. The subject floats downward 60 feet per round for 1d6 rounds. If it reaches the ground in that amount of time, it lands safely. If not, it falls the rest of the distance, taking 1d6 points of damage per 10 feet of fall. Since dispelling a spell effectively ends it, the subject also descends safely in this way if the fly spell is dispelled, but not if it is negated by an antimagic field." compset="Spell" summary="Subject flies at speed of 60 ft.">
+    <fieldval field="sFocusDesc" value="a wing feather"/>
+    <fieldval field="sTarget" value="Creature touched"/>
+    <fieldval field="sDuration" value="1 min./level"/>
+    <fieldval field="sSave" value="Will negates (harmless)"/>
+    <fieldval field="sResist" value="Yes (harmless)"/>
+    <usesource source="RoWW"/>
+    <tag group="sLevel" tag="3" name="3" abbrev="3"/>
+    <tag group="sRange" tag="Touch" name="Touch" abbrev="{ref s_Touch}Tch{ref}"/>
+    <tag group="sResist" tag="Yes" name="Yes" abbrev="Yes"/>
+    <tag group="sSave" tag="WillNeg" name="Will Negates" abbrev="Will Negates"/>
+    <tag group="sSchool" tag="Air" name="Air Elemental" abbrev="Air Elemental"/>
+    <tag group="sSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sComp" tag="F" name="Focus" abbrev="{ref s_F}F{ref}"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="{ref s_S}S{ref}"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="{ref s_V}V{ref}"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sClass" tag="rMSilfide"/>
+    <prereq message="Silfide race required">
+      <validate><![CDATA[
+        validif (hero.tagis[IsRace.rMSilfide] <> 0)
+        validif (ishero = 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="spMFlit" name="Flit" description="This spell functions as a fly spell, except the subject can fly at a speed of 40 feet (or 30 feet if he wears medium or heavy armor, or if he carries a medium or heavy load), and is limited to a maximum altitude above the surface of 20 feet. A creature can use flit to travel over solid ground, liquid, or even dense vegetation, but must have a surface within 20 feet of himself at least as wide as the creature himself. A creature using flit who does not have such a surface within 20 feet of him falls (as if under the effects of a feather fall) until he comes within range of an appropriate surface.\n\nWhen using this spell for long-distance movement, the subject can hustle without taking nonlethal damage (a forced march still requires Constitution checks)." compset="Spell">
+    <comment>range was personal, but target text was creature touched? eliminated target text.</comment>
+    <fieldval field="sDuration" value="10 minutes/level"/>
+    <usesource source="RoWW"/>
+    <tag group="sClass" tag="rMSilfide"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Personal"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sDuration" tag="10Minute"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sLevel" tag="4"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <prereq message="Silfide race required">
+      <validate><![CDATA[
+        validif (hero.tagis[IsRace.rMSilfide] <> 0)
+        validif (ishero = 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="spMSlfGlid" name="Glide" description="This spell allows affected creatures to glide safely down from a great height. This functions as feather fall, except the target has some ability to move horizontally as well. For every 10 feet the subject moves downward, he can go 5 feet in a horizontal direction of his choice. Directing movement in this way requires a move action from the subject.\n\nSilfides often use this spell after levitating to a height with their wind rider ability." compset="Spell">
+    <fieldval field="sTarget" value="creature touched"/>
+    <fieldval field="sDuration" value="1 minute/level"/>
+    <fieldval field="sSave" value="Fort negates (harmless)"/>
+    <usesource source="RoWW"/>
+    <tag group="sClass" tag="rMSilfide"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="ProductId" tag="HLCommunit"/>
+    <prereq message="Silfide race required">
+      <validate><![CDATA[
+        validif (hero.tagis[IsRace.rMSilfide] <> 0)
+        validif (ishero = 0)]]></validate>
+      </prereq>
+    </thing>
+  <thing id="spMManSlf" name="Maneuver" description="The subject receives a +5 enhancement bonus on Fly skill checks. The enhancement bonus increases to +10 at caster level 5th, and to +15 (the maximum) at caster level 9th." compset="Spell">
+    <fieldval field="sTarget" value="creature touched"/>
+    <fieldval field="sDuration" value="1 minute/level (D)"/>
+    <fieldval field="sSave" value="Fort negates (harmless)"/>
+    <usesource source="RoWW"/>
+    <tag group="sClass" tag="rMSilfide"/>
+    <tag group="sComp" tag="V"/>
+    <tag group="sComp" tag="S"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sDuration" tag="Minute"/>
+    <tag group="sDuration" tag="PerLevel"/>
+    <tag group="sCastTime" tag="Action1"/>
+    <tag group="sSave" tag="FortNeg"/>
+    <tag group="sSave" tag="Harmless"/>
+    <tag group="sResist" tag="Yes"/>
+    <tag group="sSchool" tag="Transmutat"/>
+    <prereq message="Silfide race required">
+      <validate><![CDATA[
+        validif (hero.tagis[IsRace.rMSilfide] <> 0)
+        validif (ishero = 0)]]></validate>
+      </prereq>
+    </thing>
+  </document>

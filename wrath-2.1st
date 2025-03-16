@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <source
+    id="WotR2Parent"
+    name="Wrath of the Righteous 2.0 Campaign"
+    selectable="no"
+    parent="pCampaigns"
+    sortorder="0"
+    description="Campaign specific custom data files.">
+  </source>
+  <source
+    id="WotR2Traits"
+    name="Custom Skills, Feats and Traits"
+    selectable="yes"
+    parent="WotR2Parent"
+    sortorder="0"
+    description="Campaign specific custom data files.">
+  </source>
+  <source
+    id="WotR2Spells"
+    name="Custom Spells and Spell-list Abilities"
+    selectable="yes"
+    parent="WotR2Parent"
+    sortorder="1"
+    description="Campaign specific custom data files.">
+  </source>
+</document>

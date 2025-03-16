@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_author>Matt Drozdowski</info_author>
+    </fileinfo>
+  <thing id="gRZScarf" name="Rizza&apos;s Kapenia" description="These long, heavy scarves display elegant and complicated embroidery that is incomprehensible to most outsiders. To Varisians, though, the scarves show their family trees. By tracing the loops and whorls of a scarf, a Varisian can trace a person’s history back through her mother and father, her siblings, grandparents and great-grandparents, as far back as the family possesses knowledge." compset="Gear">
+    <fieldval field="gWeight" value="0.5"/>
+    <fieldval field="gCost" value="2"/>
+    <fieldval field="srcAbbr" value="✨"/>
+    <usesource source="MattDroz"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
+    <tag group="gType" tag="Clothing" name="Clothing" abbrev="Clothing"/>
+    <tag group="Hero" tag="EqpHead"/>
+    <eval phase="First">~ Override our weight and cost with the user fields
+      field[gWeight].value = field[gUsrWeight].value * field[stackQty].value
+      field[gCost].value = field[gUsrCost].value * field[stackQty].value</eval>
+    </thing>
+  <thing id="mRZCorset" name="Corset" description="This corset, made of leather and whalebone, is set with silver hooks and buttons, protecting the wearer&apos;s stomach and chest." compset="Armor">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gSizeCost" value="5"/>
+    <fieldval field="shortname" value="corset"/>
+    <fieldval field="srcAbbr" value="✨"/>
+    <usesource source="MattDroz"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="SpecGroup" tag="Eastern" name="Eastern Weapons &amp; Armor" abbrev="Eastern Weapons &amp; Armor"/>
+    <tag group="ArmorAC" tag="1" name="1" abbrev="1"/>
+    <tag group="ArmorArcFl" tag="0" name="0" abbrev="0"/>
+    <tag group="ArmorCheck" tag="0" name="0" abbrev="0"/>
+    <tag group="ArmorClass" tag="Light" name="Light Armor" abbrev="Light"/>
+    <tag group="ArmorMaxDx" tag="1000" name="1000" abbrev="1000"/>
+    </thing>
+  <thing id="ioRZTaRave" name="Raven tattoo" description="This tattoo of a flying raven allows the bearer to transform into a raven once per day.\n\n{i}Under adjust, use Beast Shape I and choose Giant Raven{/i}\n\n{b}Construction{/b}\n{b}Requirements{/b}: Inscribe Magic Tattoo, {i}beast shape I{/i};" compset="Wondrous">
+    <fieldval field="gCost" value="12000"/>
+    <fieldval field="iCL" value="5"/>
+    <fieldval field="srcAbbr" value="✨"/>
+    <fieldval field="gCraftCost" value="6000"/>
+    <usesource source="MattDroz"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="iSchool" tag="Transmutat"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="User" tag="NoAutoName"/>
+    <bootstrap thing="spBeasSha3">
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Usage" tag="Day"/>
+      <assignval field="trkMax" value="1"/>
+      <assignval field="sNameMod" value="raven only"/>
+      </bootstrap>
+    <eval phase="First" priority="1000"><![CDATA[
+if (field[gUsrCost].value < 12000) then
+    perform delete[Helper.AlwaysAvl]
+    endif]]></eval>
+    </thing>
+  <thing id="pMDROccRT" name="Vex Trackers" description="This is made to remove trackers of Potions, Daggers, and Occult Skill Unlocks from the In-Play tab for Vex." compset="InPlay">
+    <usesource source="MattDroz"/>
+    <tag group="OthAdjCat" tag="UniqueChar"/>
+    <tag group="Helper" tag="CoreCampOK" name="Allowed in the Pathfinder Society Core Campaign" abbrev="Allowed in the Pathfinder Society Core Campaign"/>
+    <tag group="Helper" tag="NoIncr" name="NoIncr" abbrev="NoIncr"/>
+    <tag group="Helper" tag="PFSUserOK" name="Valid for PFS in .user files" abbrev="Valid for PFS in .user files"/>
+    <eval phase="Render" priority="1000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[pIsOn].value = 0)
+
+foreach pick in hero where "AbilFunc.OccUnlock"
+    perform eachpick.delete[User.Tracker]
+    nexteach
+
+foreach pick in hero where "Ability.trSensMind"
+    perform eachpick.delete[User.Tracker]
+    nexteach
+
+foreach pick in hero where "IsWeapon.wDagger"
+    perform eachpick.delete[User.Tracker]
+    nexteach
+
+foreach pick in hero where "gType.OilPotion"
+    perform eachpick.delete[Helper.UsesQty]
+    nexteach]]></eval>
+    </thing>
+  <thing id="wRZChainsaw" name="Chainsaw" description="{b}Capacity{/b} 10\n{b}Usage{/b} 1 charge/hour\n\nOriginally developed for use as tools, chainsaws work remarkably well as weapons and are often used by lunatics or those who want to intimidate their enemies. A Numerian chainsaw consists of a weighty housing for the engine and power source that is fitted with two handles, and a 2- to 3-foot-long blade extending from the front, around which a whirling, buzzing chain of razorsharp cutting links spins at blinding speed when the weapon is activated. It&apos;s a standard action to activate a chainsaw, and doing so consumes a charge of power. The chainsaw continues to run constantly after activation, draining an additional charge each hour. A dropped chainsaw automatically turns off unless it is set down carefully as a move action. The buzzing of a chainsaw&apos;s blade is loud and distracting (but not deafening), causing anyone carrying an activated chainsaw to take a -10 penalty on Stealth checks. An activated chainsaw grants a proficient user a +2 morale bonus on Intimidate checks.\n\n{b}Construction{/b}\n{b}Requirements{/b}: Craft Technological Arms and Armor, military lab; {b}Cost{/b} 1,350 gp" compset="Weapon">
+    <fieldval field="gWeight" value="10"/>
+    <fieldval field="gSizeCost" value="2700"/>
+    <fieldval field="trkMax" value="10"/>
+    <usesource source="MattDroz"/>
+    <tag group="wCategory" tag="Melee" name="Melee Weapon" abbrev="Melee"/>
+    <tag group="wClass" tag="OneHanded"/>
+    <tag group="wCritMin" tag="18" name="18" abbrev="18"/>
+    <tag group="wCritMult" tag="2" name="2" abbrev="2"/>
+    <tag group="wMain" tag="1d12"/>
+    <tag group="wProfReq" tag="Exotic" name="Exotic" abbrev="Exotic"/>
+    <tag group="wSpecial" tag="Deadly" name="Deadly" abbrev="Deadly"/>
+    <tag group="wSpecial" tag="Distract" name="Distracting" abbrev="Distracting"/>
+    <tag group="wType" tag="S" name="Slashing" abbrev="S"/>
+    <tag group="EquipType" tag="Metal" name="Metal" abbrev="Metal"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <tag group="SpecGroup" tag="HighTech" name="High-Tech Weapons, Armor, &amp; Equipment" abbrev="High-Tech Weapons, Armor, &amp; Equipment"/>
+    <tag group="wFtrGroup" tag="BladeLight"/>
+    <tag group="Usage" tag="Charges" name=" charges" abbrev=" charges"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      if (container.ishero = 0) then
+        doneif (parent.field[gIsEquip].value = 0)
+        perform parent.assign[User.Tracker]
+        parent.field[trkMax].value += field[trkMax].value
+        #applybonus[BonMorale, hero.child[skIntim], 2]
+        endif
+
+      ~ If we're not equipped, get out now
+      doneif (field[gIsEquip].value = 0)
+
+      perform assign[User.Tracker]
+      #applybonus[BonMorale, hero.child[skIntim], 2]]]></eval>
+    </thing>
+  <thing id="pMDRIcicleDagger" name="Icicle Dagger" description="You create a masterwork dagger out of ice. The dagger deals 1 point of cold damage in addition to normal dagger damage. If the dagger leaves your hand for more than 1 round, it melts and the spell ends. At 6th level, the dagger functions as a +{i}1 frost dagger{/i}. At 11th level, it gains the {i}returning{/i} property when thrown, melting away and reforming in your hand just before your next turn." compset="InPlay">
+    <fieldval field="pDuration" value="1 minute/level"/>
+    <fieldval field="pMinimum" value="1"/>
+    <usesource source="UMHeader"/>
+    <tag group="Helper" tag="AdjNoPlus"/>
+    <tag group="Helper" tag="AdjSpell"/>
+    <bootstrap thing="iMDRIcicleDag1">
+      <containerreq phase="First" priority="99"><![CDATA[fieldval:pIsOn <> 0 & fieldval:pAdjust < 6]]></containerreq>
+      </bootstrap>
+    <bootstrap thing="iMDRIcicleDag2">
+      <containerreq phase="First" priority="99"><![CDATA[fieldval:pIsOn <> 0 & fieldval:pAdjust >5]]></containerreq>
+      </bootstrap>
+    </thing>
+  <thing id="iMDRIcicleDag1" name="Icicle Dagger" description="The dagger deals 1 point of cold damage in addition to normal dagger damage. If the dagger leaves your hand for more than 1 round, it melts and the spell ends. At 6th level, the dagger functions as a +{i}1 frost dagger{/i}. At 11th level, it gains the {i}returning{/i} property when thrown, melting away and reforming in your hand just before your next turn." compset="MagicWep">
+    <fieldval field="wDamBonus" value="1"/>
+    <usesource source="UMHeader"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="Helper" tag="NoSelect"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="wCritMin" tag="18"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="wType" tag="Cold"/>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="wRangeInc" tag="10"/>
+    <tag group="wMain" tag="1d4"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCategory" tag="RangeThrow"/>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wDagger"></bootstrap>
+      </child>
+    </thing>
+  <thing id="iMDRIcicleDag2" name="Icicle Dagger" description="The dagger deals 1 point of cold damage in addition to normal dagger damage. If the dagger leaves your hand for more than 1 round, it melts and the spell ends. At 6th level, the dagger functions as a +{i}1 frost dagger{/i}. At 11th level, it gains the {i}returning{/i} property when thrown, melting away and reforming in your hand just before your next turn." compset="MagicWep">
+    <fieldval field="BonEnhance" value="1"/>
+    <usesource source="UMHeader"/>
+    <tag group="Helper" tag="NoOutGear"/>
+    <tag group="Helper" tag="NoSelect"/>
+    <tag group="Helper" tag="Helper"/>
+    <tag group="wCritMin" tag="18"/>
+    <tag group="wCritMult" tag="2"/>
+    <tag group="wCategory" tag="Melee"/>
+    <tag group="Helper" tag="Proficient"/>
+    <tag group="wRangeInc" tag="10"/>
+    <tag group="wMain" tag="1d4"/>
+    <tag group="wClass" tag="Light"/>
+    <tag group="wCategory" tag="RangeThrow"/>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wDagger"></bootstrap>
+      <bootstrap thing="iFrost"></bootstrap>
+      </child>
+    </thing>
+  <thing id="rMDRRavenBelt" name="Raven" description="These glossy black birds are about 2 feet long and have wingspans of about 4 feet. They combine both claws into a single attack. The statistics presented here can describe most nonpredatory birds of similar size." compset="Race">
+    <fieldval field="rSTR" value="-2"/>
+    <fieldval field="rDEX" value="5"/>
+    <fieldval field="rCON" value="13"/>
+    <fieldval field="rINT" value="-8"/>
+    <fieldval field="rWIS" value="5"/>
+    <fieldval field="rCHA" value="-2"/>
+    <fieldval field="rSpeed" value="10"/>
+    <fieldval field="rFeat" value="-1"/>
+    <fieldval field="rHitDice" value="1"/>
+    <fieldval field="rHPStart" value="5"/>
+    <fieldval field="rAC" value="1"/>
+    <fieldval field="rCR" value="1"/>
+    <fieldval field="rHeightMnF" value="60"/>
+    <fieldval field="rWeightMnF" value="45"/>
+    <fieldval field="rHeightMnM" value="60"/>
+    <fieldval field="rWeightMnM" value="45"/>
+    <fieldval field="rEnviron" value="Any temperate"/>
+    <fieldval field="rOrgan" value="Solitary, pair, or conspiracy (3–12)"/>
+    <fieldval field="rTreasure" value="None"/>
+    <fieldval field="rDescript" value="This glossy, jet-black bird&apos;s eerily intelligent black eyes are quick to take in everything around it."/>
+    <fieldval field="pickname" value="Raven"/>
+    <usesource source="MattDroz"/>
+    <tag group="Alignment" tag="NeutralGE" name="Neutral" abbrev="N"/>
+    <tag group="Alignment" tag="NeutralLC" name="Neutral" abbrev="N"/>
+    <tag group="HasType" tag="tpAnimal" name="Animal" abbrev="Animal"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <tag group="Helper" tag="NotHum" name="NotHum" abbrev="NotHum"/>
+    <tag group="Hero" tag="CantSpeak" name="Cannot Speak" abbrev="Cannot Speak"/>
+    <tag group="Hero" tag="NoDefComm" name="NoDefComm" abbrev="NoDefComm"/>
+    <tag group="RaceGroup" tag="Avian" name="Avian" abbrev="Avian"/>
+    <tag group="RaceSize" tag="Small11"/>
+    <tag group="RaceType" tag="NPC" name="NPC Race" abbrev="NPC Race"/>
+    <tag group="SlotSet" tag="selMISAvia" name="Avian" abbrev="Avian"/>
+    <bootstrap thing="xFly">
+      <autotag group="Maneuver" tag="Average"/>
+      <autotag group="Value" tag="40"/>
+      </bootstrap>
+    <bootstrap thing="fSkillFoc">
+      <autotag group="Target" tag="skPercep"/>
+      </bootstrap>
+    <bootstrap thing="wBite">
+      <autotag group="wMain" tag="1d4"/>
+      </bootstrap>
+    <eval phase="PreLevel" priority="4000">#skillinnate[skFly] += 1
+      #skillinnate[skPercep] += 1
+      <before name="Skill Bonus Feats"/>
+      </eval>
+    </thing>
+  <thing id="gMDChainNights" name="The Chain of Nights" description="Written in the late 1200s by the Keleshite doctor and seer Valhadis, {i}The Chain of Nights{/i} explores the brain as an organ, as the lens of perception, and as the throne of something more. Among the book’s numerous elaborate medical sketches of the brain, depictions of pressure points and chakras, meditative mantras, and methods of achieving lucid dreaming are spells and arcane rituals devoted to breaching the boundaries of dreams.\n\n{i}The Chain of Nights{/i} is first and foremost a text on the anatomy and workings of the brain, and the first several hundred pages concern themselves with diagnosing, analyzing, and treating—via therapy, drugs, and basic surgeries—numerous physiological and psychological afflictions. Only in the final third does the tome turn toward more esoteric topics, such as the source of nightmares, accounts of the Dimension of Dreams, and descriptions of the creatures that live there.\n\nAny reader who spends 1 hour consulting {i}The Chain of Nights{/i} can immediately after use the hypnotism occult skill unlock once per day even if that character isn’t capable of casting psychic spells or doesn’t possess the Psychic Sensitivity feat. Also, after 1 hour of consulting the tome, the reader gains a +2 bonus on a single Knowledge (planes) check related to the Dimension of Dreams. Additionally, the tome contains the spells {i}dream{/i}, {i}dream council{/i}, {i}dream scan{/i}, {i}dream travel{/i}, and {i}nightmare{/i}. Most notoriously, it contains an elaborate—and some say flawed—ritual for releasing one’s dreams. While the rite functions, the side effects of failure can create dangerous beings known as oneirogens." compset="Spellbook" summary="An ancient Keleshite text devoted to both science and arcana related to dreams.">
+    <fieldval field="gCost" value="1100"/>
+    <fieldval field="gWeight" value="5"/>
+    <fieldval field="shortname" value="Chain of Nights"/>
+    <usesource source="PathStrAeo"/>
+    <tag group="gType" tag="Spellbook"/>
+    <child entity="CustSplBk">
+      <bootstrap thing="spDream4">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spDreaSca5">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spNightma5">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spDreaCou6">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spDreaTra6">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spReleNig6">
+        <containerreq phase="First" priority="500">!source.OARituals</containerreq>
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      </child>
+    </thing>
+  <thing id="gMDBook" name="Book" description="A lightweight book with an oilskin cover. It has 50 paper pages." compset="Gear" stacking="merge">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="10"/>
+    <fieldval field="gUsrCost" value="10"/>
+    <fieldval field="gUsrWeight" value="1"/>
+    <usesource source="CSFieldGui" parent="CSHeader" name="Pathfinder Society Field Guide"/>
+    <usesource source="UltEquip" parent="UEHeader" name="Ultimate Equipment"/>
+    <tag group="Helper" tag="Custom"/>
+    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
+    <tag group="gType" tag="Tomes" name="Books, Tomes, and Grimoires" abbrev="Tomes"/>
+    </thing>
+  <thing id="gMDPankoticManusc" name="Pnakotic Manuscripts" description="Created originally by the great race of Yith, there are over a thousand individual fragmentary bits of scroll that comprise the Manuscripts. They started as excerpts from the great race’s pre-Pleistocene records, but were later expanded upon by prehuman entities, then again in the Dreamlands. They contain scientific, geographic, and historical lore, as well as accounts of dealings with many Mythos beings. For example, fragment 595 contains a lengthy sequence which tells of a battle between yithian forces and some of Cthulhu’s starspawn allies. Because of the incomplete nature of the Manuscripts, the accounts are often frustrating, but they do provide fascinating glimpses into the prehuman universe." compset="Spellbook">
+    <fieldval field="gCost" value="6100"/>
+    <fieldval field="gWeight" value="10"/>
+    <usesource source="PathStrAeo"/>
+    <tag group="gType" tag="Spellbook"/>
+    <tag group="SbkPageNum" tag="500"/>
+    <child entity="CustSplBk">
+      <bootstrap thing="spPGOBrew4">
+        <containerreq phase="First" priority="500">!source.OARituals</containerreq>
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spPGOYith5">
+        <containerreq phase="First" priority="500">!source.OARituals</containerreq>
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spPlanBin5">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spTelepor5">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spPlanBin6">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spPlanShi7">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spTeleObj7">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spTeleGre7">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spPlanAll8">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spGate9">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spInteTel9">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      <bootstrap thing="spTeleCir9">
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      </child>
+    </thing>
+  <thing id="gMDJournalLowls" name="Journals of Count Lowls" description="As Lowls’ obsession with researching the location of Neruzavin and delving deeper into the Dreamlands grew, his writing became more erratic. Finding consistent threads among Lowls’s scattered notes and scrawled marginalia is a daunting task, requiring days of meticulous research across disparate sources. Initially, the PCs’ only clues are hints about Lowls’s trip to the Dreamlands." compset="Spellbook">
+    <fieldval field="gCost" value="10"/>
+    <fieldval field="gWeight" value=".5"/>
+    <usesource source="PathStrAeo"/>
+    <tag group="gType" tag="Tomes"/>
+    <child entity="CustSplBk">
+      <bootstrap thing="spDreamEx5">
+        <containerreq phase="First" priority="500">!source.OARituals</containerreq>
+        <autotag group="Helper" tag="BookDefSpl"/>
+        </bootstrap>
+      </child>
+    </thing>
+  </document>

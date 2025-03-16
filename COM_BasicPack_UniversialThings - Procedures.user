@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Data">
+
+  <!-- =================================================================== -->
+  <!-- Damage Reduction Setup                                              -->
+  <!-- =================================================================== -->
+  <procedure id="xxSetupDR" context="pick"><![CDATA[
+    ~ Single procedure to handle all DR setup.
+    ~ This procedure assumes that the correct DR name is setup as the "Short Name" field
+    ~ Final/10000
+
+    call CalcValue
+
+    ~ Make all the descriptions exactly the same
+    field[CustDesc].text = "You have Damage Reduction against all physical attacks except " & field[shortname].text & " attacks."
+    field[abSumm].text = "You have DR against all physical attacks except " & field[shortname].text & " attacks."
+
+    ~ Use our value field as the amount of damage we can resist
+    field[livename].text = "Damage Reduction (" & field[abValue].value & "/" & lowercase(field[shortname].text) & ")"
+    field[shortname].text = field[abValue].value & "/" & lowercase(field[shortname].text)
+    ]]>
+  </procedure>
+
+</document>

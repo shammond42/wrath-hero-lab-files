@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <fileinfo>
+    <info_history><![CDATA[
+<strong>v1.20 April 20, 2019</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Path of War (phlidwsn) - Fixed #149 - Corrected Eldritch Energy Hammer to final book text, corrected short desc to remove leftover mention of 10d6 damage.</li>
+<li>Path of War (phlidwsn) - Fixed #150 - Updated the Mystic Class to use the correct Stance progression from the final book text.</li>
+<li>Path of War (phlidwsn) - Fixed #152 - Grim Guard's Laughter was still on the playtest text with an AoE rather than a single attack.</li>
+<li>Path of War (phlidwsn) - Corrected Eldritch Energy Hammer to final book text, corrected short desc to remove leftover mention of 10d6 damage.</li>
+<li>Path of War (phlidwsn) - Updated the Mystic Class to use the correct Stance progression from the final book text.</li>
+<li>Path of War (phlidwsn) - Correct Grim Guard Laughter from Playtest text.</li>
+<li>Path of War (phlidwsn) - Grim Guard's Laughter was still on the playtest text with an AoE rather than a single attack.</li>
+<li>Path of War (phlidwsn) - Corrected text and prereq checks for Elemental Flux Shift and Elemental Flux Explosion feats.</li>
+<li>Seven Swords of Sin (ShadowChemosh) - Fixed the costs of the Bodice of Resistance items.</li>
+<li>Eberron (ShadowChemosh) - Fixed #157 - Source marked all the spells used in the Eberron campaign setting so they do not get displayed when crafting wands/scrolls.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Path of War (Nightmare) - Added the Knight Disciple Archetype from the PoW Expanded.</li>
+<li>Path of War (Nightmare) - Added Primal Disciple from the PoW:Ex.</li>
+<li>Path of War (Nightmare) - Added Monk of the Silver Fist Archetype.</li>
+<li>Path of War (Nightmare) - Added the Brutal Slayer Stalker Archetype.</li>
+<li>Path of War (Nightmare) - Added Ambush Hunter Archetype.</li>
+<li>(ShadowChemosh) Torch equipment - Added logic for the Firebrand feat to the community Torch weapon.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>3PP Tome of Secrets (ShadowChemosh) - Enhanced the priest channel energy ability based on LW's latest channel energy standards.</li>
+</ul>
+
+
+
+<strong>v1.19 September 10, 2018</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed issue with higher level characters and Psicrystals. Some skills where being marked as invalid for having more ranks than Hit Dice.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fixed issue with the single magic Arrow as specific item properties like Ghost Touch where not calculating cost correctly. Cost should always be correct now even if buying a single masterwork arrow. For details on how to make use of this item see post: http://forums.wolflair.com/showthread.php?p=258311#post258311</li>
+</ul>
+
+
+<strong>v1.18 September 8, 2018</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ultimate Psionics (ShadowChemosh) - Re-did the Wilder base class and all its class abilities. Fixed all the Surge types and added the missing ones from the Ultimate Psionics book. Changed the Natural Healing power to correctly set the Augmented and Mythic text into the component fields.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Re-did the Dread base class.  All abilities are now 100% scripted and added in the missing Terrors that are in the latest PDF.
+</li>
+<li>Ultimate Psionics (ShadowChemosh) Fixed #140 - Ring of Self-Sufficiency was granting its bonus when NOT equipped instead of when equipped.</li>
+<li>Ultimate Psionics (ShadowChemosh) Fixed #139 - Vitalist Life Leech was not calculating its Drain Health ability incorrectly.</li>
+<li>Ultimate Psionics (ShadowChemosh) Fixed #125 - The 'Armored Blade' Soulknife archetype was not getting the correct slower enhancement bonus progression.</li>
+<li>Ultimate Psionics (ShadowChemosh) Finished #123 - Implemented the soulknife blade skill "Additional Configuration". This blade skill now lets you select a different minblade and setup different enhancements to the weapon. Then a simple selection of "Swap Config" on the In-Play tab lets you swap between the different configurations.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Expanded Knowledge feat text made more clear that a power must be added on the class tab and that the feat does not do this automatically.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fix Psicrystal system error message.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Change the way that the Psicrystal ranks are displayed to make it more user friendly.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added in the missing free 4 ranks in Perception and Stealth.</li>
+<li>Frumple Age Category Dragons (ShadowChemosh) -Fixed errors being tossed for some dragons that had age specific limitations on "Change Shape".</li>
+<li>Mummy's Mask (ShadowChemosh) - Fixed misspelled feat name "Clensing Burst" to be "Cleansing Burst". In Addition fixed the pre-req to check for all three valid cases not just channel energy.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Updated Traceur archetype for the Psychic Warrior.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>AP50 Night of Frozen Shadows (Proffitt) - Dynamic version of Suishen in Night of Frozen Shadows. Updates weapon abilities, spells, etc based on counter of number of Oni killed.</li>
+<li>Golden Glyph Publishing (ShadowChemosh) - Finished adding the complete PDF for the "Lagos" race.</li>
+<li>Adjustments (ShadowChemosh) - Added new adjustment "Class, Pre-Req Valid" that lets you suppress the validation errors for a class or PrC.</li>
+<li>Adjustments (ShadowChemosh) - Added new adjustment "Class Ability, Remove Activation" that lets you hide the activation option on the In-Play tab.</li>
+<li>Adjustments (ShadowChemosh) - Added new adjustment "Ability Score (Perm), Type". This adjustment lets you add a typed bonus to ability scores but treats it as a permament change to the character. This means a increase to Intelligence will provide extra languages and skill points.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added new Power Adjustments: Bite of the Wolf & Claws of the Beast.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added power adjustment "Physical Acceleration".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added power adjustment "Form of Doom".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the Dread class and all archetypes. Enhanced and scripted all abilities.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added the Mindwright archetype for the Psion base class.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Created load mods for all the old deprecated psicrystal archetypes and racial abilities. Moved the wilder base classes and abilities into its own class specific user file.</li>
+<li>Data File Authoring (ShadowChemosh) - Moved the wilder base classes and abilities into its own class specific user file.</li>
+<li>All damage reduction abilities now use the exact same setup, procedures, and text wording.</li>
+<li>Broke Dread out to its own .user file.</li>
+<li>Created new procedure for terrors adding to the Devastating Touch class ability.</li>
+<li>Added new abCategory.PUTerror which was added to all the terror custom abilities.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Removed IP names from Powers.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Moved all dread Things form the Classes.user file to its own Dread Class user file. Deprecated some unused/unneeded class abilities.</li>
+<li>Removed old Tome of Horrors deprecated races.</li>
+<li>Updated the CB - Dragons, Metallic.stock file and prepared it for distribution.</li>
+<li>Removed Basic Pack deprecated Things.</li>
+<li>Removed old 3PP Pack deprecated things.</li>
+<li>Removed old GM Pack deprecated things file.</li>
+</ul>
+
+
+<strong>v1.17 May 3, 2018</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Curse of the Crimson Throne (ShadowChemosh) - Fix load issue on the iPad with HL 14.8.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed "Cannibalize Suit" not getting the correct number of customization points.</li>
+<li>Modern (Frodie) - Shadow Hero Condition txt fix.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed "Binding Pattern" pre-req script issue.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed Grammaton Dead pre-req errors.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed adjustment "Archetype: Stop Replace Ability" that could toss errors when used on an archetype without any replacement abilities.</li>
+<li>RGG Class Death Mage (ShadowChemosh) - Source marked death mage spells to the class source.</li>
+<li>Path of War (ShadowChemosh) - Fixed text on "Searing Break" maneuver and corrected the level.</li>
+<li>Path of War (ShadowChemosh) - Fixed text on "Solar Flare" maneuver ability.</li>
+<li>Conferred Adjustment (ShadowChemosh) - Fixed "Ranger: Favored Enemy" to mirror the core adjustment. This allows the ability "Vicious Aim" to work correctly.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustments "Feats, Remove Activation" & "Feats, Add Activation" to allow for adding or removing a feats activation option from the In-Play tab.</li>
+<li>Adjustments (ShadowChemosh) - Added "PFS, History" adjustment that makes all the values/notes from the UCam History tab legal for PFS. Some people like using the tab to keep notes about there character which gives no mechanical values/changes to the character.</li>
+<li>Golden Glyph Publishing (ShadowChemosh) - Added the new race, feats, equipment, archetype and traits for the Scyleen race.</li>
+<li>Golden Glyph Publishing (ShadowChemosh) - Added the Lagos race. Note this is only about 80% complete from the PDF. Future update will finish adding it.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Fixes to the Wild Empathy universal class ability.</li>
+</ul>
+
+
+<strong>v1.16 March 16, 2018</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Starfinder GM (ShadowChemosh) - Source marked some weapons that got missed.</li>
+<li>Utimate Psionics (ShadowChemosh) - Fixed #138. Added Vitalist's missing class ability "Steal Life" at level 14.</li>
+<li>Ultimate Psionics (ShadowChemosh) - #119 Aegis aberrant archetype fixed. Changes to the archetype where pretty big but will allow me to more easily support the archetype now and in the future. Unfortunately this means existing characters that have this archetype will be required to re-add any customizations they had taken previously. In the good news they all are now fully scripted. Very sorry for any issues this causes!</li>
+<li>Modern Path (Frodie) - Fixed spellcasting for shadow heroes.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Ultimate Psionics (ShadowChemosh) - Custom Dorje's have been added! This can be found on the Magic tab as "- Add Custom Dorje -" and will function just like buying a wand except you can add powers instead. Currently the "CL" is still getting displayed instead of ML.</li>
+<li>Ultimate Psinoics (ShadowChemosh) - Finished updating all the base Aegis custom abilities.</li>
+<li>Ultimate Psinonics (ShadowChemosh) - Enhanced the Crystal Warrior archetype.</li>
+<li>Ultimate Psinonics (ShadowChemosh) - Enhanced the Ectopic Artisan archetype.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Started work on equipment section.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Ultimate Psioncis (ShadowChemosh) - Fixed the "fearless" ability to be usable by the whole Pack.</li>
+<li>(ShadowChemosh) - Made all Universal Abilities & Racial Specials PFS ok.</li>
+<li>(ShadowChemosh)- Deprecated some duplicated universal abilities.</li>
+<li>(ShadowChemos) - Update GitHubs file ignore list to exclude files that start with a ~.</li>
+</ul>
+
+
+<strong>v1.15 January 29, 2018</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Modern Path (Frodie) - Tagged some item powers to move into equip categories.</li>
+<li>Modern Path (Frodie) - More magic item fixes.</li>
+<li>Modern Path (Frodie) - Feats updated. Made sure the feats are all tagged in correct category and working. Once I start on the class updates, there will be a few more updates to a few feats.</li>
+<li>Modern Path (Frodie) - Updates to the Modern template</li>
+<li>Modern Path (Frodie) - Updated some tags, the modern template and hide PL5 gear for the PL4 setting.</li>
+<li>Modern Path (Frodie) - The MSRD classes had a rebuild, so you might need to update you old MSRD characters. This was done to get everything to work well together and add the Anachronistic classes soon.</li>
+<li>Modern Path (Frodie) - A source was missing for the bodyguard class that caused errors.</li>
+<li>Unchained (ShadowChemosh) - Fixed warpriest "Sacred Fist" archetype to correctly handle style
+feats.  Thanks to Valdacil for the help on this one!</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #131. Dread class was getting a level bonus to intimidate instead of 1/2 level bonus.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #119, Aberrant archetype was not getting the correct number of customization points when leveling up.</li>
+<li>Path of War (ShadowChemosh) - Fixed #129. Updated the wording for the feats: Dark Allure & Dark Authority to the latest book text.</li>
+<li>Path of War (ShadowChemosh) - Fixed #128. Added the missing stance "Chronal Fission".</li>
+<li>Path of War (ShadowChemosh) - Fixed #1 LONG TIME outstanding issues with selecting maneuvers.  LW added a new feature that lets me finally check the IL of a class to validate if a maneuver/stance is valid to be added to a character.  This means that when you have a level 1 PoW class and select maneuvers it will not display level two maneuvers as being valid to add to your character. Thanks LW for this new feature!</li>
+<li>Path of War (ShadowChemosh) - Fixed #133. Mystic levels will now correctly count towards Martial Disciple levels for feat Pre-Req's.</li>
+<li>Path of War Divergent Paths (ShadowChemosh) - Fixed #132. Medic class was not able to print manuevers/stances. In addition disciple level for Pre-Req of feats was not working correctly.</li>
+<li>Path of War (ShadowChemosh) - Fixed #120. Warder class was getting both Dex and Int as a bonus to the Combat Reflexes feat.</li>
+<li>Path of War (ShadowChemosh) - Fixed #107. This is a global change to how PoW works.  Stances where not being counted towards meeting the prerequisite of maneuvers. In example if you had a Borken Blade stance and wanted to take a broken blade maneuver that required 1 broken blade maneuver the stance was not counting. This is now fixed for all PoW classes.</li>
+<li>Path of War Fixes (AranthisDrallidur) - Issue #124. Martial Training I - Fixed the glitches when trying to choose maneuvers in some disciplines. The feat is now implemented as per the official errata, allowing a choice of initiator attribute (cha, wis, int). Doing this fixes the bug, which apparently was related to trying to pull attributes off of discipline related skills that had physical attributes instead of mental ones.</li>
+<li>Path of War Fixes (AranthisDrallidur) - Issue #124. Deadly Agility - Fixed timing issues. For some reason this feat was running at First/10000 instead of Post-Levels/10000 like Mythic Weapon Finesse. This prevents DA from working with anything that adds a finesse tag to a weapon, e.g. Daisho Expertise.</li>
+<li>Path of War Fixes (AranthisDrallidur) - Issue #124. Daisho Expertise - Fixed it so the weapons use dex to hit, as per the feat text, and added fixes to the damage dice modification. This solves a lot of issues with the feat, including its use on large or small-sized katanas or bokken, which were being explicitly set to 1d10.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Modern Path (Frodie) - Added the ability to use USD currency instead of gold.</li>
+<li>Path of War (ShadowChemosh) - Changed a few adjustment names to be more standard. Added a Path of War header section to the adjustment area.</li>
+<li>ShadowChemosh Adjustment (ShadowChemosh) - The "Generic, Tracker" adjustment has been enhanced with a dropdown to reset with nights rest or no reset. It defaults to no reset which is what it does currently. In addition a usage dropdown selection on the adjustment lets you set the tracker to be <strong>/day</strong> or <strong>/week</strong> or whatever. Finally removed the dropdown to select the tracker. Instead the tracker on the In-Play tab gets its data directly from the attached adjustment.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added a new adjustment called "Class, Favored Class Bonus" which will let you choose a second FCB to gain a bonus in each level. This will not work with all FCB.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment called "Class, Favored Class Bonus Adjust" that will let you increase/decrease the the amount of bonus a FCB gives.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Enhance the adjustment "Ability Score (Temp), Type" to have a "Inherent" bonus type.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new "Class, Max Spell Level" adjustment to allow increasing the current spell level a class can cast.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Started adding File Constants to files. Removed load once logic. Used the new auto constants to globally tag all Things with PFS User OK in a user file. This makes sure everything stays consistant.</li>
+<li>(ShadowChemosh) - Added more file constants to enforce valid Unique ID's. Fixed some invalid ID's and setup load mods to silence the errors since the Things are all bootstrapped.</li>
+<li>Path of War (ShadowChemosh) - Added PW constant logic to PoW Feats and Expanded Feats.</li>
+</ul>
+
+
+<strong>v1.14 November 24, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>PFS Validation Errors (ShadowChemosh) - Really really fixed all the issues. Or at least I HOPE so!!!!</li>
+<li>ShadowChemosh Conferred Adjustment (ShadowChemosh) - Beastform Mutagen fixes: Set rake to give two attacks.  Web DC now includes Class Levels into its DC calcualtions instead of only racial HD.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - "- Custom Magic Item -" now adds it custom cost and weight to your character.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Ultimate Psionics (ShadowChemosh) - #119 More Aegis updates.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the Deep Crystal weapon material.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Standardized all the Damage Reduction abilities into the "Unversial Things" files including making all the tags the same.</li>
+<li>(ShadowChemosh) - Created a new "xxSetupDR" procedure to make all DR work exactly the same and make future ones easier to add.</li>
+</ul>
+
+
+<strong>v1.13 November 21, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>PFS Validation Errors (ShadowChemosh) - Went to a more LARGE scale massive fix. If the Thing was not specifically related to a 3PP book or option it was marked as valid for PFS. This means the PURPLE warning message will still appear and you must have turned on the SOURCE (ie Option in Configure Your Hero) to even see these Things. But all the other "RED" errors should be gone now. Unless you are really trying to use Ultimate Psionics for PFS... ;)</li>
+<li>ShadowChemosh Conferred Adjustments (ShadowChemosh) - Re-wrote the "alchemist: Beastform Mutagens" to prevent all the double activation of abilities. In addition the logic now for the dropdown's display on the In-Play tab and is all turned on/off with single activation instead of requiring 2 to 4 activation's when it was individual adjustments.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>N/A</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>N/A</li>
+</ul>
+
+
+<strong>v1.12 November 20, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>PFS Validation Errors (ShadowChemosh) - Additional fixes to prevent the validation errors from appearing for PFS characters.</li>
+<li>Ultimate Psionics (ShadowChemosh) - [Fixed] The Mind Shield, non-tower shield version, is implemented with a Max Dex of +0. I believe this is supposed to be no Max Dex as opposed to +0 Max Dex.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added missing "Wilder" concentration skill. <strong>NOTE: It appears that the base Concentration value for Psionic classes is not correct. I am reporting the issue to LW to fix. My conentration skills simply display the value LW calculates.</strong></li>
+<li>Conferred Adjustment (ShadowChemosh) - Fixed "Alchemist: Grand Beatform Mutagen" from turning on both Pounce & Rake when selecting Rake.</li>
+<li>Modern Files (Frodie) - Pricing of modern items should all reflect as; 10 USD equals 1 GP. So basically $1 = 1 S.P. I did have a mechanic to change everything over to $, but I took it out ATM until I can add it to the 1st files. So it can be an optional choice to see $ or GP.</li>
+<li>Modern Files (Frodie) - Went through all the gear and item powers and made sure they all work. Currently I am working on magic items.</li>
+<li>Modern Files (Frodie) - Computer devices, when equipped, will mark all Knowledge skill as "trained". Computer devices are containers that can only hold software and have a weight limit (to make them like a hard drive). There are also purchasable upgrades for computer devices. The "Spell Apps" also seem to work and can be loaded to any computer device.</li>
+<li>Modern Files (Frodie) - I took off the trackers from firearms, (it was just too much). Made the firearm damage and kick options to default to off. You can still click it on if you want.</li>
+<li>Modern Files (Frodie) - The various feats, skills etc. that had the same name but with (MSRD) at the end to show a difference. They were renamed but do the same thing, just a new name. Hopefully this will help when mixing in the MSDR material with MP material.</li>
+<li>Modern Files (Frodie) - Re-organized the universal items (gear, feats, traits, etc.) in proper location and category. Firearm addons that are in the custom magic item area, (Item Powers), were re-named Weapon Mods -  xyz, to group them together and kind of get them out of the way. The name will adjust to a short name once taken.</li>
+<li>Modern Files (Frodie) - Fixed a bug that the Modern Hero wasn't getting class skills. Cleaned up the names of the other classes.</li>
+<li>Modern Files (Frodie) - Added the Modern template that opens up a config so everyone can use modern talents. Made the modern talents run off hit dice rather than class level, so anyone can use them.</li>
+<li>Modern Files (Frodie) - Check all the sci-fi stuff and they seems to work.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>N/A</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>N/A</li>
+</ul>
+
+
+<strong>v1.11 November 15, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Conferred Adjustments (ShadowChemosh) - Fixed "Beastform Mutagen" issues of wrong values 90 instead of 120.  In addition prevented multiple adjustments from turning on by mistake.</li>
+<li>Ultimate Psionics(ShadowChemosh) - Fixed everything reported in [URL="http://forums.wolflair.com/showthread.php?p=254453#post254453"]THIS[/URL] HL forum post.
+</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment [URL="http://forums.wolflair.com/showpost.php?p=255705&postcount=4"]"Equipment, Slots in use"[/URL] to display all the different magic items slots that have magic items.</li>
+<li>RGG Bullet Feats (ShadowChemosh)- Fixed the incorrect text on the Tendril Tentacle feats source.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh)- Fixed issue with the adjustment "Class Ability, Remove Tracker" to see the class abilities from the "Auto Bonus Progression" feature of Pathfinder Unchained.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>ShadowChemosh Equipment (ShadowChemosh)- Added a new single magic arrow that can be purchased in a stack of 1x to 99x.See [URL="http://forums.wolflair.com/showpost.php?p=258311&postcount=17"]THIS[/URL] post for details.</li>
+<li>PFS (ShadowChemosh) - Added new logic to prevent PFS things from being locked out simply because its in a user file. LW added logic that causes anything done in a user file to be locked out for PFS characters. A "warning" message still appears no matter what I do now for adding anything from the Community Pack.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>N/A</li>
+</ul>
+
+
+<strong>v1.10 August 15, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - The adjustment "PFS, Equipment Boon" was not work for Custom made wands, scrolls or potions.</li>
+<li>ShadowChemosh Skills (ShadowChemosh) - Mark "CL vs SR" skills as allowed for CORE PFS games.</li>
+<li>(ShadowChemosh) - Corrected some feats that where not source marked. "Ascendant Power" from COM_3PPPack_UltimatePsionics_Mythic - Feats and "Thundercrack" from COM_3PPPack_RGG Bullet Points Lightning Bolt Feats.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added missing "Concentration: Summoner (Unchained)" skill.</li>
+<li>RGG Dragonrider Class (ShadowChemosh) - Fixed #122. The Dragon Steed race type was not being added to the dragon steed minions. This prevented many of the races bases stats from calculating correctly (ie saves, BAB, skill points, hit points). Enhanced all to the script logic to better standards.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Starfinder (ShadowChemosh) - New GM Starfinder configuration option (Community Pack->GM Section->Starfinder GM->Starfinder) that allows for converting a Pathfinder monster to Starfinder rules. THIS IS MEANT FOR GMs NOT PLAYERS! I did my best to implement the rules on page 498 of the Starfinder Core book. When you activate this new option Skills will be consolidated into Starfinder skills. In example if you get a bonus to "Handle Animal" skill you will see this as a situational bonus for "Survial". In addition a new 'Starfinder' tab will appear that requires you to choose an option. You need to decide to use Pathfinder multiple attacks or Starfinder's single attack logic. Finally the Starfinder tab will also let you add a "Resolve" pool that will display on the In-Play tab.</li>
+<li>RGG Talented Monk(Eilserves) - Added more talents. Added additional talents, simplified some code.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the soulknife archetype "Armored Blade".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the soulknife archetype "Cutthroat".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the soulknife archetype "Deadly Fist".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the soulknife blade skill "Flurry of Fists" including the Improved and Greater versions.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the soulknife archetype "Feral Heart".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the following soulknife blade skill & feral heart blades skills: Quick Shift, Advanced Talents, Rogue Talents, Evasion, Improved Evasion, Bite, Pounce, Rake, Rend, Thick Skin, & Improved Thick Skin.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the soulknife archetype "Nimble Blade". Optimized several of the class abilities to remove the need of a foreach loop.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the soulknife archetype "Shielded Blade".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fully implemented the soulknife archetype "Soul Bolt".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Implemented Dwarf, Elf, Gnome, Half-Elf, & Halfling favored class options.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Corrected/fixed/enhanced all BASE Aegis class abilities.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Corrected/fixed/enhanced all the Aegis Suit class abilities (Astral Skin, Astral Armor, Astral Juggernaut). Corrected/fixed/enhanced the free customization that go along with the astral suit. This includes fixing Brawn, Hardy and Nimble abilities.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Aegis class. Fully implemented customization's: Darkvision; Ranged Attacked; Energy Blast; Empowered Blast; Energy Resistance; Energy Resistance, Extra; Energy Immunity; Evasion; Extra Arms, Lesser; Extra Arms; Extra Arms, Greater; Imporoved Armor; Psionic Attacks; Psionic Damage; Pull; Push; Retaliate; </li>
+<li>Ultimate Psionics (ShadowChemosh) - Modified Metaforge PrC to work with the new enhanced base class ablities of the Aegis class. Modified the feat "Stuident of the Astral Suit" to make use of the new Aegis class abilites.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Add in "Concentration" class skills for Psionic classes as currently the concentration value does not display in HL.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Psionic characters will now be able to select their "Active Energy Type" from the In-Play tab.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Data File Authoring (ShadowChemosh) - Fixed "HaveSpell" validation procedure to take into account Hybrid classes.  In example when checking for Cure Light Wounds the procedure would return true for Cleric but not Oracle.  Procedure will now return true for Oracle, Cleric or Warpriest. In addition I was able to remove two of the foreach loops making this take way less CPU.</li>
+<li>Data File Authoring (ShadowChemosh) - Updated the RGG CLW Feats to make use of the HaveSpell procedure.</li>
+<li>Data File Authoring (ShadowChemosh) - Created a new Generic Helper Array Thing. This will make adding custom classes with arrays of values MUCH easier. In example used for the Aegis class.</li>
+<li>Data File Authoring (ShadowChemosh) - Created a new helper procedure "X1SetFirst" that allows for correctly setting the Helper.FirstCopy tag onto Custom Specials.</li>
+<li>Data File Authoring (ShadowChemosh) - The Psionic active energy types are in the new tag group PsiActEne.?.  These are placed on to the hero at First/4000. If you need the same selection of energy types on a "different" Pick use the custom expression "component.SelectHelp &amp; Psionics.PsiActEne". I have extended the tags PsiActEne.? onto the selection helpers.</li>
+</ul>
+
+
+
+<strong>v1.9 June 18, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ultimate Psionics (ShadowChemosh) - Fix issue with "Extra Arms, Greater" for the aegis not detecting "Extra Arms, Lesser customization".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fix issue where the normal Gifted Blade archetype could not be taken by soulknife characters anymore. Worse the archetype was being removed from existing characters.</li>
+<li>FGG - Fire as She Bears (ShadowChemosh) - Fixed #113. Fix issue with the Sleek Hull and Broad Hull not getting the correct ability score modifiers. Updated the text to match the rules about +4 Dex to Sleek and -4 Dex to Broad hulls.</li>
+<li>Tome of Horror (delawless) - Fixed the missing CR value from the Jade Colossus monster.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Mythic Psionics (delawless) - Implemented/script the remaining mythic abilities.</li>
+<li>RGG The Talented Monk (Eilserves)- Misc fixes to abilities. Added in more of the missing edges and class features. Big thanks to Eilserves for his contribution!</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Path of War (ShadowChemosh) - Removed un-needed "parent" element from all maneuvers.</li>
+</ul>
+
+
+<strong>v1.8 May 28, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ultimate Psionics (phlidwsn) - Added pre-req script for Aegies level 5+ to Ram customization. Corrected Flight prereq for Abberant Aegis off by one error (Was requiring 6 instead of 5). Fix several errors with level based prereqs for Aegis customizations (off by one and other wrong number errors). Updated elemental flux style text to book version, removed out of place bleed scripting.</li>
+<li>Ultimate Psionics (delawless) - Added Evade Arrows to Marksman.</li>
+<li>Ultimate Psionics (delawless) - Altered Defense was calculating bonus incorrectly. Corrected.</li>
+<li>Ultimate Psionics (delawless) - Fixed error with Skin of the Chameleon not applying enhancement bonus correctly.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed Cryptic "Altered Defense" ability to correctly appear at level 1. Made changes to how the Altered Defense activation names appear to look nicer on the "In-Play" tab.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fix issue where Soulknife mindblades after being enchanted where displaying as part of a characters gear value.</li>
+<li>Ultimate Psionics (ShadowChemosh) -Fixed #13. "Boost Construct" feat and "Summoner's Call" class ability is now implemented and will increase the menu options that an Astral Construct receives. Added a new racial ability to Astral Constructs to explain the Menu choices. Updated the selection of Menu abilities to be more clear.</li>
+<li>Path of War Expanded (drumanagh) - Update Piercing Thunder to final version.</li>
+<li>Path of War Expanded (drumanagh) - Updated all Sleeping Goddess maneuvers and stances to final version.</li>
+<li>Path of War Expanded (phlidwsn) - Cursed Razor Final text and Aegis tweaks. Update Cursed Razor level 3, 4, 5, 7, 8 & 9 to final book text.This completes the update of the text from beta to final for Cursed Razor. Added missing strike Black Dog's Due at 7th. Added Animus Healing feat (text only, no scripts, no prereq)</li>
+<li>Path of War Expanded (ShadowChemosh) - Corrected the maneuver schools on the all three Expanded classes to match to the latest printing of the book.</li>
+<li>Path of War Expanded (ShadowChemosh) - Fixed #104 Harbinger class. The Dark Focus bonus feat will not appear until selected at level 4. The Dark Focus bonus feat "Discipline Focus" will now correctly auto select the same discipline that was selected at level 2. Magic Aura spell-like ability will now correctly appear only at level 7+ instead of level 1.</li>
+<li>Eberron Campaign Setting (ShadowChemosh) - Fixed #101. Add new "Damage Reduction, Byeshk or Magic" DR. Gave the Dolgaunt its missing +3 natural AC bonus. Fixed Dolgaunt DR to be byeshk OR magic not "and". Updated .stock files. In addition added an Unchained Dolgaunt Monk portfolio to the encounter builder.</li>
+<li>Eberron Campaign Setting (ShadowChemosh) - Fixed #100. Fixed racial skill bonuses to actually be "racial" bonus instead of a unnamed bonus. Empty Vessels where not gaining Knowledge (Planes) as an automatic Class Skill.</li>
+<li>Eberron Campaign Setting (ShadowChemosh) - Enhanced Dolgaunt to show the tentacle attacks have 10ft reach.</li>
+<li>Eberron Campaign Setting (ShadowChemosh) - Changed Artificer class into a "unrestricted" spell caster.</li>
+<li>Eberron Campaign Setting (ShadowChemosh) - Fixed issue where the "Mark of Creation" major creation referenced Fabricate and not major creation spell information.</li>
+<li>Mummies Mask (ShadowChemosh) - Added missing source to feat "Rallying Blow".</li>
+<li>AP63 - The Asylum Stone (ShadowChemosh) - Added Not PFS allowed to the races & templates.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Changed the stats of the Torch weapon to match the core rule book (gauntlet sized damage and +1 fire). The Torch weapon now provides a check box on the In-Play tab to "Unlit" the torch to remove the additional fire damage. It defaults to lit which is the most common use. Implemented all three torch feats: Burn! Burn! Burn! (ARG, GoG); Torch Bearer (Inner Sea Gods); Torch Handling (Dungeoneer's Handbook).</li>
+<li>Spell Adjustments (ShadowChemosh) - Made "- Custom Spell Weapon -" easier to use as selecting the spell weapon from a dropdown is no longer required.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed "Race, Hit Dice Remove" to also remove hit points and skill points from hit dice.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed "Equipment, Weapon Enhancement" to not double assign a "+1, +2, etc" to the weapons name.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed "Equipment, Armor Enhancement" to not double assign a "+1, +2, etc" to the armors name.</li>
+<li>RGG 110 Spell Varieants Vol 2 (ShadowChemosh) - Fixed #112. Source marked spells that where not correctly sourced.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Ultimate Psionics (delawless) - **READ ME** The "Dual Disciple" Psion archetype has been enhanced to better support multiple disciplines. After adding a second discipline you will be required to make one Primary and one Secondary. If you have an existing character with the "Dual Disciple" Psion archetype your secondary discipline will be "removed" when you open the character. You will need to reselect the secondary discipline.</li>
+<li>Ultimate Psionics (delawless) - Added Shroud Archetype and archetype abilities.</li>
+<li>Ultimate Psionics (drumanagh) - Added new option for a 'free' Gifted Blade for Soulknives. This is found under the new "Psionic Class Options" section in the Configure Your Hero window.</li>
+<li>Psionics Seventh Path (drumanagh) - Add content from Psionics Augmented: Seventh Path book.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Re-wrote the Marksman class to follow HL standards. Scripts have been added to all abilities and non-standard implementation logic has been removed.</li>
+<li>Eberron Campaign Setting (Skarn) - Added #98. Added in Skarn's Potion Bracer from Eberron Sharn City of Towers. Thanks Skarn!</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added the missing Concentration Skills for the Occult Adventure classes.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new Conferred adjustment "Combat: Sneak Attack Effect". This allows for seeing a list of all abilities that interact with Sneak Attack (ie Bleeding or the Unchained Rogue abilities).  This allows for a nice central place on the In-Play tab to work with these abilities.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added #108. Added 3 new Horror Adventure adjustments for adjusting Sanity, Sanity Threshold & Sanity Edge values.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Added new gear item "Diamond Dust" that can be purchased in any gp amount.  This allows for easily tracking this expensive material components on characters.</li>
+<li>ShadowChemosh Conferred Adjustments (ShadowChemosh) - Added new conferred adjustment "Magus: Arcane Pool". After adding this adjustment an option on the In-Play tab will allow you to select a weapon to magically enhance from +1 to +5 and add the following weapon properties: dancing, flaming, flaming burst, frost, icy burst, keen, shock, shocking burst, speed, or vorpal. Note: The weapon you are adding these powers to can be non-magical or magical.</li>
+<li>ShadowChemosh Conferred Adjustments (ShadowChemosh) - Added additional blade powers from magus arcana to the "Magus: Arcane Pool" adjustment. Now supports the following Magus Arcana abilities: Bane Blade, Devoted Blade, Ghost Blade and Planar Hunter.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - Fixed #99. Added in Vicious power that can be activated on the In-Play tab.  Thanks to Valdacil for his contribution!</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added a new adjustment "Equipment, Weight" that allows for increasing/decreasing the weight of any gear item.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Ultimate Psionics (ShadowChemosh) - Changed all scripts on all Things that test for Psionic Focus to call the procedure PUPsiFocus instead of directly checking the Hero.PsiFocus tag. To many other rules add exception logic to Psionic Focus and we can not just use the one tag from LW anymore.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added new abCategory.PUPsiDisc "Psion Discipline" tag. Modified all Psion Discipline custom abilities to have the new abCategory.PUPsiDisc tag. This tag gets pushed to the Hero allows for other Things to test for the presence of any selected Psion Disciplines.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Modified Mechanics, Simple Things, Tags and Sources to support new High Psionic options as discussed with drumanagh.</li>
+<li>Ultimate Psionics (delawless) - Added abCategory.PUPsiCllct tag to collective class abilities.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Moved all the duplicate non-used Collective class abilites to the Deprecated file. Updated all the different scripts to only reference to the single cPUCollect ability. All classes currently use the same class ability so no abCategory is needed.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added a new component for Psion Disciplines.  Added new editor tab to define Disciplines "zCommunity->UP Psion Disciplines". Fixed Powers that where incorrectly marked with old Discipline ID's.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Removed all logic associated to the PackHelper.FreePower tag as the issue was officially fixed by LW. If you have anything with PackerHelper.FreePower tag please replace with Helper.Free instead to accomplish the same fix of not having a bootstrapped power count against a classes total.</li>
+<li>Ultimate Psionics (ShadowChemosh) - More Psion Discipline fixes. Moved the psiClass tag away from the powers and setup the ClsAllowPs.? tags onto the discipline. Removed psiClass.Disclipine tags from the Powers. Updated the editor help text. Added the Associated Discipline text to the advanced disciplines.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Moved Psychic Warrior Path abilities over to a custom component. Updated the editor for this new component. Added new Ability Category tags for the Path Manuevers/Trances. This will allow other magic items and mythic abilities to easily locate Path Manuevers/Trances by the ability category.</li>
+<li>Mythic Psionics (ShadowChemosh) Added new tag group MythicPsi for Mythics Psionics. Added new tag PsiFocus. Modified the PUPsiFocus procedure to look for this new tag.</li>
+<li>Mythic Psionics (ShadowChemosh) - Added new tag MythicPsi.PsicrBon2x that when assigned to the Hero at Post-Level/10000 will double the Psicrystal bonus given to the master. For each additional "hero" tag found we increase the 2x mulitplier by 1. In example if 2 tags are found we go from 2x to 3x not 4x.</li>
+<li>Path of War Expanded (ShadowChemosh) - Removed deprecated Path of War expanded maneuvers that are not in the final printed book. Added a Silent Load Thing so that a character does not toss errors about these missing Things.</li>
+<li>Eberron(ShadowChemosh) - Added additional languages to be hidden for Eberron.</li>
+<li>(ShadowChemosh) - Removed sources that where not selectable and have been around for years. Throne of Night AP and the extra Eberron books.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Data Authoring File changes to support Astral Constructs better. AllowRCust.MenuA, MenuB, MenuC changed to PUMenuA, PUMenuB and PUMenuB to match community standards. Updated the XML to remove name/abbr info. Moved the creation of the tags to the Psionic Helper on the mechanic. Added logic for new tag "Psionics.AstConMenu" that increases the number of custom abilities a Astral Construct can take.</li>
+<li>(ShadowChemosh) Buckler Proficiency feat moved from Path of War to Universal things.</li>
+</ul>
+
+
+<strong>v1.7 March 18, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ultimate Psionics (delawless) - Corrected Elan FCB of 1/2 Disrupt Pattern Damage to apply to bonus damage (changed value2 to value3 in script).</li>
+<li>Ultimate Psionics (delawless) - Greater Disruption now give bonus damage in Statblock.</li>
+<li>ShadowChemosh Adjustments Conferred (ShadowChemosh) - Fixed "overhand Chop/Backswing" adjustment as it was not taking into account Weapon Training Bonus damage.</li>
+<li>Pack Bug Fix (ShadowChemosh)- Fix issue where Composite Longbows where becoming Simple Weapons.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #82. Added several missing subtypes. Fixed custom subtypes to appear as the standard subtypes so that they meet the pre-req of feats and other abilities. Updated Psionic races to match the latest "subtype" information as per Ultimate Psionics.</li>
+<li>ShadowChemosh Adjustments Conferred (ShadowChemosh) - Fixed #87. Changed "Magus: Spell Combat" to no longer have the off-hand Touch Attack weapon affect Dervish Dance or other feats that check for an off-hand weapon. Improved the script logic for two-weapon fighting with a one-handed weapon and off-hand touch attack spell. Added better help text to the adjustment to explain how it is meant to be used. Fixed the name of the "Touch Attack, Damage" adjustment.</li>
+<li>Emerald Spire (ShadowChemosh) - Fixed #92. Emerald Automaton feat bug.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed #91. Added additional text to the adjustment "Weapon Elemental
+Dmg, Custom".</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #90. Forgedborn Aegis FCB was not working correctly and had incorrect level bonus. Went through ALL favored class bonuses that where in Ultimate Psionics and fixed them all.  I made them all use the same consistant logic in the scripts. In addition those that where not working are now working. Finally changed all the rules text to match the latest printing of the book.</li>
+<li>Ultimate Psionics (delawless) - Psychoactive Skin of the Chameleon was not giving it's enhancement bonus to stealth.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #93. Free Class powers where counting against the classes total powers known. This has been fixed.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Path of War Expanded (phlidwsn) - Update Cursed Razor levels 1-2 with final book text instead of beta.</li>
+<li>Ultimate Psionics (delawless) - Added Spell Adjustment for Zealous Fury Power.</li>
+<li>Ultimate Psionics (delawless) - Added Mind Map, Aura Monocle and Aura Monocle Greater magic items.</li>
+<li>Paths of War Divergent Paths (drumanagh) - Added new class Medic and archetypes.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added #70. Added new adjustment "Spell-Like Ability, Add" that lets you add a spell-like ability with full spell text to a character. In addition you are able to set the usage/counter value (ie 1/day, 2/day,1/month etc).</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added Human Favored Class Bonuses.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added Psionc Classes Starting Wealth values. Added missing page number to PrCs.</li>
+<li>Path of War (ShadowChemosh) - Added starting wealth to Path of War and Expanded classes. Added book and page number to Path of War classes.</li>
+<li>Eberron Campaign Setting (ShadowChemosh) - Added starting wealth to Artificer and Magewright classes.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added three new adjustments that allow for changing a classes Starting Wealth values.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Modern Pack (ShadowChemosh) - Remove bootstrap of Races from archetypes. This was causing strange errors in HL.</li>
+<li>Misc Bug Fixes (ShadowChemosh) - Fixed Claw Blades and Armor Razors buy template to prevent issues with future versions of HL. Fixed Things that where not correctly source marked. Mostly feats.</li>
+<li>Data File Authoring (ShadowChemosh) - Moved most "Selection Helpers" into a single file "COM_1PathfinderPack
+- Selection Helpers.user". Created the new tag group PackSelect.? to prevent any chance of running into other LW created tags. Changed over selection helpers to use this new tag group. Updated the Selection Helper editor Tab to reflect these changes allowing an easy way to add new selection helpers.</li>
+<li>Missing Source Marks (ShadowChemosh) - Added sources to many things that where missing them.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed left over tags. Fixed left over invalid Sources.</li>
+<li>Data File Authoring (ShadowChemosh) - Fixed tags in Powers to not include names and abbreviations as it just eats up space. Added Product ID tag to all powers.</li>
+</ul>
+
+
+<strong>v1.6 January 2, 2017</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #15. Aberrant archetype for Aegis class was not activating customization's when "Transformed". Customization and base Aegis DR will now get activated correctly when the "Transformed" option is checked on the In-Play tab.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #20. Commander Archetype for Tactician class has been fixed. This includes adding missing class features, removing class abilities and adding the feat "Forced Participant" for free.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #22. Elan Favored Class Options where not setup correctly and not displaying as choices. Found this for several races and fixed them all. More of the Favored Class Options that where in the files will now display and be usable. Note: That this does not mean ALL races as of yet have Favored Class Options.</li>
+<li>Path of War Expanded (ShadowChemosh) - Fixed #76. The Stalker archetype "Vigilante" was not changing class specials over to use Int instead of Wis.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #77. Fighters' Blade feat was not giving up to 4 levels to the Blade Skill pre-req check when it should have been.</li>
+<li>RGG's Krazy Gragnar's Black Market Magic Items (ShadowChemosh) - Fixed #79. Items will no longer throw errors. Fixed the Slave Collar to not throw errors and be fully functional. Added a note to the items with no scripts that they have not been fully implemented yet.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Path of War (ShadowChemosh) - Created two new "Dossiers" (ie Character Sheets) that will appear when you print your character from inside of HL. These only display for characters that can initiate maneuvers. The first sheet "(Community) Path of War Maneuvers - Summary" Prints a summary of each maneuver or stance your character has. The second sheet "(Community) Path of War Maneuvers - Description" Prints the full text in a two column layout of each maneuver and stance your character has.</li>
+<li>RGG Talented Monk (ShadowChemosh) - Added more of the class. Still more to do. Sorry not yet complete. =(</li>
+<li>Path of War Adjustment (ShadowChemosh) - Added new "Initiator Class Attribute" adjustment that allows for switching which attribute is used by a Path of War Class to initiate maneuvers.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Two-Weapon Fighting Penalties" allows for lowering the standard TWF penalties of -2 down to -1 or 0.</li>
+<li>Eberron (ShadowChemosh) - Add book/page number to classes and PrCs from Eberron Campaign Setting.</li>
+<li>Races of Eberron (ShadowChemosh) - Added new archetype "Changeling Wizard".</li>
+<li>ShadowChemosh Adjustments Conferred (ShadowChemosh) - Redo of the "Overhand/Backswing" adjustment. The dropdown has a dropdown to set the display values to Desktop or iPad. The In-Play tab now has separate activation for Overhand Chop and Backswing.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Path of War (ShadowChemosh) - Path of War maneuvers now get the ClsCountAs.? tag from the configurable allowing scripts to know which Class is associated with each Maneuver or Stance. Misc adjustments to PoW Components to allow for dossier/sheet logic.</li>
+<li>Eberron Campaign Setting (ShadowChemosh) - Added new tag logic of Helper.SklBonFt to the "Negotiator" feat so that new feats from Path of the Righteous work correctly.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Added new tags and updated the PUPreReqs procedure to add the four extra levels only for blade skills.</li>
+</ul>
+
+
+<strong>v1.5 November 25, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Path of War Adjustments (ShadowChemosh) - Fixed text on "Initiator Level" to be correct.</li>
+<li>Gallery of Evil module (ShadowChemosh) - Added in the missing "Numerian Leaf Armor" item that has slightly different rules than the Pathfinder version of Leaf armor.</li>
+<li>Path of War Expanded (ShadowChemosh) - Fixed #68. When using the Hidden Blade archetype and a normal Rogue (ie not Unchained Rogue) HL would toss an error.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #73. Fixed item powers Parrying, Floating & Quickness to correctly check for if they are equipped or not. This will also prevent the error message from appearing for these item powers.</li>
+<li>ShadowChemosh Classes (ShadowChemosh) - Fixed #64. Adjusted "Superstition" rage power logic based on LW changes to the core Superstition rage power. The bonus will no longer be doubled.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Issue #63. Wild Talent feat and Unlocked Talent feat where not getting Power Points and powers to print on the character sheet. Sent email to LW with question about how to cause Powers/Power Points to appear on printed character sheet. As a work around for now I have added logic that will cause the "Wild Talent" feat to display a number/day tracker to the printed character sheet only to represent the characters total power points. In addition the unlocked talent will modify the first non-manifester class it finds when "printing". This allows the information to get to the printed character sheet. Those not printing characters sheets should see no difference.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Issue #57. Psionic Archetypes that switch the manifester ability score are getting the ability score instead of modifier added to the DC of Powers. I have reported this bug to LW and hopefully it is fixed. This was reported with the Dread class using the Fearmonger archetype. LW ticket number 110317.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #16 Prc Psychic Fist. The Psychic Fist PrC now allows a selection of either manifesting powers or increasing your existing manifesting class. Blah it took WAY too many hours to get this to work correctly... =(</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixed #9. Aegis Aberrant Archetype was giving incorrect natural armor bonus as the character levels. The max at level 20 is now +5.</li>
+<li>Path of War (ShadowChemosh) - Fixed #12. The following archetypes would prevent adding disciplines after removing them: Warlord: Vanguard Commander; Warlord: Steelfist Commando; Warder: Dervish Defender.</li>
+<li>Path of War (ShadowChemosh) - Updated the Advanced Study feat to note that it does not currently allow for selecting a discipline outside your allowed ones. Just didn't have the extra time required to fully fix this issue.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Adjustment "Race, Size Category" was not source marked to the community.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Ultimate Psionics (delawless) - Added new Dual Disciple archetype for the Psion class.</li>
+<li>Warpriest Archetypes Unchained (ShadowChemosh) - Added a new "Sacred Fist Unchained" archetype for the Warpriest.  This archetype uses the Unchained Monk Flurry of Blow rules instead of the normal chained monk FoB rules.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - For concentration skills added the situational note for the the elven ART Arcane Focus. For concentration:magus skill added situational notes about Spell Combat.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new Conferred Adjustment called "Magus: Spell Combat". When added will have a new In-Play option appear that lets you you set the penalty to attack and turn on/off Spell Combat.  When on the correct Concentration bonus will be calculated, attack penalty applied if you set the counter, and will also correctly adjust the the Attack Values for a Weapon and the "Touch Attack" weapon when set as TWF on the Weapon tab.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Issue #71. Added new adjustment "Race, Custom Ability". That will add a generic racial ability to a creature and let you give it a unique name and a description text up to 100 characters.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Implemented Request #72. Added new "Awaken (Vermin)" spell adjustment designed to allow the awakening of a vermin. This version of Awaken opens up the Int ability score and sets it to a value of 1.  This is often requested because of the "Vermin Heart" feat. This is not allowed for PFS.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>Eberron Campaign Setting (ShadowChemosh) - Made most Eberron tag groups to be Dynanmic in the .1st file. This allows home editors to add new tags without needing to modify the .1st file which is bad.  As the .1st file gets overwritten each update and any modifications would get lost.</li>
+<li>Eberron Campaign Setting (ShadowChemosh) - Added a place holder for Mark of Death.  I didn't add any abilities but left the frame work in place allowing GM's to easily add in the abilities if they wish for home games.</li>
+<li>Eberron Campaign Setting (ShadowChemosh) - Changed the Custom Expression on "Least Dragonmark" to NOT use Thingid.? tags and instead use Dragonmark.Tab to include the Marks. This allows an easier way for someone to add in New marks if they wish.</li>
+<li>(ShadowChemosh) - Found lots of left over "debug" statements in the files.  Removed them as they just cause unneeded overhead.</li>
+</ul>
+
+
+<strong>v1.4 September 5, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Path of War Expanded (Jamel Neal Rose) - Updated "Elemental Sun" feat text and pre-reqs to match the final book.</li>
+<li>Path of War Expanded (Jamel Neal Rose) - Updated "Martial Charge" feat category to match the final book.</li>
+<li>Path of War Expanded (Jamel Neal Rose) - Fix text typos from Bushi archetype.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed #56 Fix Un-sourced Adjustment "Bonus Feat".</li>
+<li>Touch Attacks (ShadowChemosh) - Fix issue where one can no longer select Touch/Ranged Attacks. In addition if they already existed on a character make the attack values display again.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Path of War Expanded (Jamel Neal Rose) - Added new archetype "War Path".</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Made global change to race "Types" so that they continue to function with the next official Pathfinder update (v13.3+).</li>
+<li>(ShadowChemosh) - Added additional removal of old SGG files.</li>
+<li>(ShadowChemosh) - Add in missing Empty MODERN files to make those updating on Mac/Windows to be easier.</li>
+</ul>
+
+
+<strong>v1.3 August 1, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>GM Mythic Bestiary (ShadowChemosh) - #58. Fixed issues with Arueshalae spell-like abilities.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Kingdom Building Rules (ShadowChemosh) - Closes Issue #51. Added new Hex Special Cost tags for Roads, Settlements, and Farms.  These give multiplier values from 2-9.</li>
+<li>Ultimate Psionics (psych777) - Cutthroat archetype added.</li>
+<li>Ultimate Psionics (psych777) - Added Blade Skills for Feral Heart archetype.</li>
+<li>Path of War Expanded (Jamel Neal Rose) - Added the Bushi Archetype.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>d20 Modern Classic Heroes (ShadowChemosh) - Fixed issue where weapons where marked as "Show Only" and where not Headers.  This is causing a load conflict in the latest version of Pathfinder (12.23).  Changed logic to use Helper.Helper instead.</li>
+</ul>
+
+
+<strong>v1.2 May 16, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Fixed Load Issues with HL v7.6b (Quintain) - Thing 'ruDemNysro' - Bootstrap value assignment should not be assigned more than once for field 'abValue' on bootstrapped thing 'raPoiCON'</li>
+<li>Path of War Expanded (Jamel1027) - Made corrections to the Path of War Harbinger class features to reflect the current text from the book.</li>
+<li>Path of War Expanded (Jamel1027) - Updated Mithral Current Style feats text with feats to reflect the text from the current book.</li>
+<li>Path of War (Jamel1027) - Fixed Greater Unarmed Strike feat text to reflect the current book.</li>
+<li>Path of War (ShadowChemosh) -Fixed #49. Greater Unarmed Strike feat was increasing damage based on Paizo's new Errata rules for damage dice. This has been changed to match the feats damage dice size increases instead.</li>
+<li>Ultimate Psionics (psych777) - Updated feats requiring an ability attribute to all use same universal method from LW. Feats updated: Advanced Dervish Path; Advanced Mind Knight Path; Advanced Survivor Path (also was incorrectly 15); Cushion the Blow; Deadly Throw; Deep Impact; Fell Shot; Greater Cushion the Blow; Greater Intuitive Shot; Improved Cushion the Blow; Inquisitor; Intuitive Shot; Knockdown Shot; Mind Over Body; Psionic Charge; Psionic Dodge; Psionic Meditation; Psionic Overrun; Psionic Precise Shot; Psionic Sunder; Psionic Trip; Psionic Unarmed Strike; Rapid Metabolism; Sidestep Charge; Twin Throw; Unavoidable Strike; Up the Walls</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fix adjustment "Feat: Furious Focus" as it was not actually turning on.</li>
+<li>Mythic Bestiary (ShadowChemosh) - Misc fixes to the generic Mythic Template. Fixes to the Soltengrebbe creature from Warth of the Righteous.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixed the "Unchained Background Skills, Total" as its extra skills points would fail to apply its value once you restarted HL.</li>
+<li>Path of War Expanded (ShadowChemosh) - Fixed #52. Fixed the "Daisho Expertise" feat to only increase the damage of the katana/Wakizashi by die size not size. This means katana damage is 1d8->1d10 and the Wakizashi is 1d6->1d8.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Kingdom Building Rules (ShadowChemosh) - #51. Added new Hex Special Cost tags for Roads, Settlements, and Farms.  These give multipler values from 2-9. I have these commented out as they won't work until LW releases Pathfinder v12.19+.</li>
+<li>Ultimate Psionics (psych777) - Added more to the Armored Blade archetype, still unfinished</li>
+<li>The Emerald Spire Superdungeon (MysticLemur) - Added Western Star ioun stone.</li>
+<li>Path of War Expanded (Jamel1027) - The Agile Dancer feat has been deprecated as its not in the final release of PoW Expanded. Added Improved Quick Draw feat.</li>
+<li>Ultimate Psionics (psych777) - Added more to the Cutthroat archetype, still unfinished</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Because of more advanced requirements and issues we should not be using Pick Req's to do any feat Pre-Req. I have started to change feats over to use the #hasfeat[] macro.</li>
+<li>(ShadowChemosh) - Replaced all "User" timings (Pre-Level, Post-Level, Post-Attributes, Pre-Attributes, First, and Final) with normal timings. LW is going to be deprecating all the "User" timing Phases in a future update. These "User" phases serve no useful purpose and should not be used.</li>
+<li>(ShadowChemosh) - Moved NNW Liber Vampyr feat tags to central place on a mechanic.</li>
+</ul>
+
+
+<strong>v1.1 May 7, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>Path of War (ShadowChemosh) - Fixed #42. Dervish Defender Warder archetype should not have Medium or Heavy Armor proficiency.</li>
+<li>Ultimate Psionics & Path of War (ShadowChemosh) - Fixed #48 issue where a gamer could no longer add the following skills to a character: Autohypnosis, Knowledge (Psionics) or Knowledge (Martial).</li>
+<li>Module Murders Mark (MysticLemur) - Fixed scarf of the suggestive dance to only apply bonus when equipped.</li>
+<li>Way of the Wicked AP (MysticLemur) - Fixed alignment in Way of the Wicked xml. Fixed minor bugs with WotW traits. Added a the missing WotW trait "Deception is a tool. Master it.".</li>
+<li>Path of War (ShadowChemosh) - Fixed #50. Initiator Level Adjustment now correctly raises/lowers a character's IL level.</li>
+</ul>
+<strong>New Features</strong>
+<ul>
+<li>Unchained Monk Archetypes (ShadowChemosh) - Added the "Underfoot Adept" halfling archetype for the unchained monk. Updated the "Master of Many Styles" archetype to make use of the new Monk Next feat tags making this allot more flexibility with future books.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Saving Throw Ability Score" let lets you change which ability score is used to calculate a specific saving throw. In example change Will saves to use Charisma instead of Wisdom.</li>
+<li>Ultimate Psionics (psych777) - Added most of the Battle Wilder archetype.</li>
+</ul>
+<strong>Data File Authoring</strong>
+<ul>
+<li>(ShadowChemosh) - Fixed some mismatched Fighter Weapon Group tags.</li>
+<li>Path of War (ShadowChemosh) - Added logic to the PoW Discipline component to use the SkillAdded.? tags to setup Discipline skills. By default setup should still use the linkages when it can as the overhead cost is way less. Updated the PoW Discipline editor tab.</li>
+</ul>
+
+
+<strong>v1.0 May 2, 2016</strong>
+
+<strong>Bug Fixes</strong>
+<ul>
+<li>ShadowChemosh Adjustments PFS (ShadowChemosh) - Fixed "PFS, Race Boon" to work for all races now!</li>
+<li>Path of War (Jamel1027) -  Fixed Flash kick's maneuvers text.</li>
+<li>Path of War Extended (ShadowChemosh) - Fixes #86. Hidden Blade archetype will now work with both Rogue and Unchained Rogue classes.</li>
+<li>Ultimate Psionics (ShadowChemosh) - Fixes #85. Psychic item power will not complain when added to a ranged weapon.  I found this same error on most weapon item powers. Psychic is now fully scripted and will change its bonus based on the number of psi-points a character has. Psibane item power fully scripted. Psychokinetic item power fully scripted. Psychokinetic Burst item power fully scripted. Collision is fully scripted. Parrying is fully scripted.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fix issue where the "CL vs SR" sub-skill was getting twice the bonus from the "Skill Bonus" adjustment.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Fixes #12. Fixes done to the adjustment "Character Sheet: DM" to ignore many "generic or custom helper" Picks that LW has added officially.</li>
+<li>ShadowChemosh Equipment (ShadowChemosh) - In some rare cases a weapon penalty was being applied to the Touch/Ranged attack weapons when it should not have been. Added the Helper.Static tag that tells HL to ignore these weapons that are not real weapons.</li>
+<li>Races of Eberron (ShadowChemosh) - Misc fixes to the Eberron Changeling race.</li>
+<li>The Iconic Bestiary: Classics of Fantasy (ShadowChemosh) - Fixes #40. Evil Eye: Fixes to make us match the statblock better like gaze attacks, skills points, added spell-like abilities (1d4 rounds), Lash attack. Ophiduan added proficiency with Longbow to match statblock. Updated the "Source Book" information for all monsters. Updated the "Iconic Bestiary" stock file with all the monsters that exist in the user file. Prepared it for distribution.</li>
+<li>Path of War Expanded (ShadowChemosh) - Fixes #46. Updated the following maneuvers to the latest text rules in the Expanded PDF: Sand-Bearer's Swiftness, Traumatic Reversal, Disruptive Wave and Stand Your Ground.</li>
+<li>Path of War Expanded (ShadowChemosh) - Fixes #47. Changed "Katana Expertise" feat to the official feat "Daisho Expertise". "Daisho Expertise" feat has been fully scripted.</li>
+</ul>
+
+<strong>New Features</strong>
+<ul>
+<li>Ultimate Psionics (psych777) - Added text of Soulknife archetype Deadly Fist.</li>
+<li>Ultimate Psionics (psych777) - Added text for Soulknife archetypes: Armored Blade, Cutthroat, Feral Heart and Shielded Blade.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - "Race, Size Category" adjustment added that lets you increase/decrease your size category for the race only. This adjustment is different than the official "Size Category" adjustment in that it does NOT change your gear size. Meaning you can use it to make a small or large sized human or other races.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustment "Character Sheet: Specific Item" that allows for forcing a single selected gear item to print to a character sheet.</li>
+<li>ShadowChemosh Adjustments (ShadowChemosh) - Added new adjustments: "Allow Starting Language" & "Allow Domain". Fixes #44 & #45.</li>
+<li>ShadowChemosh Conferred Adjustments (ShadowChemosh) - Added the "Grand Beastform Mutagen" adjustment in.</li>
+<li>ShadowChemosh Adjustments PFS (ShadowChemosh) - Fixes #40. Modified all existing "PFS Boon" adjustment to also make the selected Thing valid for a PFS Core Campaign. Updated "PFS Boon" adjustments text to mention making valid for PFS Core Campaigns.</li>
+<li>ShadowChemosh Adjustments PFS (ShadowChemosh) - Fixes #43. Added new adjustment "PFS, Language" which allows for making a language valid for your PFS character.</li>
+<li>Races of Eberron (ShadowChemosh) - Added new feats: Spiked Body</li>
+<li>Races of Eberron (ShadowChemosh) - Added new Archetypes: Changeling Egoist (Psion) & Changeling Rogue.</li>
+<li>Eberron Campaign (ShadowChemosh) - Added two new "Regions of Origin": - Custom - (which lets you type in any name you wish) and - None - (To let you clear the warning message without specifying a region).</li>
+</ul>
+
+<strong>Data File Authoring</strong>
+<ul>
+<li>Path of War (ShadowChemosh) - Redo of some of the community editor tabs to make use of the new Group editor tab logic. I combined the different PoW Disciplines Selection Helpers and Spell Schools into a new component set. This merges all the logic into a single Thing and allows for a new editor tab to define new Disciplines. I deprecated the old Discipline Spell-Schools and merged all its logic into the new PWDisc component. I added logic in PWDisc to use linkage to link to the Disciplines class skill or skills.  Up to 5 different skills can be selected. I changed Ultimate Psionics & Path of War skills to be "Unique" so that the linkages would work. Changed new Discipline tab to have it ignore non-helpful skills in the linkage.</li>
+<li>Path of War Extended (ShadowChemosh) - Modified the PWManList to be able to use ArchCntAs tag group so that it can change itself to either class. Updated the Editor tab for Man Lists to be able to assign these tags. Cleaned up some of the XML. Updated a Class ability to not hard-code the reference to cHelpRog.</li>
+<li>ShadowChemosh Adjustments PFS (ShadowChemosh) - Created a new procedure (S2PFSName) to centralize all the logic for adding additional text to for the PFS Boons.</li>
+<li>(ShadowChemosh) - Redo of some of the community editor tabs to make use of the new Group editor tab logic. This is helpful for the new PoW editor tabs added in the 3PP Pack.</li>
+</ul>
+
+      ]]></info_history>
+    </fileinfo>
+  </document>

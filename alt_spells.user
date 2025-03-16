@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="npDetMag0" name="Detect Magic" description="You detect magical auras. The amount of information revealed depends on how long you study a particular area or subject.\n\n{i}1st Round{/i}: Presence or absence of magical auras.\n{i}2nd Round{/i}: Number of different magical auras and the power of the most potent aura.\n{i}3rd Round{/i}: The strength and location of each aura. If the items or creatures bearing the auras are in line of sight, you can make Knowledge (arcana) skill checks to determine the school of magic involved in each. (Make one check per aura: DC 15 + spell level, or 15 + 1/2 caster level for a nonspell effect.) If the aura eminates from a magic item, you can attempt to identify its properties (see Spellcraft).\n\nMagical areas, multiple types of magic, or strong local magical emanations may distort or conceal weaker auras.\n\n{i}Aura Strength{/i}: An aura&apos;s power depends on a spell&apos;s functioning spell level or an item&apos;s caster level; see the accompanying table. If an aura falls into more than one category, {i}detect magic{/i} indicates the stronger of the two.\n\n{i}Lingering Aura{/i}: A magical aura lingers after its original source dissipates (in the case of a spell) or is destroyed (in the case of a magic item). If {i}detect magic{/i} is cast and directed at such a location, the spell indicates an aura strength of dim (even weaker than a faint aura). How long the aura lingers at this dim level depends on its original power:\n\n{b}Original Strength - Duration of Lingering Aura{/b}\nFaint - 1d6 rounds\nModerate - 1d6 minutes\nStrong - 1d6 x 10 minutes\nOverwhelming - 1d6 days\n\nOutsiders and elementals are not magical in themselves, but if they are summoned, the conjuration spell registers. Each round, you can turn to detect magic in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it.\n\n{i}Detect magic{/i} can be made permanent with a {i}permanency{/i} spell." compset="Spell" summary="Detects all spells and magic items within 60 ft." replaces="spDeteMag0">
+    <fieldval field="sLGMythic" value="You can cease concentrating on the spell without ending the spell. It provides no information when you are not concentrating on it, but you can resume and cease concentrating again to use its effects any number of times within the spell’s duration. You gain a bonus equal to your mythic tier to Knowledge (arcana) skill checks to determine the school of magic that you detect. In addition, you can detect magical auras protected by effects that block divination with a caster level check with a DC of 11 plus the caster level of the effect, or through lead sheeting with a DC 20 caster level check, plus 5 per inch of thickness. You can penetrate 3 feet of wood or dirt, 1 foot of stone, or 1 inch of common metal with a DC 15 caster level check, plus 5 for each multiple of that thickness. If the substance or effect blocking your divination is not mythic, or if it already allows a caster level check or saving throw to penetrate its protection, add your mythic tier on your caster level check or saving throw.{br}{br}{b}Augmented:{/b} If you expend two uses of mythic power, any overwhelming magical auras within the area become clearly visible to everyone at the beginning of your turn on the first round you scan an area. Strong areas become clearly visible at the end of your turn on the first round you concentrate on an area, moderate auras at the end of the second round, and faint auras at the end of the third round. Any creature able to see these auras can make Knowledge (arcana) checks to identify the school of magic. Magical auras on creatures, objects, or areas that are invisible are also invisible, and you cannot see auras to which you have no line of sight even if you are able to detect their strength and location."/>
+    <fieldval field="sRange" value="Touch"/>
+    <fieldval field="sDuration" value="Concentration, up to 1 min./level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="WotR2Spells"/>
+    <tag group="sClass" tag="cHelpMag" name="Magus" abbrev="Magus"/>
+    <tag group="sClass" tag="cHelpMed" name="Medium" abbrev="Medium"/>
+    <tag group="sClass" tag="cHelpMes" name="Mesmerist" abbrev="Mesmerist"/>
+    <tag group="sClass" tag="cHelpOcc" name="Occultist" abbrev="Occultist"/>
+    <tag group="sClass" tag="cHelpPsy" name="Psychic" abbrev="Psychic"/>
+    <tag group="sClass" tag="cHelpSha" name="Shaman" abbrev="Shaman"/>
+    <tag group="sClass" tag="cHelpSor" name="Sorcerer" abbrev="Sorcerer"/>
+    <tag group="sClass" tag="cHelpSpi" name="Spiritualist" abbrev="Spiritualist"/>
+    <tag group="sClass" tag="cHelpSum" name="Summoner" abbrev="Summoner"/>
+    <tag group="sClass" tag="cHelpSumUn" name="Summoner (Unchained)" abbrev="Summoner (Unchained)"/>
+    <tag group="sClass" tag="cHelpWit" name="Witch" abbrev="Witch"/>
+    <tag group="sClass" tag="cHelpWiz" name="Wizard" abbrev="Wizard"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="S"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="V"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="0"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Divination" name="Divination" abbrev="Div"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="arRPSpellc" name="Spellchymist" abbrev="Spellchymist"/>
+    <tag group="sClass" tag="cHelpAdp" name="Adept" abbrev="Adept"/>
+    <tag group="sClass" tag="cHelpBrd" name="Bard" abbrev="Bard"/>
+    <tag group="sClass" tag="cHelpClr" name="Cleric" abbrev="Cleric"/>
+    <tag group="sRange" tag="Touch"/>
+    <tag group="sClass" tag="cHelpDrd" name="Druid" abbrev="Druid"/>
+    <tag group="sClass" tag="cHelpInq" name="Inquisitor" abbrev="Inquisitor"/>
+    <tag group="sClass" tag="cHelpKPWhN" name="White Necromancer" abbrev="White Necromancer"/>
+    </thing>
+  <thing id="npDetMag1" name="Detect Magic, Improved" description="You detect magical auras. The amount of information revealed depends on how long you study a particular area or subject.\n\n{i}1st Round{/i}: Presence or absence of magical auras.\n{i}2nd Round{/i}: Number of different magical auras and the power of the most potent aura.\n{i}3rd Round{/i}: The strength and location of each aura. If the items or creatures bearing the auras are in line of sight, you can make Knowledge (arcana) skill checks to determine the school of magic involved in each. (Make one check per aura: DC 15 + spell level, or 15 + 1/2 caster level for a nonspell effect.) If the aura eminates from a magic item, you can attempt to identify its properties (see Spellcraft).\n\nMagical areas, multiple types of magic, or strong local magical emanations may distort or conceal weaker auras.\n\n{i}Aura Strength{/i}: An aura&apos;s power depends on a spell&apos;s functioning spell level or an item&apos;s caster level; see the accompanying table. If an aura falls into more than one category, {i}detect magic{/i} indicates the stronger of the two.\n\n{i}Lingering Aura{/i}: A magical aura lingers after its original source dissipates (in the case of a spell) or is destroyed (in the case of a magic item). If {i}detect magic{/i} is cast and directed at such a location, the spell indicates an aura strength of dim (even weaker than a faint aura). How long the aura lingers at this dim level depends on its original power:\n\n{b}Original Strength - Duration of Lingering Aura{/b}\nFaint - 1d6 rounds\nModerate - 1d6 minutes\nStrong - 1d6 x 10 minutes\nOverwhelming - 1d6 days\n\nOutsiders and elementals are not magical in themselves, but if they are summoned, the conjuration spell registers. Each round, you can turn to detect magic in a new area. The spell can penetrate barriers, but 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt blocks it.\n\n{i}Detect magic{/i} can be made permanent with a {i}permanency{/i} spell." compset="Spell" summary="Detects all spells and magic items within 60 ft.">
+    <fieldval field="sLGMythic" value="You can cease concentrating on the spell without ending the spell. It provides no information when you are not concentrating on it, but you can resume and cease concentrating again to use its effects any number of times within the spell’s duration. You gain a bonus equal to your mythic tier to Knowledge (arcana) skill checks to determine the school of magic that you detect. In addition, you can detect magical auras protected by effects that block divination with a caster level check with a DC of 11 plus the caster level of the effect, or through lead sheeting with a DC 20 caster level check, plus 5 per inch of thickness. You can penetrate 3 feet of wood or dirt, 1 foot of stone, or 1 inch of common metal with a DC 15 caster level check, plus 5 for each multiple of that thickness. If the substance or effect blocking your divination is not mythic, or if it already allows a caster level check or saving throw to penetrate its protection, add your mythic tier on your caster level check or saving throw.{br}{br}{b}Augmented:{/b} If you expend two uses of mythic power, any overwhelming magical auras within the area become clearly visible to everyone at the beginning of your turn on the first round you scan an area. Strong areas become clearly visible at the end of your turn on the first round you concentrate on an area, moderate auras at the end of the second round, and faint auras at the end of the third round. Any creature able to see these auras can make Knowledge (arcana) checks to identify the school of magic. Magical auras on creatures, objects, or areas that are invisible are also invisible, and you cannot see auras to which you have no line of sight even if you are able to detect their strength and location."/>
+    <fieldval field="sRange" value="60 ft."/>
+    <fieldval field="sArea" value="Cone-shaped emanation"/>
+    <fieldval field="sDuration" value="Concentration, up to 1 min./level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="WotR2Spells"/>
+    <tag group="sClass" tag="cHelpMag" name="Magus" abbrev="Magus"/>
+    <tag group="sClass" tag="cHelpMed" name="Medium" abbrev="Medium"/>
+    <tag group="sClass" tag="cHelpMes" name="Mesmerist" abbrev="Mesmerist"/>
+    <tag group="sClass" tag="cHelpOcc" name="Occultist" abbrev="Occultist"/>
+    <tag group="sClass" tag="cHelpPsy" name="Psychic" abbrev="Psychic"/>
+    <tag group="sClass" tag="cHelpSha" name="Shaman" abbrev="Shaman"/>
+    <tag group="sClass" tag="cHelpSor" name="Sorcerer" abbrev="Sorcerer"/>
+    <tag group="sClass" tag="cHelpSpi" name="Spiritualist" abbrev="Spiritualist"/>
+    <tag group="sClass" tag="cHelpSum" name="Summoner" abbrev="Summoner"/>
+    <tag group="sClass" tag="cHelpSumUn" name="Summoner (Unchained)" abbrev="Summoner (Unchained)"/>
+    <tag group="sClass" tag="cHelpWit" name="Witch" abbrev="Witch"/>
+    <tag group="sClass" tag="cHelpWiz" name="Wizard" abbrev="Wizard"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="S"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="V"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sDuration" tag="Minute" name="1+ Minutes" abbrev="1+ Minutes"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="1"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Divination" name="Divination" abbrev="Div"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="arRPSpellc" name="Spellchymist" abbrev="Spellchymist"/>
+    <tag group="sClass" tag="cHelpAdp" name="Adept" abbrev="Adept"/>
+    <tag group="sClass" tag="cHelpBrd" name="Bard" abbrev="Bard"/>
+    <tag group="sClass" tag="cHelpClr" name="Cleric" abbrev="Cleric"/>
+    <tag group="sClass" tag="cHelpDrd" name="Druid" abbrev="Druid"/>
+    <tag group="sClass" tag="cHelpInq" name="Inquisitor" abbrev="Inquisitor"/>
+    <tag group="sClass" tag="cHelpKPWhN" name="White Necromancer" abbrev="White Necromancer"/>
+    </thing>
+  <thing id="spIdent2" name="Identify" description="This spell functions as {i}detect magic{/i}, except that it gives you a +10 enhancement bonus on Spellcraft checks made to identify the properties and command words of magic items in your possession. This spell does not allow you to identify artifacts." compset="Spell" summary="Gives +10 bonus to identify magic items." replaces="spIdentif1">
+    <fieldval field="sCompDesc" value="wine stirred with an owl&apos;s feather"/>
+    <fieldval field="sLGMythic" value="You add twice your mythic tier on Spellcraft checks made to identify the properties and command words of magic items in your possession. In addition, you can identify the properties of any magical item not in your possession that is within the area of effect by concentrating on it as a standard action, adding your mythic tier to the Spellcraft check.{br}{br}{b}Augmented (6th):{/b} If you expend two uses of mythic power, you can identify one power of an artifact by succeeding at a caster level check against a DC equal to 10 plus twice the artifact’s caster level. Learning one property of an artifact expends the spell."/>
+    <fieldval field="sRange" value="60 ft."/>
+    <fieldval field="sArea" value="Cone-shaped emanation"/>
+    <fieldval field="sDuration" value="3 rounds/level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <usesource source="WotR2Spells"/>
+    <tag group="sClass" tag="cHelpSor" name="Sorcerer" abbrev="Sorcerer"/>
+    <tag group="sClass" tag="cHelpSpi" name="Spiritualist" abbrev="Spiritualist"/>
+    <tag group="sClass" tag="cHelpSum" name="Summoner" abbrev="Summoner"/>
+    <tag group="sClass" tag="cHelpSumUn" name="Summoner (Unchained)" abbrev="Summoner (Unchained)"/>
+    <tag group="sClass" tag="cHelpWit" name="Witch" abbrev="Witch"/>
+    <tag group="sClass" tag="cHelpWiz" name="Wizard" abbrev="Wizard"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="M"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="S"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="V"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sDuration" tag="Round" name="1+ Rounds" abbrev="1+ Rounds"/>
+    <tag group="sLevel" tag="2"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Divination" name="Divination" abbrev="Div"/>
+    <tag group="DescInfo" tag="spDeteMag0" name="Detect Magic" abbrev="Detect Magic"/>
+    <tag group="SpellEff" tag="BuffSkill" name="Increase Skill Bonus" abbrev="Increase Skill Bonus"/>
+    <tag group="sCastTime" tag="Action1" name="1 action" abbrev="1 action"/>
+    <tag group="sClass" tag="cHelpAlc" name="Alchemist" abbrev="Alchemist"/>
+    <tag group="sClass" tag="cHelpBrd" name="Bard" abbrev="Bard"/>
+    <tag group="sClass" tag="cHelpKPWhN" name="White Necromancer" abbrev="White Necromancer"/>
+    <tag group="sClass" tag="cHelpMed" name="Medium" abbrev="Medium"/>
+    <tag group="sClass" tag="cHelpOcc" name="Occultist" abbrev="Occultist"/>
+    <tag group="sClass" tag="cHelpPsy" name="Psychic" abbrev="Psychic"/>
+    </thing>
+  </document>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document signature="Hero Lab Structure">
+  <loadonce key="COM_Source_210 - Dreamscarred Press"/>
+
+  <!-- ============================================== -->
+  <!-- New Parent Sources                             -->
+  <!-- ============================================== -->
+  <source
+    id="pDscar"
+    name="Dreamscarred Press"
+    selectable="no"
+    parent="p3PPPack"
+    sortorder="10"
+    description="Dreamscarred Press Pathfinder Compatible Books">
+    </source>
+
+  <source
+    id="pPathOfWar"
+    name="DSP - Path of War"
+    selectable="no"
+    parent="pDscar"
+    sortorder="10"
+    description="Dreamscarred Press Path of War Pathfinder Books.">
+    </source>
+
+  <source
+    id="pPsionics"
+    name="DSP - Psionics"
+    selectable="no"
+    parent="pDscar"
+    sortorder="10"
+    description="Psionics rules for Pathfinder inputted by the HL Community.">
+    </source>
+
+  <source
+    id="pPsiClOp"
+    name="Psionic Class Options"
+    selectable="no"
+    parent="pPsionics"
+    sortorder="10"
+    description="Enables high psionics rules variants for class and archetype progressions from the Psionic Augmented line of books.">
+    </source>
+
+  <!-- ============================================== -->
+  <!-- New Child Psionic Sources                      -->
+  <!-- ============================================== -->
+  <source
+    id="pPsiUn"
+    name="DSP - Ultimate Psionics"
+    selectable="yes"
+    parent="pPsionics"
+    sortorder="5"
+    description="Psionics rules for Pathfinder inputted by the HL Community.">
+    </source>
+
+  <source
+    id="srcPUAuSev"
+    name="DSP - Psionics Augmented: 7th Path"
+    selectable="yes"
+    parent="pPsionics"
+    sortorder="10"
+    description="Powers and class options related to spiritual energy.">
+    </source>
+
+  <source
+    id="srcMyPsi"
+    name="DSP - Mythic Psionics"
+    selectable="yes"
+    parent="pPsionics"
+    sortorder="10"
+    description="Mythic Psionic rules for Pathfinder inputted by the HL Community.">
+    </source>
+
+  <source
+    id="srcGiftBla"
+    name="Free Gifted Blade for soulknives"
+    selectable="yes"
+    parent="pPsiClOp"
+    sortorder="10"
+    description="Gives all soulknives the benefits of the Gifted Blade archetype for free.">
+    </source>
+
+  <!-- ============================================== -->
+  <!-- New Child Path of War Sources                  -->
+  <!-- ============================================== -->
+  <source
+    id="srcPathOfW"
+    name="DSP - Path of War"
+    selectable="yes"
+    parent="pPathOfWar"
+    sortorder="10"
+    description="Path of War for pathfinder.">
+    </source>
+
+  <source
+    id="srcPOWEx"
+    name="DSP - Path of War Expanded Playtest"
+    selectable="yes"
+    parent="pPathOfWar"
+    sortorder="10"
+    description="Public playtest for Path of War Expanded.">
+    </source>
+
+  <source
+    id="srcDPthMed"
+    name="DSP - Divergent Paths: Medic"
+    selectable="yes"
+    parent="pPathOfWar"
+    sortorder="15"
+    description="Path of War divergent path classes.">
+    </source>
+
+</document>

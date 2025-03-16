@@ -1,0 +1,1209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document signature="Hero Lab Data">
+  <thing id="Quiver_AA" name="Quiver of Abundant Ammunition" description="This item appears to be a normal quiver that can hold up to 20 arrows. At the start of each round this quiver replaces any nonmagical ammunition taken from it the round before. \n\nIf you cast a spell that enhances projectiles, such as align weapon or greater magic weapon, on this container, all ammunition produced by the quiver are affected by that spell." compset="Wondrous">
+    <fieldval field="iCL" value="1"/>
+    <fieldval field="gCost" value="4000"/>
+    <fieldval field="shortname" value="Abundant Quiver"/>
+    <fieldval field="gWeight" value="3"/>
+    <tag group="thing" tag="holder"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="iSchool" tag="Conjur"/>
+    <tag group="iSubschool" tag="Summoning"/>
+    <tag group="Helper" tag="AlwaysAvl"/>
+    </thing>
+  <thing id="A_tangle" name="Arrows, Tangleshot" description="This arrow is topped with a small bottle containing a small quantity of tanglefoot goo. Elves frequently use these arrows to slow or stop fleeing opponents or to capture animals without killing them.\n\nBenefit: You fire a tangleshot arrow as a ranged touch attack; the arrow deals no damage when it hits, but the target is splashed with the alchemical adhesive. The reduced amount of the glue means this arrow is less effective than an actual tanglefoot bag (DC 10 Reflex save, DC 12 Strength check to break, 10 points of slashing damage to cut through, DC 10 Concentration check).\n\nDrawback: The weight of a tangleshot arrow reduces its range increment to half normal." compset="Gear">
+    <fieldval field="shortname" value="Tangleshot"/>
+    <fieldval field="gCost" value="20"/>
+    <fieldval field="gWeight" value=".2"/>
+    <tag group="gType" tag="AlchWeapon"/>
+    <tag group="Helper" tag="UsesQty"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Makes bows range halved
+    eachpick.field[wRangeInc].value /= 2
+    ~ Delete the damage tag
+    perform eachpick.delete[wMain.?]
+nexteach]]></eval>
+    </thing>
+  <thing id="A_Broad" name="Arrows, Broadhead" description="Broad head arrows have a broader head than a normal arrow, making them heavier and able to deal more damage when it hits.\n\nBenefit: Broad head arrows deal 1d8 hit points of damage when fired from a shortbow and 1d10 when fired from a longbow.\n\nDrawback: The increased weight reduces the weapon&apos;s range increment by 10 feet." compset="Gear">
+    <fieldval field="shortname" value="Broadhead"/>
+    <fieldval field="gCost" value=".08"/>
+    <fieldval field="gWeight" value=".2"/>
+    <tag group="gType" tag="Weapon"/>
+    <tag group="Helper" tag="UsesQty"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Makes bows range halved
+    eachpick.field[wRangeInc].value -= 10
+    ~ Increase the damage
+
+if (eachpick.tagis[wMain.1d8_6] = 1) then
+    ~ d8 -> d10
+    perform eachpick.tagreplace[wMain.1d8_6,wMain.1d10_304]
+else 
+    ~ d6 -> d8
+    perform eachpick.tagreplace[wMain.1d6_5,wMain.1d8_6]
+endif
+nexteach]]></eval>
+    </thing>
+  <thing id="A_fire" name="Arrows, Fire" description="Fire arrows are specially constructed devices, designed to stay alight even in the midst of wind and rain through the use of a broad head and a small internal reservoir of oil.\n\nBenefit: A fire arrow will remain alight for 1d6 rounds after it has been ignited and will deal an additional 1d4 points of fire damage when it strikes. \n\nDrawback: The range increment of a fire arrow is reduced by 20 feet." compset="Gear">
+    <fieldval field="gWeight" value=".2"/>
+    <fieldval field="gCost" value="15"/>
+    <fieldval field="shortname" value="Fire Arrow"/>
+    <tag group="gType" tag="AlchWeapon" name="Alchemical Weapons" abbrev="Alch. Weapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Makes bows range halved
+    eachpick.field[wRangeInc].value -= 20
+    ~ Increase the damage
+    eachpick.field[wDamExtra].text = " +1d4 fire"
+nexteach]]></eval>
+    </thing>
+  <thing id="A_thunder" name="Arrows, Thunder" description="Similar to a thunderstone, a thunder arrow has a blunted point that creates a deafening bang when it strikes a hard surface.\n\nBenefit: Creatures within a 10-foot-radius spread from the point of impact must make a DC 15 Fortitude save or be deafened for 1 hour.\n\nDrawback: The range increment of a thunder arrow is reduced by 20 feet due to the additional weight.\n\nCreation: Creating a thunder arrow requires a Craft (alchemy) skill check (DC 25) and a Craft (fletcher) skill check (DC 15)." compset="Gear">
+    <fieldval field="gWeight" value=".2"/>
+    <fieldval field="gCost" value="50"/>
+    <fieldval field="shortname" value="Thunder Arrow"/>
+    <fieldval field="gCraftDC" value="25"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <tag group="CraftSkill" tag="skCrafAlch"/>
+    <tag group="gType" tag="AlchWeapon" name="Alchemical Weapons" abbrev="Alch. Weapon"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Reduced range
+    eachpick.field[wRangeInc].value -= 20
+nexteach]]></eval>
+    </thing>
+  <thing id="A_raining" name="Arrows, Raining" description="This thick-shafted arrow contains a reservoir of holy water and is designed to burst on impact, hitting the target and splashing nearby creatures.\n\nBenefit: The reservoir of holy water is designed to burst on impact, hitting the target and splashing nearby creatures as if you had thrown the vial.\n\nDrawback: A raining arrow has a -2 penalty on attack rolls due to its weight." compset="Gear">
+    <fieldval field="gWeight" value=".2"/>
+    <fieldval field="gCost" value="30"/>
+    <fieldval field="shortname" value="Raining Arrow"/>
+    <tag group="gType" tag="AlchWeapon" name="Alchemical Weapons" abbrev="Alch. Weapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Reduced attack bonus
+    eachpick.field[wAttRanged].value -= 2
+nexteach]]></eval>
+    </thing>
+  <thing id="A_Blunt" name="Arrows, Blunt" description="These arrows have rounded wooden tips. \n\nBenefit: Blunt Arrows deal bludgeoning damage rather than piercing damage. An archer can use a blunt arrow to deal nonlethal damage (at the normal -4 attack penalty for using a lethal weapon to deal nonlethal damage)." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value=".1"/>
+    <fieldval field="shortname" value="Blunt Arrow"/>
+    <tag group="gType" tag="Weapon" name="Weapon" abbrev="Potion"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Makes bows deal bludgeoning damage
+    perform eachpick.tagreplace[wType.P,wType.B]
+nexteach]]></eval>
+    </thing>
+  <thing id="A_bodkin" name="Arrows, Bodkin" description="Bodkin arrows have long, narrow, metal points instead of the broader heads commonly used with most arrows. This far smaller impact area of the arrow allows it to penetrate armor with ease.\n\nBenefit: These arrows gain a +2 bonus to attacks rolls against targets that have an armor or natural armor bonus." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value=".2"/>
+    <fieldval field="shortname" value="Bodkin"/>
+    <tag group="gType" tag="Weapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Reduced attack bonus
+    eachpick.field[wAttRanged].value += 2
+nexteach]]></eval>
+    </thing>
+  <thing id="A_sunrod" name="Arrows, Sunrod" description="This gold-tipped, iron arrow glows brightly when it strikes a target. It clearly illuminates a 30-foot radius and provides shadowy illumination in a 60-foot radius. It glows for 6 hours, after which the gold tip is burned out and worthless.\n\nDrawback: The weight of a sunrod arrow reduces its range increment to half normal." compset="Gear">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="5"/>
+    <fieldval field="shortname" value="Sunrod Arrow"/>
+    <tag group="gType" tag="AlchWeapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Decreases bows range
+    eachpick.field[wRangeInc].value /= 2
+nexteach]]></eval>
+    </thing>
+  <thing id="A_grapple" name="Arrows, Grappling" description="This arrow has a heavily barbed head designed to dig into and hold onto almost any surface. It also has 3 curved spikes attacked perpendicular to the shaft, as to resemble a grappling hook. There is a small hole above the nock so that a rope can be attached.\n\nThis arrow can be used in two ways: with its hooks or with its head. If the hooks are used, the player acts as if he&apos;s using a grappling hook, using his ranged attack instead of use rope check. The range and bonus are also different.\n\nWhen using the head, the player makes a ranged attack against the target he wishes the arrow to stick to, with a modified range and bonus). The arrow must deal at least 1 point of damage to the surface to stick, after taking hardness into consideration. The arrow can support a number of pounds worth of weight equal to the modified result of the damage roll x 30. If the maximum weight is exceeded, the arrow breaks and the rope is detached.\n\nA player can determine how much weight the arrow can support with a successful use rope check, DC 15. If the check misses by 5 or less, then the player cannot determine the weight the arrow can support. If the check misses by 6-10, then the weight is misestimated at +20 lbs or -20 lbs (1d2). If the check misses by 11-15, then the weight is misestimated at +40 or -14 lbs (1d2).\n\nIf a player successfuly deals damamge to an enemy with this arrow, the DC for the heal check to stabilize that person is at +4." compset="Gear">
+    <fieldval field="gWeight" value=".5"/>
+    <fieldval field="gCost" value="1"/>
+    <fieldval field="shortname" value="Grappling Arrow"/>
+    <tag group="gType" tag="Weapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Reduced attack bonus
+    eachpick.field[wAttRanged].value -= 4
+    ~Reduced range
+    eachpick.field[wRangeInc].value -= 20
+nexteach]]></eval>
+    </thing>
+  <thing id="A_cld_iron" name="Arrows, Cold Iron" description="This iron, mined deep underground and known for its effectiveness against demons and fey creatures, is forged at a lower temperature to preserve its delicate properties.\n\nHP/inch 30; Hardness 10; Cost Weapons x2 normal. Add magic enhancement +2,000 gp." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value=".1"/>
+    <fieldval field="shortname" value="Cold Iron Arrow"/>
+    <tag group="gType" tag="Weapon" name="Weapon" abbrev="Potion"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    </thing>
+  <thing id="A_bleeding" name="Arrows, Bleeding" description="This sharpened hollow tube looks like it was originally a narrow proboscis on some giant insect, but it actually comes from a strange carnivorous plant.\n\nBenefit: A bleeding arrow deals normal damage when it hits a creature. Each round thereafter, the creature bleeds for 1 point of damage until the bleeding is stopped by a DC 10 Heal check or the application of a cure spell or some other healing magic. A critical hit does not multiply the bleed damage. Creatures immune to critical hits (such as plants and constructs) are immune to the bleed damage dealt by this weapon." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value="360"/>
+    <fieldval field="shortname" value="Bleeding Arrow"/>
+    <tag group="gType" tag="Weapon" name="Weapon" abbrev="Potion"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    </thing>
+  <thing id="A_smoke" name="Arrows, Smoke" description="This arrow is actually a specially-shaped smokestick that can be fired from a bow.\n\nBenefit: A smoke arrow trails smoke as it flies, and creates a 5-foot cube of smoke where it strikes. It otherwise functions like a normal arrow in terms of damage, range, and so on." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value="10"/>
+    <fieldval field="shortname" value="Smoke Arrow"/>
+    <tag group="gType" tag="AlchWeapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    </thing>
+  <thing id="A_Splinter" name="Arrows, Splintercloud" description="The shaft of this arrow is formed of numerous small bone fragments painstakingly glued together.\n\nBenefit: When fired, the numerous bone fragments tear themselves apart, forming a 5-foot burst of razor-sharp bones that deals 1d3 points of piercing damage (Reflex DC 18 negates)." compset="Gear">
+    <fieldval field="shortname" value="Splintercloud"/>
+    <fieldval field="gCost" value="25"/>
+    <fieldval field="gWeight" value=".15"/>
+    <tag group="gType" tag="Weapon"/>
+    <tag group="Helper" tag="UsesQty"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~ Decrease the damage
+    perform eachpick.tagreplace[wMain.?,wMain.1d3_3]
+nexteach]]></eval>
+    </thing>
+  <thing id="A_tripping" name="Arrows, Tripping" description="This squat arrow has a large, bulbous, metal tip that expands and flattens in flight.\n\nBenefit: If the arrow hits, it makes a trip attack against the target with a CMB of +5; the target falls prone if it fails its check, but if it succeeds it cannot attempt to trip you in return." compset="Gear">
+    <fieldval field="gWeight" value=".2"/>
+    <fieldval field="gCost" value="25"/>
+    <fieldval field="shortname" value="Tripping Arrow"/>
+    <tag group="gType" tag="Weapon" name="Weapon" abbrev="Potion"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~Makes bows deal bludgeoning damage
+    perform eachpick.tagreplace[wType.P,wType.B]
+nexteach]]></eval>
+    </thing>
+  <thing id="A_Holy1" name="Arrows, Holy + 1" description="Holy arrows are imbued with holy power. \n\nBenefit: Holy arrows are good-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2d6 points of damage against all creatures of evil alignment." compset="Gear">
+    <fieldval field="shortname" value="Holy Arrow"/>
+    <fieldval field="gCost" value="366"/>
+    <fieldval field="gWeight" value=".15"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <tag group="gType" tag="Weapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <eval phase="PostLevel" priority="5000 "><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~ Increase the damage
+    #applybonus[wDamBonus, eachpick, 1]
+    eachpick.field[wDamExtra].text = " plus 2d6 "
+    eachpick.field[atrBonus].value = 1
+nexteach]]></eval>
+    </thing>
+  <thing id="wtst" name="test weapon" compset="Weapon">
+    <fieldval field="atrBonus" value="1"/>
+    <fieldval field="wFixRanDam" value="1"/>
+    <tag group="EquipType" tag="Metal"/>
+    </thing>
+  <thing id="A_Holy" name="Arrows, Holy" description="Holy arrows are imbued with holy power. \n\nBenefit: Holy arrows are good-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2d6 points of damage against all creatures of evil alignment." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value="166"/>
+    <fieldval field="shortname" value="Holy Arrow"/>
+    <tag group="gType" tag="Weapon" name="Weapon" abbrev="Weapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~ Increase the damage
+    eachpick.field[wDamExtra].text = " plus 2d6 "
+nexteach]]></eval>
+    </thing>
+  <thing id="A_pThog" name="Arrows, poison (Thognorok)" description="An arrow tipped with the poison from the extraplaner spiderlike qlippoth.\n \nPoison (Ex)Bite—injury; save Fort DC 18; frequency 1/round for 4 rounds; effect 1d2 Str; cure 2 consecutive saves." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value=".1"/>
+    <fieldval field="shortname" value="Thognorok Poison Arrow"/>
+    <tag group="gType" tag="Weapon" name="Weapon" abbrev="Weapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    </thing>
+  <thing id="A_phe" name="Arrows, Pheramone" description="Benefit: Any creature with the scent ability gains a +2 bonus on attack and damage rolls made against a target marked with a pheromone arrow. This effect lasts for 1 hour or until the target spends 1 minute washing." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value=".1"/>
+    <fieldval field="shortname" value="Cold Iron Arrow"/>
+    <tag group="gType" tag="Weapon" name="Weapon" abbrev="Weapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    </thing>
+  <thing id="A_UnHoly" name="Arrows, Unholy + 1" description="Holy arrows are imbued with holy power. \n\nBenefit: Holy arrows are evil-aligned and thus bypasses the corresponding damage reduction. It deals an extra 2d6 points of damage against all creatures of good alignment." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value="366"/>
+    <fieldval field="shortname" value="Holy Arrow"/>
+    <tag group="gType" tag="Weapon" name="Weapon" abbrev="Weapon"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <eval phase="PostLevel" priority="5000"><![CDATA[~ If we're not enabled, get out now
+doneif (field[gIsEquip].value = 0)
+
+~ Modify all the bows and ranged attacks
+foreach pick in hero from BaseWep where "wFtrGroup.Bows"
+    ~ Increase the damage
+    #applybonus[wDamBonus, eachpick, 1]
+    eachpick.field[wDamExtra].text = " plus 2d6 "
+    eachpick.field[atrBonus].value = 1
+nexteach]]></eval>
+    </thing>
+  <thing id="gMidBlt" name="Midnight Bolt" description="This sharpened hollow tube looks like it was originally a narrow proboscis on some giant insect, but it actually comes from a strange carnivorous plant.\n\nBenefit: A Midnight Bolt automatically bypasses DR and does max double-damage on any hit." compset="Gear">
+    <fieldval field="gWeight" value=".15"/>
+    <fieldval field="gCost" value="360"/>
+    <fieldval field="shortname" value="Bleeding Arrow"/>
+    <tag group="gType" tag="Weapon" name="Weapon" abbrev="Potion"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="UsesQty" name="UsesQty" abbrev="UsesQty"/>
+    <tag group="Helper" tag="Custom"/>
+    </thing>
+  <thing id="trWeapProf" name="Weapon Proficiency" description="Choose one type of weapon, such as the spiked chain or whip. You understand how to use that type of exotic weapon in combat, and can utilize any special tricks or qualities that exotic weapon might allow.\n\n{b}Benefit{/b}: You make attack rolls with the weapon normally.\n\n{b}Normal{/b}: A character who uses a weapon with which he is not proficient takes a –4 penalty on attack rolls.\n\n{b}Special{/b}: You can gain the Weapon Proficiency Trait multiple times. Each time you take the feat, it applies to a new type of exotic weapon." compset="Trait" summary="You are proficient with one weapon you normally wouldn&apos;t be." uniqueness="useronce">
+    <usesource source="WotR2Traits"/>
+    <tag group="fShowWhat" tag="Weapons"/>
+    <tag group="ChooseSrc1" tag="Thing"/>
+    <tag group="Custom" tag="WeaponProf"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="trCategory" tag="Combat"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're disabled, do nothing
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      ~ If we haven't chosen anything, get out now
+      doneif (field[usrChosen1].ischosen + tagis[Target.?] = 0)
+
+      if (tagcount[Hero.MartVersa] + hero.tagcount[Hero.MartMaster] <> 0) then
+        perform field[usrChosen1].chosen.pulltags[wFtrGroup.?]
+
+        ~ this call takes care of mythic martial versatility and mythic martial mastery
+        call MytMartial
+
+        foreach thing in BaseWep where "wProfReq.Exotic & (" & tagids[wFtrGroup.?,"|"] & ")"
+          perform eachthing.pulltags[WepProf.?]
+          nexteach
+
+        perform hero.pushtags[WepProf.?]
+
+        foreach pick in hero from BaseWep
+          if (eachpick.tagmatch[wFtrGroup,wFtrGroup,initial] <> 0) then
+            perform eachpick.assign[Helper.ExoticProf]
+            endif
+          nexteach
+      else
+        ~ Assign the appropriate tag to all weapons that meet the criteria
+        var id as string
+        var name as string
+        call fTargetId
+
+        foreach pick in hero where "IsWeapon." & id
+          perform eachpick.assign[Broadcast.WepProf]
+          perform eachpick.assign[Helper.ExoticProf]
+          perform eachpick.pushtags[Broadcast.?]
+          nexteach
+
+        ~ Set our 'short name'
+        field[shortname].text = "EWP: " & name
+        field[sbName].text = "Exotic Weapon Proficiency (" & lowercase(name) & ")"
+
+        ~ Forward the weapon specialization tag for the weapon to the hero
+        perform hero.assignstr["WepProf." & id]
+        endif
+
+      ~ Pull the IsWeapon tag if we choose quarterstaff so that we can detect
+      ~ that in the pre-req for this feat.
+      if (field[usrChosen1].chosen.tagis[IsWeapon.wQtrstaff] <> 0) then
+        perform field[usrChosen1].chosen.pulltags[IsWeapon.?]
+        endif]]></eval>
+    </thing>
+  <thing id="gCoffeeGround" name="Coffee, Ground per lb" description="Ground coffee beans for use in the coffee pot." compset="Gear" summary="Ground coffee beans for use in the coffee pot." stacking="merge">
+    <fieldval field="gWeight" value="1.0"/>
+    <fieldval field="gCost" value="0.08"/>
+    <usesource source="PCAdvArm" parent="PCHeader" name="Adventurer&apos;s Armory"/>
+    <usesource source="UltEquip" parent="UEHeader" name="Ultimate Equipment"/>
+    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
+    <tag group="gType" tag="FoodDrink" name="Food &amp; Drink" abbrev="Food &amp; Drink"/>
+    </thing>
+  <thing id="gCoffeeWhole" name="Coffee, Whole bean per lb" description="Whole bean coffee that can be ground and used in the coffee pot." compset="Gear" summary="Whole bean coffee that can be ground and used in the coffee pot." stacking="merge">
+    <fieldval field="gWeight" value="1.0"/>
+    <fieldval field="gCost" value="0.05"/>
+    <usesource source="PCAdvArm" parent="PCHeader" name="Adventurer&apos;s Armory"/>
+    <usesource source="UltEquip" parent="UEHeader" name="Ultimate Equipment"/>
+    <tag group="Helper" tag="GearNoSize" name="GearNoSize" abbrev="GearNoSize"/>
+    <tag group="gType" tag="FoodDrink" name="Food &amp; Drink" abbrev="Food &amp; Drink"/>
+    </thing>
+  <thing id="trW2CoC" name="Child of the Crusades" description="Your parents were members of the crusade, as were their parents before them. (If you are an elf, gnome, or other long-lived race, these could be brothers or cousins instead, since it&apos;s possible that the Worldwound simply didn&apos;t exist at a time before you were born.) The righteousness of the crusades sometimes feels as if it runs in your very blood, and it bolsters you against demonic influence. Your parents may be alive still, or they may have perished on a mission - that choice is up to you. You grew up knowing them, though, and their zeal and devotion to the crusade is the primary reason you feel the same way. They&apos;ve told you of other family members who have also been involved in the crusade, and it&apos;s not uncommon for you to meet a distant cousin or long-lost aunt, uncle, or other family member while traveling among the border towns of Mendev. This strong family tie bolsters your mind and sense of belonging to the crusade. Once per day when you fail a saving throw against an effect created by a demon that would possess or incapacitate you mentally, you may immediately reroll that saving throw as a free action. You must take the second result, even if it is worse.\n\n{i}Associated Mythic Path{/i}: Marshal.\nThe PC gains a +2 trait bonus on Will saves. Whenever he successfully saves against a mind-affecting effect from a demon, as an immediate action the PC can expend one use of mythic power to cause the demon to become staggered for a number of rounds equal to the PC&apos;s mythic tier. The demon can reduce this effect to 1 round by making a successful Will save (DC = 10 + the PCs&apos; mythic tier + the PC&apos;s Charisma modifier).\n\n{i}Multiple Characters{/i}: If other characters take this trait, you should all be related - you can be siblings, cousins, or even more distant relations, but you should all be aware of this shared lineage." compset="Trait" summary="Against possession/incapacitation, free action: Reroll failed save, keep 2nd result." uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="WotR2Traits"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="trCategory" tag="Campaign" name="Campaign" abbrev="Campaign"/>
+    <tag group="trCategory" tag="PathWraRig" name="Wrath of the Righteous" abbrev="Wrath of the Righteous"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <eval phase="PostLevel" priority="10000">doneif (#tierbase[] = 0)
+      doneif (#haspath[mypMarshal] = 0)
+
+      #applybonus[BonTrait,hero.child[svWill],2]</eval>
+    </thing>
+  <thing id="trW2ChEnc" name="Chance Encounter" description="You always tended to get in over your head as a child, but your biggest youthful misadventure was the time you &quot;accidentally&quot; found yourself behind enemy lines in the Worldwound. You probably never would have made it back home to Kenabres if not for the help of a mysterious woman who helped you trick your way through a group of cultists. The woman never told you her name, but you remember her beauty and a deep sense of sadness she seemed to carry with her. Her skill with the bow was impressive as well, but the thing you remember most about her was the symbol of Desna she wore - she often held onto it without seeming to realize it, as if the connection to the goddess was something she clung to in a sense of need, as someone might clutch at a rope while dangling over a vast pit. She left your side a few moments before you were picked up by a patrol of crusaders, who finished the job of escorting you back to safety, and you&apos;ve never seen her again. Ever since, you&apos;ve just been lucky when it comes to trickery. Once per day, if you fail an Acrobatics, Bluff, Disguise, Sleight of Hand, or Stealth check, you may immediately reroll that check as a free action. You must take the second result, even if it is worse.\n\n{i}Associated Mythic Path{/i}: Trickster.\nThe PC gains a +2 trait bonus on Reflex saves. By expending one use of mythic power, the PC can take 20 on an Acrobatics, Bluff, Disguise, Sleight of Hand, or Stealth check without an increase in the time required to make the check.\n\n{i}Multiple Characters{/i}: You and other characters were all saved by the same mysterious woman in your childhood. This could have been the same event, or she could have saved you on separate occasions - the discovery that someone else was saved by the mysterious stranger has resulted in a long friendship (or perhaps friendly rivalry) with the others she rescued." compset="Trait" summary="Re-reroll failed Acrobatics, Bluff, Disguise, Sleight of Hand or Stealth check, keep 2nd result." uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="WotR2Traits"/>
+    <tag group="trCategory" tag="PathWraRig" name="Wrath of the Righteous" abbrev="Wrath of the Righteous"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="trCategory" tag="Campaign" name="Campaign" abbrev="Campaign"/>
+    <eval phase="PostLevel" priority="10000">doneif (#tierbase[] = 0)
+      doneif (#haspath[mypTrickst] = 0)
+
+      #applybonus[BonTrait,hero.child[svRef],2]</eval>
+    </thing>
+  <thing id="trW2ExpAfl" name="Exposed to Awfulness" description="When you were a child, you were nearly slain by a demon that managed to make its way through the {i}wardstones{/i} into the lands beyond. The demon was slain before it could kill you, but you lingered at death&apos;s door in a coma for weeks before waking. Ever since then, you&apos;ve been unusually hale and hearty, as if your body had endured its brush with awfulness by becoming supernaturally fit. But still, the scars (whether physical or purely mental) of your brush with death remain, and nightmares of what could have happened often plague your sleep. Something, be it your own personal force of will, some strange &quot;infection&quot; from the assault, or perhaps a combination of both, has made you stronger than before. You&apos;re not sure what to make of the theories that you survived this exposure to awfulness because you yourself have some trace of demonic heritage that helped give you the advantage you needed to survive - but whatever it was, you&apos;re glad for it! Your strange resistance to demonic attacks persists to this day. Once per day when you fail a saving throw against an effect created by a demon that would kill or physically incapacitate you, you can immediately reroll that saving throw as a free action. You must take the second result, even if it is worse.\n\n{i}Associated Mythic Path{/i}: Guardian.\nThe PC gains +3 hit points per level. When she is reduced to negative hit points by an attack or effect from a demon, as an immediate action the PC can expend one use of mythic power to heal damage equal to 2d6 + twice her mythic tier. This healing occurs after the damage is done - if the damage is enough to kill the PC, she cannot activate this ability.\n\n{i}Multiple Characters{/i}: You and any others with this trait are related, if only distantly. You could be siblings or cousins - a condition that perhaps lends some credence to the theory that all of you share more than just a common bloodline." compset="Trait" summary="Vs Death/Incapacitation by demon: Reroll saving throw as free action, keep 2nd result." uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="WotR2Traits"/>
+    <tag group="trCategory" tag="PathWraRig" name="Wrath of the Righteous" abbrev="Wrath of the Righteous"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="trCategory" tag="Campaign" name="Campaign" abbrev="Campaign"/>
+    <eval phase="PostLevel" priority="10000">doneif (#tierbase[] = 0)
+      doneif (#haspath[mypGuard] = 0)
+
+      field[abValue].value += 3 * herofield[tHitDice].value
+      hero.child[Totals].field[tBonusHP].value += field[abValue].value</eval>
+    </thing>
+  <thing id="trW2RftOrph" name="Riftwarden Orphan" description="You bear a strange birthmark on your body - something you&apos;ve learned is the Sign of the Seeker&apos;s Spiral, a rune associated with the secret society known as the Riftwardens. You have researched this rune, and have learned that the mark sometimes appears on the children of Riftwardens who have been exposed to particularly strange planar energies. Unfortunately, you never knew your parents, for you were raised by a foster family in Kenabres. Your foster family has confirmed that both of your parents were Riftwardens, and has further confirmed that your parents went missing on a secret mission into the Worldwound less than a month after you were born. You&apos;re not sure what happened to them, but you&apos;re certain they&apos;re dead - and your gut tells you that the one who murdered them yet lives! In any event, you&apos;ve long felt magic in your blood, and casting spells comes easily to you. You gain a +2 trait bonus on all concentration checks.\n\n{i}Associated Mythic Path{/i}: Archmage.\nThe PC gains a +4 trait bonus on caster level checks to penetrate a demon&apos;s spell resistance. Once per day, he can recharge a charged magic item by expending one use of mythic power. Doing so adds a number of charges equal to 1d10 + his mythic tier to the item, up to its normal maximum number of charges.\n\n{i}Multiple Characters{/i}: You should be siblings with any other character that takes this trait, so that you share the same missing parents. Your parents could even be foster parents." compset="Trait" uniqueness="unique">
+    <fieldval field="abValue" value="2"/>
+    <usesource source="WotR2Traits"/>
+    <tag group="trCategory" tag="Campaign" name="Campaign" abbrev="Campaign"/>
+    <tag group="trCategory" tag="PathWraRig" name="Wrath of the Righteous" abbrev="Wrath of the Righteous"/>
+    <eval phase="PostLevel" priority="10000" index="2">doneif (#tierbase[] = 0)
+      doneif (#haspath[mypArchmag] = 0)
+
+      field[trkMax].value += 1
+      perform assign[User.Tracker]
+      perform assign[Usage.Day]</eval>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      herofield[tConcCheck].value += field[abValue].value]]>
+      <before name="Calc cConcCheck"/>
+      </eval>
+    </thing>
+  <thing id="trW2StFur" name="Stolen Fury" description="You were forced to take part in a demonic ritual as a youth after having been captured by cultists. Whatever the ritual&apos;s purpose may have been, it didn&apos;t work out the way your captors envisioned - rather than corrupting your soul, you absorbed the ritual&apos;s energy and made it your own before you escaped to safety. Ever since, you&apos;ve been haunted by strange nightmares about the ritual, and have long felt that the energies it bathed you in have changed you. Recently, those energies have changed - it&apos;s as if you&apos;ve finally managed to come to terms with your past and have turned the ritual&apos;s aftereffects to your advantage, following the old adage of what doesn&apos;t kill you makes you stronger. You&apos;ve been unable to learn more about the ritual or what it was for, but the question lingers in the back of your head to this day. This nagging has instilled in you a fury against demonkind. Today, when you face demons in combat, those energies bolster your fury, granting you a +2 trait bonus on all combat maneuver checks against demons.\n\n{i}Associated Mythic Path{/i}: Champion.\nThe PC gains a +2 trait bonus on Fortitude saves. By expending one use of mythic power as a swift action, she can ignore a single demon&apos;s damage reduction for 1 minute, and increases the critical multiplier of any weapon she wields against that demon by 1.\n\n{i}Multiple Characters{/i}: You and any other PC who takes this trait were all part of the same ritual, and it was only by working together that you managed to escape - further, the support of your fellow ritual survivors has played a key role in your coming to terms with it, and you retain a close bond of friendship (or perhaps a friendly rivalry) to this day." compset="Trait" summary="+2 trait bonus to CMB vs. Demons" uniqueness="unique">
+    <fieldval field="abValue" value="2"/>
+    <usesource source="WotR2Traits"/>
+    <tag group="trCategory" tag="Campaign" name="Campaign" abbrev="Campaign"/>
+    <tag group="trCategory" tag="PathWraRig" name="Wrath of the Righteous" abbrev="Wrath of the Righteous"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <eval phase="PostLevel" priority="10000" index="2">doneif (#tierbase[] = 0)
+      doneif (#haspath[mypChamp] = 0)
+
+      #applybonus[BonTrait,hero.child[svFort],2]</eval>
+    <eval phase="PreLevel" priority="10000"><![CDATA[
+      doneif (tagis[Helper.FtDisable] <> 0)
+
+      #situational[hero.child[ManeuvBon],signed(field[abValue].value) & " trait bonus vs. demons.",field[name].text]]]></eval>
+    </thing>
+  <thing id="trW2TouDiv" name="Touched by Divinity" description="As long as you can remember, you&apos;ve had an unexplainable interest in one deity in particular. One of your parents may have been a priest of this deity, or you may have been an orphan raised by the church, but these alone cannot explain your deep connection to the faith. You&apos;ve always felt calm and at ease in places holy to the deity, and often have dreams about the god or goddess visiting you - most often in the form of a sacred animal or creature. Your faith is strong, even if you don&apos;t happen to be a divine spellcaster - if you are a divine spellcaster, you should be a worshiper of this deity. You begin play with a silver holy symbol of your chosen deity for free. In addition, choose one domain associated with your chosen deity. You gain the use of that domain&apos;s 1st-level domain spell as a spell-like ability usable once per day (CL equals your character level).\n\n{i}Associated Mythic Path{/i}: Hierophant.\nThe PC can select a second domain granted by his affiliated deity. He can use the 1st-level spells of both domains as spell-like abilities a number of times per day each equal to his mythic tier. By expending one use of mythic power, he may use any of these two domains&apos; spells as a spell-like ability, but may only use spells of a level equal to or less than his mythic tier.\n\n{i}Multiple Characters{/i}: If other characters choose this trait, you should all work together to decide what deity you&apos;re associated with - it should be the same deity shared by all of you. You might even share the same dreams." compset="Trait" uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <usesource source="WotR2Traits"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="trCategory" tag="Campaign" name="Campaign" abbrev="Campaign"/>
+    <tag group="trCategory" tag="PathWraRig" name="Wrath of the Righteous" abbrev="Wrath of the Righteous"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="SpecType" tag="SpellLike" name="Spell-Like Ability" abbrev="Spell-Like Ability"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <tag group="User" tag="NeedDomain" name="Sacred Space" abbrev="Sacred Space"/>
+    <eval phase="PostLevel" priority="10000">field[trkMax].value += 2
+      perform assign[User.Tracker]
+      perform assign[Usage.Day]</eval>
+    </thing>
+  <thing id="skW2KnowRel" name="Knowledge (religion)" description="You are educated in a field of study and can answer both simple and complex questions. Like the Craft, Perform, and Profession skills, Knowledge actually encompasses a number of different specialties. Below are listed typical fields of study.\n\n• Arcana (ancient mysteries, magic traditions, arcane symbols, constructs, dragons, magical beasts)\n• Dungeoneering (aberrations, caverns, oozes, spelunking)\n• Engineering (buildings, aqueducts, bridges, fortifications)\n• Geography (lands, terrain, climate, people)\n• History (wars, colonies, migrations, founding of cities)\n• Local (legends, personalities, inhabitants, laws, customs, traditions, humanoids)\n• Nature (animals, fey, monstrous humanoids, plants, seasons and cycles, weather, vermin)\n• Nobility (lineages, heraldry, personalities, royalty)\n• Planes (the Inner Planes, the Outer Planes, the Astral Plane, the Ethereal Plane, outsiders, planar magic)\n• Religion (gods and goddesses, mythic history, ecclesiastic tradition, holy symbols, undead)\n\n{b}Check{/b}: Answering a question within your field of study has a DC of 10 (for really easy questions), 15 (for basic questions), or 20 to 30 (for really tough questions).\n\nContinued - Core Rulebook, pg. 99." compset="Skill" replaces="skKnowRel" uniqueness="useronce">
+    <fieldval field="skShortNm" value="Know (Religion)"/>
+    <fieldval field="skAbbrev" value="Religion"/>
+    <arrayval field="skUnlocks" index="4" value="When you successfully identify a creature, you gain one additional piece of information for every 5 ranks you possess in that Knowledge skill."/>
+    <arrayval field="skUnlocks" index="9" value="When you successfully identify a creature, you gain a +1 competence bonus on attack rolls, opposed ability checks, skill checks, and caster level checks against creatures of that kind (e.g., glabrezu demons, but not other demons or evil outsiders) for 1 minute. This bonus increases by 1 for every 5 ranks beyond 10 you possess in that Knowledge skill."/>
+    <arrayval field="skUnlocks" index="14" value="When you fail a Knowledge check, you can reroll the check at a –10 penalty. The competence bonus above also applies to saving throws against exceptional, spell-like, or supernatural abilities used by creatures you identify."/>
+    <arrayval field="skUnlocks" index="19" value="Whenever you attempt a Knowledge check, you can roll twice and take the better result."/>
+    <tag group="Helper" tag="SkCatKnow" name="Knowledge Skill" abbrev="Knowledge Skill"/>
+    <tag group="Helper" tag="TrainOnly" name="TrainOnly" abbrev="TrainOnly"/>
+    <tag group="ClassSkill" tag="Knowledge" name="All Knowledge Skills" abbrev="All Knowledge Skills"/>
+    <tag group="Helper" tag="ExtraSkill" name="ExtraSkill" abbrev="ExtraSkill"/>
+    <link linkage="skillattr" thing="aWIS"/>
+    </thing>
+  <thing id="skW2Spellcr" name="Spellcraft (Do not use)" description="You are skilled at the art of casting spells, identifying magic items, crafting magic items, and identifying spells as they are being cast.\n\n{b}Check{/b}: Spellcraft is used whenever your knowledge and skill of the technical art of casting a spell or crafting a magic item comes into question. This skill is also used to identify the properties of magic items in your possession through the use of spells such as {i}detect magic{/i} and {i}identify.{/i} The DC of this check varies depending upon the task at hand.\n\n{b}Action{/b}: Identifying a spell as it is being cast requires no action, but you must be able to clearly see the spell as it is being cast, and this incurs the same penalties as a Perception skill check due to distance, poor conditions, and other factors. Learning a spell from a spellbook takes 1 hour per level of the spell (0-level spells take 30 minutes). Preparing a spell from a borrowed spellbook does not add any time to your spell preparation. Making a Spellcraft check to craft a magic item is made as part of the creation process. Attempting to ascertain the properties of a magic item takes 3 rounds per item to be identified and you must be able to thoroughly examine the object.\n\n{b}Retry{/b}: You cannot retry checks made to identify a spell. If you fail to learn a spell from a spellbook or scroll, you must wait at least 1 week before you can try again. If you fail to prepare a spell from a borrowed spellbook, you cannot try again until the next day. When using {i}detect magic{/i} or {i}identify{/i} to learn the properties of magic items, you can only attempt to ascertain the properties of an individual item once per day. Additional attempts reveal the same results.\n\n{b}Special{/b}: If you are a specialist wizard, you get a +2 bonus on Spellcraft checks made to identify, learn, and prepare spells from your chosen school. Similarly, you take a -5 penalty on similar checks made concerning spells from your opposition schools.\n\nAn elf gets a +2 racial bonus on Spellcraft checks to identify the properties of magic items.\n\nIf you have the Magical Aptitude feat, you gain a bonus on Spellcraft checks (see Chapter 5)." compset="Skill" replaces="skSpellcr" uniqueness="unique">
+    <fieldval field="skAbbrev" value="Spell"/>
+    <arrayval field="skUnlocks" index="4" value="Identifying magic items takes 1 full round, and the time required to learn a spell from a spellbook is halved."/>
+    <arrayval field="skUnlocks" index="9" value="You can identify magic items without using {i}detect magic, {/i}though the DC is increased by 10."/>
+    <arrayval field="skUnlocks" index="14" value="Identifying magic items is a standard action, and the time required to learn a new spell from a spellbook is reduced to 1 minute per spell level."/>
+    <arrayval field="skUnlocks" index="19" value="Whenever you attempt a caster level check, attempt a Spellcraft check at a –20 penalty at the same DC. If the spellcraft check succeeds, you gain a +2 circumstance bonus on your caster level check."/>
+    <tag group="Helper" tag="TrainOnly" name="TrainOnly" abbrev="TrainOnly"/>
+    <tag group="Helper" tag="ExtraSkill"/>
+    <link linkage="skillattr" thing="aINT"/>
+    </thing>
+  <thing id="wrthScaleBroach" name="Silver Scale, Broach Sized (Alter Self)" description="Alter Self.  While so altered, the bearer gains +2 on Bluff checks against evil creatures.  However, the scale must be prominently visible (silver side out) while the bearer is altered.\n\nThe five scales vary in size, the smallest no larger than a dwarf&apos;s thumbnail, while the largest is the size of Valor&apos;s palm.  That one has a perfectly straight line cut on one side, doubtless from The Storm King&apos;s blade.  They have a silver sheen on one side, the other side the color of dull pewter.  Each is splattered with dragon&apos;s blood, once blue like liquid sky, now blackened and hard as it dried." compset="Wondrous" summary="Alter Self.  While so altered, the bearer gains +2 on Bluff checks against evil creatures.  However, the scale must be prominently visible (silver side out) while the bearer is altered." uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="abAction" tag="Standard"/>
+    <tag group="Usage" tag="UsesPerDay"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PreLevel"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        #enhancementbonus[hero.child[mNatural], 2]
+
+      #applybonus[svResist, hero.child[svAll], 2]
+
+        endif]]></eval>
+    </thing>
+  <thing id="wrthScalePalm" name="Silver Scale, Palm Sized (Shield Other)" description="Shield Other When activated, the bearer can choose to double the AC and save bonus of the recipient, but must accept penalties to their own AC and saves equal to the normal bonus.\n\nThe five scales vary in size, the smallest no larger than a dwarf&apos;s thumbnail, while the largest is the size of Valor&apos;s palm.  That one has a perfectly straight line cut on one side, doubtless from The Storm King&apos;s blade.  They have a silver sheen on one side, the other side the color of dull pewter.  Each is splattered with dragon&apos;s blood, once blue like liquid sky, now blackened and hard as it dried." compset="Wondrous" summary="Shield Other When activated, the bearer can choose to double the AC and save bonus of the recipient, but must accept penalties to their own AC and saves equal to the normal bonus." uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Usage" tag="UsesPerDay" name=" uses/day" abbrev=" uses/day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="abAction" tag="Standard" name="Standard" abbrev="std"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PreLevel"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        #enhancementbonus[hero.child[mNatural], 2]
+
+      #applybonus[svResist, hero.child[svAll], 2]
+
+        endif]]></eval>
+    </thing>
+  <thing id="wrthScaleGldSvn" name="Silver Scale, Gold Sovereign Sized (Resist Energy)" description="Resist Energy, but only against cold or electricity.  The bearer has Vulnerability: Fire while the effect lasts.  Once during the effect, you may extend your resistance (and your vulnerability) to an adjacent willing ally for one round as an immediate action.\n\nThe five scales vary in size, the smallest no larger than a dwarf&apos;s thumbnail, while the largest is the size of Valor&apos;s palm.  That one has a perfectly straight line cut on one side, doubtless from The Storm King&apos;s blade.  They have a silver sheen on one side, the other side the color of dull pewter.  Each is splattered with dragon&apos;s blood, once blue like liquid sky, now blackened and hard as it dried." compset="Wondrous" summary="Resist Energy, but only against cold or electricity.  The bearer has Vulnerability: Fire while the effect lasts.  Once during the effect, you may extend your resistance (and your vulnerability) to an adjacent willing ally for one round as an immediat" uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Usage" tag="UsesPerDay" name=" uses/day" abbrev=" uses/day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="abAction" tag="Standard" name="Standard" abbrev="std"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PreLevel"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        #enhancementbonus[hero.child[mNatural], 2]
+
+      #applybonus[svResist, hero.child[svAll], 2]
+
+        endif]]></eval>
+    </thing>
+  <thing id="wrthScaleCpprPce" name="Silver Scale, Copper Piece Sized (Grace)" description="Grace, with +5&apos; movement speed.  The next round, the bearer&apos;s movement speed is -10&apos;.\n\nThe five scales vary in size, the smallest no larger than a dwarf&apos;s thumbnail, while the largest is the size of Valor&apos;s palm.  That one has a perfectly straight line cut on one side, doubtless from The Storm King&apos;s blade.  They have a silver sheen on one side, the other side the color of dull pewter.  Each is splattered with dragon&apos;s blood, once blue like liquid sky, now blackened and hard as it dried." compset="Wondrous" summary="Grace, with +5&apos; movement speed.  The next round, the bearer&apos;s movement speed is -10&apos;." uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Usage" tag="UsesPerDay" name=" uses/day" abbrev=" uses/day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="abAction" tag="Immediate"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PreLevel"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        #enhancementbonus[hero.child[mNatural], 2]
+
+      #applybonus[svResist, hero.child[svAll], 2]
+
+        endif]]></eval>
+    </thing>
+  <thing id="wrthScaleThumb" name="Silver Scale, Thumbnail Sized (Feather Fall)" description="Returning Feather Fall [this one is an immediate action to activate].  If the bearer falls less than the maximum height (60&apos;/level), they can use the remaining height to immediately jump back up (to the maximum of whatever distance they had left; if that isn&apos;t enough to get back to where they started, they fall again).  This cannot be used to go higher than the original drop point.  At the top of the jump, the bearer may move 5&apos; in any horizontal direction for free to secure a safe landing.  If they successfully jump back up, they cannot move of their own volition from the landing spot for 2 rounds.  Note that while the jump is effectively immediate, the fall is not (60&apos;/round).\n\nThe five scales vary in size, the smallest no larger than a dwarf&apos;s thumbnail, while the largest is the size of Valor&apos;s palm.  That one has a perfectly straight line cut on one side, doubtless from The Storm King&apos;s blade.  They have a silver sheen on one side, the other side the color of dull pewter.  Each is splattered with dragon&apos;s blood, once blue like liquid sky, now blackened and hard as it dried." compset="Wondrous" summary="Returning Feather Fall (see full description)" uniqueness="unique">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Usage" tag="UsesPerDay" name=" uses/day" abbrev=" uses/day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="abAction" tag="Immediate"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <eval phase="PreLevel"><![CDATA[
+      if (field[gIsEquip].value <> 0) then
+        #enhancementbonus[hero.child[mNatural], 2]
+
+      #applybonus[svResist, hero.child[svAll], 2]
+
+        endif]]></eval>
+    </thing>
+  <thing id="wrthPaintPast" name="Paint the Past" description="Once per day the character can paint a scene as it appeared up to 100 years, plus 10 years/level ago. If the character spends 10 minutes painting she can render the scene as it appeared without fine details (like a landscape). If she spends 30 minutes painting she can render the scene with details and identifiable individuals in action.\n\nWhile the painter does have to be viewing the location to be painted, she does not have to be precise about what specific time period or event should be painted. The gods are good about inspiring her to paint what she wants/needs to see.\n\nWhile she can’t do it on command, the gods occasionally inspire her to paint scenes of the future. The most notable of these is the painting of a ruined Kenebres she has in her pack.\n\nThe character needs painting supplies and a surface to paint on, in order to use this ability. Her painting skill, gives her some ability to craft pigments from found materials (berries, charcoal, etc.) It is expected that an Alchemist could also do this, perhaps better." compset="RaceSpec" replaces="raAasGlitt" uniqueness="useronce">
+    <fieldval field="trkMax" value="1"/>
+    <tag group="Helper" tag="SpecUp" name="SpecUp" abbrev="SpecUp"/>
+    <tag group="SpInfo" tag="spKPViePa2"/>
+    <tag group="AllowRCust" tag="rAasimar" name="Aasimar" abbrev="Aasimar"/>
+    <tag group="Usage" tag="UsesPerDay"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="AbilType" tag="Super"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <eval phase="First" priority="10000"><![CDATA[
+      var spellid as string
+
+      ~ This procedure only disables this this special. The relevant spells must
+      ~ still have bootstrap conditions.
+      spellid = "RaReplace.raAaDay"
+
+      call HeriSplRep]]></eval>
+    <exprreq message="Azata Heritage required."><![CDATA[#hasability[rcAzataHer] <> 0]]></exprreq>
+    </thing>
+  <thing id="wATrImpSn" name="Impromptu Sneak Attack" description="Beginning, 3 + Cha modifier times per day an arcane trickster can declare one melee or ranged attack she makes to be a sneak attack (the target can be no more than 30 feet distant if the impromptu sneak attack is a ranged attack). The target of an impromptu sneak attack loses any Dexterity bonus to AC, but only against that attack. The power can be used against any target, but creatures that are not subject to critical hits take no extra damage (though they still lose any Dexterity bonus to AC against the attack)." compset="ClSpecial" summary="You can declare any melee or ranged attack to be a sneak attack." replaces="cATrImpSnk">
+    <tag group="AbilType" tag="Extra" name="Extraordinary Ability" abbrev="Ex"/>
+    <tag group="Usage" tag="Day" name="/day" abbrev="/day"/>
+    <tag group="User" tag="Tracker" name="Modern Action Points" abbrev="Modern Action Points"/>
+    <tag group="Helper" tag="UseOwnLev"/>
+    <tag group="ChargeCalc" tag="AttrUses3"/>
+    <tag group="ChargeAttr" tag="aCHA"/>
+    <eval phase="Render" priority="10000"><![CDATA[
+      field[listname].text = "Impromptu Sneak Attack " & field[xIndex].value & "/day"]]></eval>
+    </thing>
+  <thing id="mwitch1" name="Mythic Witch" description="First Mythic Bump\n  Toughness                                                             - Bumps toughness from Gauntlet to Mythic Toughness\n  Choice of Saving Throw Bonus feat                - Iron Will\n  Choice of racial feat (from any source)         - Defiant Luck\n  Campaign trait fully unlocks.\n  Amount healed by resting overnight doubles\n  Max hero points increase to 4 and pool is filled\n  A single mythic divine intervention\n  Dragon scale magic abilities (+1 natural armor, +1 resistance)\n  Attacks are considered “mythic” for the purposes of overcoming mythic DR\n\nSecond Mythic Bump\n  Fast Learner (ignoring prereqs)\n  Choice of Saving Throw Feat                             - Improved Iron Will\n  Choice of racial feat (from any source)          - Inexplicable Luck\n  Endurance\n  Dragon scale resistance bonus increases to +2" compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSkillPts" value="5"/>
+    <bootstrap thing="fIronWill"></bootstrap>
+    <bootstrap thing="fFastLearn"></bootstrap>
+    <bootstrap thing="rcPFTAb098"></bootstrap>
+    <bootstrap thing="fDefiLuck"></bootstrap>
+    <bootstrap thing="fImpIronWi"></bootstrap>
+    <bootstrap thing="rcPFTAb098"></bootstrap>
+    <bootstrap thing="rcPFTAb098"></bootstrap>
+    <bootstrap thing="rcPFTAb098"></bootstrap>
+    <bootstrap thing="fMythicToughness"></bootstrap>
+    <bootstrap thing="fEndure"></bootstrap>
+    <bootstrap thing="fInexLuck"></bootstrap>
+    <link linkage="varies" thing="cHelpWit"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[      if (field[gIsEquip].value <> 0) then
+        #trkmax[abHeroP] += 1
+        endif]]></eval>
+    <eval phase="PostAttr" priority="10000" index="2">#resmax[resSkill] += #totallevelcount[]</eval>
+    </thing>
+  <thing id="malch1" name="Mythic Alchemist" compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSkillPts" value="5"/>
+    <bootstrap thing="fIronWill">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fToughness">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fFastLearn">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fImpIronWi">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fDefiLuck">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fHeightSpl"></bootstrap>
+    <link linkage="varies" thing="cHelpAlc"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[      if (field[gIsEquip].value <> 0) then
+        #trkmax[abHeroP] += 1
+        endif]]></eval>
+    </thing>
+  <thing id="mcleric1" name="Mythic Cleric" compset="ClassVary" uniqueness="unique">
+    <bootstrap thing="fLightRef">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fToughness">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fSteelSoul">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fGreatFort">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fEndure">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fFastLearn">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="trMilMer"></bootstrap>
+    <bootstrap thing="fHeightSpl"></bootstrap>
+    <link linkage="varies" thing="cHelpClr"/>
+    <eval phase="PostAttr" priority="10000" index="2">hero.child[svWill].field[BonTrait].value += 2</eval>
+    <eval phase="PreLevel" priority="5000"><![CDATA[      if (field[gIsEquip].value <> 0) then
+        #trkmax[abHeroP] += 1
+        endif]]></eval>
+    </thing>
+  <thing id="msorc1" name="Mythic Sorcerer" compset="ClassVary" uniqueness="unique">
+    <bootstrap thing="fToughness">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fGreatFort">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fMagnuOpus">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fLightRef">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fEndure">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fAngelBloo">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="rcPFTAb098"></bootstrap>
+    <bootstrap thing="fHeightSpl"></bootstrap>
+    <link linkage="varies" thing="cHelpSor"/>
+    <eval phase="PostAttr" priority="10000" index="2">#resmax[resSkill] += #totallevelcount[]
+hero.child[svRef].field[BonTrait].value += 2</eval>
+    <eval phase="PreLevel" priority="5000"><![CDATA[      if (field[gIsEquip].value <> 0) then
+        #trkmax[abHeroP] += 1
+        endif]]></eval>
+    </thing>
+  <thing id="mInqusitor1" name="Mythic Inquisitor" compset="ClassVary" uniqueness="unique">
+    <bootstrap thing="fToughness">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fIronWill">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fDefiLuck">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fFastLearn">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fEndure">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fGreatFort">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fInexLuck">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fHeightSpl">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="trTouDivin">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <link linkage="varies" thing="cHelpInq"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[      if (field[gIsEquip].value <> 0) then
+        #trkmax[abHeroP] += 1
+        endif]]></eval>
+    </thing>
+  <thing id="mwitchskill1" name="Witch Skill Fix" compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSkillPts" value="4"/>
+    <bootstrap thing="fToughness"></bootstrap>
+    <bootstrap thing="trExpAwful"></bootstrap>
+    <bootstrap thing="fHeightSpl"></bootstrap>
+    <link linkage="varies" thing="cHelpWit"/>
+    </thing>
+  <thing id="spJLSMount" name="Mount" description="By means of this spell, the caster conjures a normal animal to serve him as a mount. \nThe animal serves willingly and well, but at the expiration of the spell duration it disappears, returning to its own place. The type of mount gained by this spell depends on the level of the caster; of course, a caster can choose a lesser mount if desired.\n\nAvailable mounts include the following:\n     1+: Mule, Riding Dog, Light War Horse\n     4+: Draft Horse or Heavy War Horse\n     8+:  Lower level versions gain barding\n   13+: Griffon\n\nThe mount does not come with any riding gear, unless it is of a class lower than the caster would normally be entitled to; thus a 4th-level wizard can gain a war horse without saddle and harness, or a light horse with saddle and harness. The statistics of the animal gained are typical of all creatures of the same class. The mount disappears when slain.\n\nThe material component of the spell is a bit of hair from the type of animal to be conjured." compset="Spell" summary="Summons riding animal for 2 hours/level.">
+    <fieldval field="sCompDesc" value="a bit of horse hair"/>
+    <fieldval field="sLGMythic" value="The horse or pony you summon is considered a mythic creature for the purpose of spells and effects. It gains bonus hit points equal to your mythic tier and also gains the benefits of the mythic version of the Endurance feat (as described in Chapter 2 of {i}Pathfinder Roleplaying Game Mythic Adventures{/i}), though it gains no other mythic abilities. Augmented (3rd): If you expend two uses of mythic power, you can grant your pony or horse the agile or invincible mythic simple template. These templates are described in the Mythic Monster Advancement section of Chapter 6 in {i}Pathfinder Roleplaying Game Mythic Adventures{/i}. You can instead expend two uses of mythic power to summon an advanced mythic pony or advanced mythic light horse, as described in the {i}Mythic Monster Manual{/i}."/>
+    <fieldval field="sEffect" value="One mount"/>
+    <fieldval field="sDuration" value="2 hours/level (D)"/>
+    <fieldval field="sSave" value="None"/>
+    <fieldval field="sResist" value="No"/>
+    <tag group="sClass" tag="cHelpSumUn" name="Summoner (Unchained)" abbrev="Summoner (Unchained)"/>
+    <tag group="sClass" tag="cHelpWit" name="Witch" abbrev="Witch"/>
+    <tag group="sClass" tag="cHelpWiz" name="Wizard" abbrev="Wizard"/>
+    <tag group="sComp" tag="M" name="Material" abbrev="M"/>
+    <tag group="sComp" tag="S" name="Somatic" abbrev="S"/>
+    <tag group="sComp" tag="V" name="Verbal" abbrev="V"/>
+    <tag group="sDuration" tag="Dismiss" name="Dismissable" abbrev="Dismissable"/>
+    <tag group="sDuration" tag="Hour" name="1+ Hours" abbrev="1+ Hours"/>
+    <tag group="sDuration" tag="PerLevel" name="Level-based" abbrev="Level-based"/>
+    <tag group="sLevel" tag="1" name="1" abbrev="1"/>
+    <tag group="sRange" tag="Close" name="Close (25 + 5 ft./2 levels)" abbrev="{ref s_Close}Cls{ref}"/>
+    <tag group="sResist" tag="No" name="No" abbrev="No"/>
+    <tag group="sSave" tag="None" name="None" abbrev="None"/>
+    <tag group="sSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="sSubschool" tag="Summoning" name="Summoning" abbrev="Summoning"/>
+    <tag group="sCastTime" tag="Round1" name="1 round" abbrev="1 round"/>
+    <tag group="sClass" tag="cHelpBlr" name="Bloodrager" abbrev="Bloodrager"/>
+    <tag group="sClass" tag="cHelpMag" name="Magus" abbrev="Magus"/>
+    <tag group="sClass" tag="cHelpOcc" name="Occultist" abbrev="Occultist"/>
+    <tag group="sClass" tag="cHelpSor" name="Sorcerer" abbrev="Sorcerer"/>
+    <tag group="sClass" tag="cHelpSum" name="Summoner" abbrev="Summoner"/>
+    </thing>
+  <thing id="pcnJLSEEAtt" name="EE - Attack" description="The witch can cause doubt to creep into the mind of a foe within 30 feet that she can see.\n\nEffect: The target takes a –2 penalty on one of the following (witch’s choice): AC, ability checks, attack rolls, saving throws, or skill checks. This hex lasts for a number of rounds equal to 3 + the witch’s Intelligence modifier. A Will save reduces this to just 1 round.\n\nAt 8th level the penalty increases to –4.\n\nThis is a mind-affecting effect." compset="Condition" uniqueness="unique">
+    <eval phase="PostLevel" priority="5000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value + hero.isidentity[Condition] = 0)
+
+      ~ -1 Attack
+      hero.child[Attack].field[Penalty].value -= 4]]></eval>
+    </thing>
+  <thing id="pcnJLSEEAC" name="EE - AC" description="The witch can cause doubt to creep into the mind of a foe within 30 feet that she can see.\n\nEffect: The target takes a –2 penalty on one of the following (witch’s choice): AC, ability checks, attack rolls, saving throws, or skill checks. This hex lasts for a number of rounds equal to 3 + the witch’s Intelligence modifier. A Will save reduces this to just 1 round.\n\nAt 8th level the penalty increases to –4.\n\nThis is a mind-affecting effect." compset="Condition" uniqueness="unique">
+    <eval phase="PostLevel" priority="5000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value + hero.isidentity[Condition] = 0)
+
+      ~ -4 AC
+      hero.child[ArmorClass].field[Penalty].value -= 4]]></eval>
+    </thing>
+  <thing id="pcnJLSSV" name="EE - Saves" description="The witch can cause doubt to creep into the mind of a foe within 30 feet that she can see.\n\nEffect: The target takes a –2 penalty on one of the following (witch’s choice): AC, ability checks, attack rolls, saving throws, or skill checks. This hex lasts for a number of rounds equal to 3 + the witch’s Intelligence modifier. A Will save reduces this to just 1 round.\n\nAt 8th level the penalty increases to –4.\n\nThis is a mind-affecting effect." compset="Condition" uniqueness="unique">
+    <eval phase="PostLevel" priority="5000"><![CDATA[
+      ~ If we're not enabled, get out now
+      doneif (field[pIsOn].value + hero.isidentity[Condition] = 0)
+
+      ~ -4 Saves
+      hero.child[svAll].field[Penalty].value -= 4]]></eval>
+    </thing>
+  <thing id="mclericskill1" name="Cleric Skill Fix" compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSkillPts" value="4"/>
+    <bootstrap thing="trChilCrus"></bootstrap>
+    <link linkage="varies" thing="cHelpClr"/>
+    </thing>
+  <thing id="mPaladinSkill1" name="Paladin Skill Fix" compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSkillPts" value="4"/>
+    <bootstrap thing="trStolFury"></bootstrap>
+    <link linkage="varies" thing="cHelpPal"/>
+    </thing>
+  <thing id="mSorcSkill1" name="Sorcerer Skill Fix" compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSkillPts" value="4"/>
+    <bootstrap thing="trChanEnco"></bootstrap>
+    <link linkage="varies" thing="cHelpSor"/>
+    </thing>
+  <thing id="gDiamondOpalDust" name="Diamond and Opal Dust" description="Used for Symbol of Mirroring" compset="Gear">
+    <fieldval field="gCost" value="100"/>
+    <fieldval field="gWeight" value=".1"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="UsesQty"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="gType" tag="AdventGear"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="gDiamondDust" name="Diamond Dust" description="Used for various spells" compset="Gear">
+    <fieldval field="gCost" value="50"/>
+    <fieldval field="gWeight" value=".1"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="Helper" tag="UsesQty"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="gType" tag="AdventGear"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="iQSEntSerp" name="Quarterstaff of Entwined Serpents" description="This +1 quarterstaff is made of wood carved and dyed to look like two entwined asps, one black and one white. At will, the wielder can use the staff to cast magic missile, creating two such missiles. One of the created missiles always takes the form of a glowing white snake, while the other missile always takes the form of a shadowy black snake. When held in hand, the wielder of the quarterstaff of entwined serpents can cast spells as if he had the Eschew Materials feat." compset="MagicWep">
+    <fieldval field="gWeight" value="5"/>
+    <fieldval field="gCost" value="5050"/>
+    <fieldval field="iCL" value="3"/>
+    <fieldval field="BonEnhance" value="1"/>
+    <fieldval field="gCraftCost" value="2825"/>
+    <usesource source="UserParent"/>
+    <tag group="iSchool" tag="Evocation"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="abAction" tag="Standard"/>
+    <tag group="gType" tag="Staff" name="Staff" abbrev="Staff"/>
+    <bootstrap thing="hMagicMsl">
+      <autotag group="ChargeUse" tag="0"/>
+      <autotag group="Helper" tag="ItemSpell"/>
+      <autotag group="Helper" tag="StaffSpell"/>
+      </bootstrap>
+    <bootstrap thing="wQtrstaff"></bootstrap>
+    <bootstrap thing="cDfwEschew"></bootstrap>
+    <child entity="wSpecMagic">
+      <bootstrap thing="wQtrstaff"></bootstrap>
+      </child>
+    </thing>
+  <thing id="fMythicToughness" name="Mythic Toughness" description="You have legendary resilience and durability.{br}{br}{b}Prerequisite{/b}: Toughness.{br}{br}{b}Benefit{/b}: Toughness provides you twice as many hit points. In addition, when you&apos;re below 0 hit points, you gain DR 10/epic. This DR stacks with any other DR/epic you might possess." compset="Feat" summary="Gain DR 10/epic when below 0 hit points." uniqueness="useronce">
+    <usesource source="MythicAdv" parent="MythHeader" name="Mythic Adventures"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="ReqFeat" tag="fToughness" name="Toughness" abbrev="Toughness"/>
+    <tag group="Helper" tag="NoPathSoc" name="Not Allowed for Pathfinder Society Characters" abbrev="Not Allowed for Pathfinder Society Characters"/>
+    <eval phase="PostLevel" priority="10000">hero.childfound[fToughness].field[abValue].value *= 2</eval>
+    </thing>
+  <thing id="mPaladin1" name="Mythic Paladin" compset="ClassVary" uniqueness="unique">
+    <bootstrap thing="fHeightSpl">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fDefiLuck">
+      <autotag group="thing" tag="skipprereq"/>
+      </bootstrap>
+    <bootstrap thing="fInexLuck"></bootstrap>
+    <bootstrap thing="fToughness"></bootstrap>
+    <bootstrap thing="fLightRef"></bootstrap>
+    <bootstrap thing="fFastLearn"></bootstrap>
+    <bootstrap thing="fEndure"></bootstrap>
+    <bootstrap thing="fImpIronWi"></bootstrap>
+    <bootstrap thing="fMythicToughness"></bootstrap>
+    <bootstrap thing="feOutEvil"></bootstrap>
+    <link linkage="varies" thing="cHelpPal"/>
+    <eval phase="PostAttr" priority="10000">hero.child[svFort].field[BonTrait].value += 2</eval>
+    </thing>
+  <thing id="cHelprte" name="ranger test" compset="Class" uniqueness="unique">
+    <fieldval field="cSplMinLvl" value="1"/>
+    <fieldval field="cSplMaxLvl" value="4"/>
+    <fieldval field="cSpecSing" value="Hunter&apos;s Bond"/>
+    <fieldval field="cSpec2ndSi" value="Combat Style"/>
+    <fieldval field="cBackTable" value="see Table 1-45: Ranger Backgrounds"/>
+    <fieldval field="cSCRNumDce" value="5"/>
+    <fieldval field="cSCRDceSiz" value="6"/>
+    <fieldval field="cSCRMult" value="10"/>
+    <fieldval field="cAbbr" value="rte"/>
+    <fieldval field="cHDSides" value="8"/>
+    <fieldval field="cSkills" value="6"/>
+    <arrayval field="cBonFtTot" index="1" value="1"/>
+    <arrayval field="cBonFtTot" index="5" value="2"/>
+    <arrayval field="cBonFtTot" index="9" value="3"/>
+    <arrayval field="cBonFtTot" index="13" value="4"/>
+    <arrayval field="cBonFtTot" index="17" value="5"/>
+    <arrayval field="cCastTot" index="3" column="1" value="0.1"/>
+    <arrayval field="cCastTot" index="4" column="1" value="1"/>
+    <arrayval field="cCastTot" index="5" column="1" value="1"/>
+    <arrayval field="cCastTot" index="6" column="1" value="1"/>
+    <arrayval field="cCastTot" index="6" column="2" value="0.1"/>
+    <arrayval field="cCastTot" index="7" column="1" value="1"/>
+    <arrayval field="cCastTot" index="7" column="2" value="1"/>
+    <arrayval field="cCastTot" index="8" column="1" value="2"/>
+    <arrayval field="cCastTot" index="8" column="2" value="1"/>
+    <arrayval field="cCastTot" index="9" column="1" value="2"/>
+    <arrayval field="cCastTot" index="9" column="2" value="1"/>
+    <arrayval field="cCastTot" index="9" column="3" value="0.1"/>
+    <arrayval field="cCastTot" index="10" column="1" value="2"/>
+    <arrayval field="cCastTot" index="10" column="2" value="1"/>
+    <arrayval field="cCastTot" index="10" column="3" value="1"/>
+    <arrayval field="cCastTot" index="11" column="1" value="2"/>
+    <arrayval field="cCastTot" index="11" column="2" value="2"/>
+    <arrayval field="cCastTot" index="11" column="3" value="1"/>
+    <arrayval field="cCastTot" index="12" column="1" value="3"/>
+    <arrayval field="cCastTot" index="12" column="2" value="2"/>
+    <arrayval field="cCastTot" index="12" column="3" value="1"/>
+    <arrayval field="cCastTot" index="12" column="4" value="0.1"/>
+    <arrayval field="cCastTot" index="13" column="1" value="3"/>
+    <arrayval field="cCastTot" index="13" column="2" value="2"/>
+    <arrayval field="cCastTot" index="13" column="3" value="1"/>
+    <arrayval field="cCastTot" index="13" column="4" value="1"/>
+    <arrayval field="cCastTot" index="14" column="1" value="3"/>
+    <arrayval field="cCastTot" index="14" column="2" value="2"/>
+    <arrayval field="cCastTot" index="14" column="3" value="2"/>
+    <arrayval field="cCastTot" index="14" column="4" value="1"/>
+    <arrayval field="cCastTot" index="15" column="1" value="3"/>
+    <arrayval field="cCastTot" index="15" column="2" value="3"/>
+    <arrayval field="cCastTot" index="15" column="3" value="2"/>
+    <arrayval field="cCastTot" index="15" column="4" value="1"/>
+    <arrayval field="cCastTot" index="16" column="1" value="4"/>
+    <arrayval field="cCastTot" index="16" column="2" value="3"/>
+    <arrayval field="cCastTot" index="16" column="3" value="2"/>
+    <arrayval field="cCastTot" index="16" column="4" value="1"/>
+    <arrayval field="cCastTot" index="17" column="1" value="4"/>
+    <arrayval field="cCastTot" index="17" column="2" value="3"/>
+    <arrayval field="cCastTot" index="17" column="3" value="2"/>
+    <arrayval field="cCastTot" index="17" column="4" value="2"/>
+    <arrayval field="cCastTot" index="18" column="1" value="4"/>
+    <arrayval field="cCastTot" index="18" column="2" value="3"/>
+    <arrayval field="cCastTot" index="18" column="3" value="3"/>
+    <arrayval field="cCastTot" index="18" column="4" value="2"/>
+    <arrayval field="cCastTot" index="19" column="1" value="4"/>
+    <arrayval field="cCastTot" index="19" column="2" value="4"/>
+    <arrayval field="cCastTot" index="19" column="3" value="3"/>
+    <arrayval field="cCastTot" index="19" column="4" value="3"/>
+    <arrayval field="cCustScTot" index="1" value="1"/>
+    <arrayval field="cCustTot" index="3" value="1"/>
+    <arrayval field="cFav1Tot" index="0" value="1"/>
+    <arrayval field="cFav1Tot" index="4" value="2"/>
+    <arrayval field="cFav1Tot" index="9" value="3"/>
+    <arrayval field="cFav1Tot" index="14" value="4"/>
+    <arrayval field="cFav1Tot" index="19" value="5"/>
+    <arrayval field="cFav2Tot" index="2" value="1"/>
+    <arrayval field="cFav2Tot" index="7" value="2"/>
+    <arrayval field="cFav2Tot" index="12" value="3"/>
+    <arrayval field="cFav2Tot" index="17" value="4"/>
+    <tag group="ClassRole" tag="Combat" name="Combat" abbrev="Combat"/>
+    <tag group="ClassRole" tag="Skill" name="Skill" abbrev="Skill"/>
+    <tag group="ClassSkill" tag="Craft" name="All Craft Skills" abbrev="All Craft Skills"/>
+    <tag group="ClassSkill" tag="Profession" name="All Profession Skills" abbrev="All Profession Skills"/>
+    <tag group="ClassSkill" tag="skClimb" name="Climb" abbrev="Climb"/>
+    <tag group="ClassSkill" tag="skHandleAn" name="Handle Animal" abbrev="Handle Animal"/>
+    <tag group="ClassSkill" tag="skHeal" name="Heal" abbrev="Heal"/>
+    <tag group="ClassSkill" tag="skIntim" name="Intimidate" abbrev="Intimidate"/>
+    <tag group="ClassSkill" tag="skKnowDun" name="Knowledge (dungeoneering)" abbrev="Knowledge (dungeoneering)"/>
+    <tag group="ClassSkill" tag="skKnowGeog" name="Knowledge (geography)" abbrev="Knowledge (geography)"/>
+    <tag group="ClassSkill" tag="skKnowNat" name="Knowledge (nature)" abbrev="Knowledge (nature)"/>
+    <tag group="ClassSkill" tag="skPercep" name="Perception" abbrev="Perception"/>
+    <tag group="ClassSkill" tag="skRide" name="Ride" abbrev="Ride"/>
+    <tag group="ClassSkill" tag="skSpellcr" name="Spellcraft" abbrev="Spellcraft"/>
+    <tag group="ClassSkill" tag="skStealth" name="Stealth" abbrev="Stealth"/>
+    <tag group="ClassSkill" tag="skSurvival" name="Survival" abbrev="Survival"/>
+    <tag group="ClassSkill" tag="skSwim" name="Swim" abbrev="Swim"/>
+    <tag group="Classes" tag="rangertes" name="ranger test" abbrev="Ranger"/>
+    <tag group="CompList" tag="cHelpRgr" name="Rangers" abbrev="Rangers"/>
+    <tag group="ConsClSkil" tag="cskAthleti" name="Athletics" abbrev="Athletics"/>
+    <tag group="ConsClSkil" tag="cskNature" name="Nature" abbrev="Nature"/>
+    <tag group="ConsClSkil" tag="cskPercept" name="Perception" abbrev="Perception"/>
+    <tag group="ConsClSkil" tag="cskStealth" name="Stealth" abbrev="Stealth"/>
+    <tag group="ConsClSkil" tag="cskSurviva" name="Survival" abbrev="Survival"/>
+    <tag group="CstS2Type" tag="Attack" name="Special Attacks" abbrev="Special Attacks"/>
+    <tag group="Helper" tag="BonFtNoPre" name="BonFtNoPre" abbrev="BonFtNoPre"/>
+    <tag group="LGClTable1" tag="RgrBond" name="Ranger Hunters Bond" abbrev="Ranger Hunters Bond"/>
+    <tag group="LGClTable2" tag="RgrComStyl" name="Ranger Combat Style" abbrev="Ranger Combat Style"/>
+    <tag group="LGMyClass" tag="cHelpRgr" name="Ranger" abbrev="Ranger"/>
+    <tag group="cAttack" tag="Good" name="Fast" abbrev="Fast"/>
+    <tag group="cFort" tag="Good" name="Fast" abbrev="Fast"/>
+    <tag group="cRef" tag="Good" name="Fast" abbrev="Fast"/>
+    <tag group="cWill" tag="Poor" name="Slow" abbrev="Slow"/>
+    <tag group="fCategory" tag="Custom" name="Custom Feat" abbrev="Custom Feat"/>
+    <tag group="AgeColumn" tag="2" name="Column 2 (Bard, Fighter, Paladin, Ranger)" abbrev="Column 2 (Bard, Fighter, Paladin, Ranger)"/>
+    <tag group="CasterSrc" tag="Divine" name="Divine" abbrev="Divine"/>
+    <tag group="CasterType" tag="MemAll" name="Memorized (Cleric)" abbrev="Memorized"/>
+    <bootstrap thing="fArmLight"></bootstrap>
+    <bootstrap thing="fArmMedium"></bootstrap>
+    <bootstrap thing="fArmShield"></bootstrap>
+    <bootstrap thing="fSimple"></bootstrap>
+    <bootstrap thing="fWepMart"></bootstrap>
+    <bootstrap thing="cRgrTrack">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cWildEmp">
+      <autotag group="ClSpecWhen" tag="1"/>
+      </bootstrap>
+    <bootstrap thing="cRgrEndur">
+      <autotag group="ClSpecWhen" tag="3"/>
+      </bootstrap>
+    <bootstrap thing="cWoodStrid">
+      <autotag group="ClSpecWhen" tag="7"/>
+      </bootstrap>
+    <bootstrap thing="cRgrSwiftT">
+      <autotag group="ClSpecWhen" tag="8"/>
+      </bootstrap>
+    <bootstrap thing="cEvasion">
+      <autotag group="AddReq" tag="ArmorMed"/>
+      <autotag group="ClSpecWhen" tag="9"/>
+      </bootstrap>
+    <bootstrap thing="cImpEvas">
+      <autotag group="AddReq" tag="ArmorMed"/>
+      <autotag group="ClSpecWhen" tag="16"/>
+      </bootstrap>
+    <bootstrap thing="cRgrCamo">
+      <autotag group="ClSpecWhen" tag="12"/>
+      </bootstrap>
+    <bootstrap thing="cHidePlain">
+      <autotag group="ClSpecWhen" tag="17"/>
+      </bootstrap>
+    <bootstrap thing="cRgrQuarry">
+      <autotag group="ClSpecWhen" tag="11"/>
+      </bootstrap>
+    <bootstrap thing="cRgrQuarry">
+      <autotag group="ClSpecWhen" tag="19"/>
+      </bootstrap>
+    <bootstrap thing="cRgrMaster">
+      <autotag group="ClSpecWhen" tag="20"/>
+      </bootstrap>
+    <bootstrap thing="aaCombStyl"></bootstrap>
+    <bootstrap thing="aaHuntBond"></bootstrap>
+    <link linkage="spellattr" thing="aWIS"/>
+    </thing>
+  <thing id="crangertes" name="ranger test" compset="ClassLevel" maxlimit="10">
+    <tag group="ClassType" tag="Normal"/>
+    <bootstrap thing="cHelprte"></bootstrap>
+    <link linkage="helper" thing="cHelprte"/>
+    </thing>
+  <thing id="mBarb1" name="Mythic Barbarian" compset="ClassVary" uniqueness="unique">
+    <fieldval field="cvSkillPts" value="5"/>
+    <bootstrap thing="fIronWill"></bootstrap>
+    <bootstrap thing="fFastLearn"></bootstrap>
+    <bootstrap thing="rcPFTAb098"></bootstrap>
+    <bootstrap thing="fDefiLuck"></bootstrap>
+    <bootstrap thing="fImpIronWi"></bootstrap>
+    <bootstrap thing="rcPFTAb098"></bootstrap>
+    <bootstrap thing="rcPFTAb098"></bootstrap>
+    <bootstrap thing="rcPFTAb098"></bootstrap>
+    <bootstrap thing="fMythicToughness"></bootstrap>
+    <bootstrap thing="fEndure"></bootstrap>
+    <link linkage="varies" thing="cHelpBbn"/>
+    <eval phase="PostAttr" priority="10000" index="2">#resmax[resSkill] += #totallevelcount[]</eval>
+    <eval phase="PreLevel" priority="5000"><![CDATA[      if (field[gIsEquip].value <> 0) then
+        #trkmax[abHeroP] += 1
+        endif]]></eval>
+    </thing>
+  <thing id="wrtbeltTanial" name="Meridian belt + Belt of Constitution" description="This narrow cloth belt has a silver buckle in the shape of four rings. The belt allows a creature to wear a magic ring on each foot in addition to the ring on each hand, though only two rings function at any given time. As a swift action, the wearer can change which of his rings are active (both hands, both feet, left hand and right foot, and so on). For example, a creature could wear a {i}ring of protection{/i}, {i}ring of energy resistance{/i}, {i}ring of swimming{/i}, and {i}ring of counterspells{/i}, switching between any two of them as a swift action each round as it desires.\n\nThe belt does not change the type of action required to activate a ring (for example, activating a {i}ring of invisibility{/i} is still a standard action), but allows the wearer to easily switch between the constant powers of several worn rings. While the belt is worn, wearing a ring on a foot counts toward the attunement process of certain rings (such as a {i}ring of sustenance{/i}) even if the belt isn&apos;t used to make that ring active during that attunement period.\n\n{b}Construction{/b}\n{b}Requirements{/b} Craft Wondrous Item, {i}polymorph{/i}; {b}Cost{/b} 500 gp" compset="Wondrous" summary="Switch between active rings as a swift action.">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="5500"/>
+    <fieldval field="iCL" value="9"/>
+    <usesource source="ARG" parent="ARGHeader" name="Advanced Race Guide"/>
+    <usesource source="UltEquip" parent="UEHeader" name="Ultimate Equipment"/>
+    <tag group="iSchool" tag="Transmutat" name="Transmutation" abbrev="Trans"/>
+    <tag group="Helper" tag="EquipAvail" name="EquipAvail" abbrev="EquipAvail"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="ShowSpec" name="Show Spec" abbrev="Show Spec"/>
+    <tag group="Hero" tag="EqpWaist" name="Belt" abbrev="Belt"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+      ~ Items which would add enhancement bonuses to attributes do not do so
+      ~ when we are using the Auto Bonus Progression rules from Pathfinder Unchained.
+      doneif (hero.tagis[source.PUAutoB?] <> 0)
+
+      doneif (field[gIsEquip].value = 0)
+
+      #enhancementbonus[hero.child[aCON], 2]]]></eval>
+    </thing>
+  <thing id="cCelSong" name="Celestial Song" description="A witch sing the song of the heavens as a move action. Any creature that is within 30 feet that is under the effects of an agony hex, charm hex, evil eye hex, fortune hex, or misfortune hex caused by the witch has the duration of that hex extended by 1 round." compset="CustomSpec" summary="As a move action, extend the duration of other hexes by 1 rd." uniqueness="useronce">
+    <fieldval field="abRange" value="30"/>
+    <usesource source="APG" parent="APGHeader" name="Advanced Player&apos;s Guide"/>
+    <tag group="abCategory" tag="WitHex" name="Witch Hex" abbrev="Witch Hex"/>
+    <tag group="abRange" tag="Feet" name="Feet" abbrev="ft."/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev="Su"/>
+    <tag group="SpecSource" tag="cHelpWit" name="Witch" abbrev="Witch"/>
+    <exprreq message="Cannot select this hex and Chant Hex.">#hasability[cShaChant] = 0</exprreq>
+    </thing>
+  <thing id="cCelJudgement" name="Celestial Judgement" description="The witch can cause the judgement of the celestial heavens affect a foe within 30 feet that she can see. The target takes a –2 penalty on one of the following (witch’s choice): AC, ability checks, attack rolls, saving throws, or skill checks. This hex lasts for a number of rounds equal to 3 + the witch’s Intelligence modifier. A Will save reduces this to just 1 round. This is a mind-affecting effect. At 8th level the penalty increases to –4." compset="CustomSpec" summary="Foe in 30 ft takes penalty to your choice of AC, attacks, saves, ability or skill checks (Will part)." uniqueness="useronce">
+    <fieldval field="abDuration" value="3"/>
+    <fieldval field="abRange" value="30"/>
+    <fieldval field="abValue" value="-2"/>
+    <usesource source="APG" parent="APGHeader" name="Advanced Player&apos;s Guide"/>
+    <tag group="SpecSource" tag="cHelpWit" name="Witch" abbrev="Witch"/>
+    <tag group="SpecType" tag="Attack" name="Special Attacks" abbrev="Special Attacks"/>
+    <tag group="StandardDC" tag="aINT" name="Intelligence" abbrev="Intelligence"/>
+    <tag group="abCategory" tag="WitHex" name="Witch Hex" abbrev="Witch Hex"/>
+    <tag group="abDuration" tag="Round" name="Round" abbrev="rd"/>
+    <tag group="abRange" tag="Feet" name="Feet" abbrev="ft."/>
+    <tag group="abSave" tag="WillPart" name="Will Partial" abbrev="Will part"/>
+    <tag group="AbilType" tag="Super" name="Supernatural Ability" abbrev="Su"/>
+    <tag group="LvNameApp" tag="AppValue" name="Append &quot;field[abValue].value&quot;" abbrev="Append &quot;field[abValue].value&quot;"/>
+    <tag group="LvNameApp" tag="SignAppVal" name="Sign appended value" abbrev="Sign appended value"/>
+    <tag group="LvNamePar" tag="IncDurati" name="Include Duration text" abbrev="Include Duration text"/>
+    <eval phase="PostLevel" priority="10000"><![CDATA[
+      if (field[xTotalLev].value >= 8) then
+        field[abValue].value -= 2
+        endif]]></eval>
+    <eval phase="PostAttr" priority="10000" name="Set Witch/Shaman Attribute Used">var setvalue as number
+      call WitValAttr
+
+      field[abDuration].value += setvalue</eval>
+    <evalrule phase="Validation" priority="10000" message="This version of the Evil Eye hex is for witches only. You should remove it and replace it with the shaman version." summary="This version of the Evil Eye hex is for witches only. You should remove it and replace it with the shaman version.">validif (tagis[CustTaken.cHelpSha] = 0)</evalrule>
+    </thing>
+  <thing id="EqnxCrown" name="Equinox Crown" compset="Wondrous" uniqueness="unique">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="16000"/>
+    <fieldval field="iCL" value="16"/>
+    <tag group="Helper" tag="InnaForbid" name="Forbidden in the Innate Item Bonuses Rule" abbrev="Forbidden in the Innate Item Bonuses Rule"/>
+    <tag group="Hero" tag="EqpHBand" name="Headband" abbrev="Headband"/>
+    <tag group="fShowWhat" tag="Skills" name="Skills" abbrev="Skills"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <tag group="ChooseSrc1" tag="Hero" name="All Picks on Hero" abbrev="All Picks on Hero"/>
+    <tag group="Helper" tag="ABPForbid" name="Forbidden in the Automatic Bonus Progression Rule" abbrev="Forbidden in the Automatic Bonus Progression Rule"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Helper" tag="ArtiMinor"/>
+    <tag group="Helper" tag="LegendItem"/>
+    <eval phase="PreAttr" priority="10000"><![CDATA[
+      ~ Items which would add enhancement bonuses to attributes do not do so
+      ~ when we are using the Auto Bonus Progression rules from Pathfinder Unchained.
+      doneif (hero.tagis[source.PUAutoB?] <> 0)
+
+      doneif (field[gIsEquip].value = 0)
+
+      #enhancementbonus[hero.child[aINT], 2]
+      #enhancementbonus[hero.child[aWIS], 2]
+      #enhancementbonus[hero.child[aCHA], 4]
+
+      ~ add to our languages known
+      herofield[tLangsSpk].value += 1]]></eval>
+    <eval phase="PostLevel" priority="4000" index="2"><![CDATA[
+      ~ Items which would add enhancement bonuses to attributes do not do so
+      ~ when we are using the Auto Bonus Progression rules from Pathfinder Unchained.
+      doneif (hero.tagis[source.PUAutoB?] <> 0)
+
+      doneif (field[gIsEquip].value = 0)
+
+      ~ now, we'll add item ranks to that skill equal to our HD
+      if (field[usrChosen1].ischosen <> 0) then
+        field[usrChosen1].chosen.field[skItem].value += herofield[tHitDice].value
+        endif]]></eval>
+    </thing>
+  <thing id="rngHealLight" name="Ring of Healing Light" description="A gem winks redly in your light from a ring on one finger.\n\nWhenever the wielder channels to heal, they may re-roll any 1s once.\n\nFoundry Macro: 5d6r1" compset="Ring" summary="Whenever the wielder channels to heal, they may re-roll any 1s once.">
+    <fieldval field="gCost" value="7500"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    </thing>
+  <thing id="imedGrdSprt" name="Medallion of the Guardian Spirit" description="Resting upon the chest is a mithril amulet with a carnelian center stone.\n\nAllows one use of Channel Energy to be expended as an immediate action to heal one adjacent ally when they would drop below 0 HP." compset="Wondrous" summary="Allows one use of Channel Energy to be expended as an immediate action to heal one adjacent ally when they would drop below 0 HP.">
+    <fieldval field="gCost" value="5000"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <tag group="Helper" tag="EquipAvail"/>
+    <tag group="gType" tag="Wonder"/>
+    <tag group="Helper" tag="EquipMag"/>
+    <tag group="Hero" tag="EqpNeck"/>
+    </thing>
+  <thing id="ibrcrPltLight" name="Bracers of Pleated Light" description="Bracers +5. Twice per day wearer can use Dimension Door up to 15’ as a move action." compset="Wondrous" summary="+5 AC, 15&apos; D Door 2/day">
+    <fieldval field="gWeight" value="1"/>
+    <fieldval field="gCost" value="25000"/>
+    <fieldval field="iCL" value="10"/>
+    <fieldval field="trkMax" value="2"/>
+    <tag group="iSchool" tag="Conjur" name="Conjuration" abbrev="Conjur"/>
+    <tag group="GearVlSort" tag="Protection" name="Protection" abbrev="Protection"/>
+    <tag group="Helper" tag="EquipMag" name="EquipMag" abbrev="EquipMag"/>
+    <tag group="Hero" tag="EqpWrist" name="Wrist" abbrev="Wrist"/>
+    <tag group="User" tag="Tracker"/>
+    <tag group="Usage" tag="UsesPerDay"/>
+    <tag group="gType" tag="Wonder" name="Wondrous Item" abbrev="Wonder"/>
+    <eval phase="PreLevel" priority="5000"><![CDATA[
+      ~ If we're equipped, add an armor bonus
+      if (field[gIsEquip].value <> 0) then
+        hero.child[ArmorClass].field[tACArmor].value = maximum(hero.child[ArmorClass].field[tACArmor].value, 5)
+        endif]]></eval>
+    </thing>
+  </document>
