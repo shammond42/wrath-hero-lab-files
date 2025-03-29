@@ -1188,7 +1188,7 @@ hero.child[svRef].field[BonTrait].value += 2</eval>
     <tag group="Helper" tag="EquipMag"/>
     <tag group="Hero" tag="EqpNeck"/>
     </thing>
-  <thing id="ibrcrPltLight" name="Bracers of Pleated Light" description="Bracers +5. Twice per day wearer can use Dimension Door up to 15’ as a move action." compset="Wondrous" summary="+5 AC, 15&apos; D Door 2/day">
+  <thing id="ibrcrPltLight" name="Bracers of Pleated Light" description="Bracers +5. Twice per day wearer can use Dimension Door up to 15’ as a move action. This does not trigger an attack of opportunity." compset="Wondrous" summary="+5 AC, 15&apos; D Door 2/day">
     <fieldval field="gWeight" value="1"/>
     <fieldval field="gCost" value="25000"/>
     <fieldval field="iCL" value="10"/>
