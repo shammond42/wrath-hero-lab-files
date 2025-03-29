@@ -1206,4 +1206,10 @@ hero.child[svRef].field[BonTrait].value += 2</eval>
         hero.child[ArmorClass].field[tACArmor].value = maximum(hero.child[ArmorClass].field[tACArmor].value, 5)
         endif]]></eval>
     </thing>
+  <thing id="ringStarGuid" name="Ring of Starry Guidance" description="Grants uncanny dodge (or improved if the character already has it), gives the Outflank feat.  21,000gp." compset="Ring" summary="Grants uncanny dodge (or improved if the character already has it), gives the Outflank feat.  21,000gp.">
+    <fieldval field="gCost" value="21000"/>
+    <tag group="Helper" tag="ShowSpec"/>
+    <bootstrap thing="cUncanny"></bootstrap>
+    <bootstrap thing="fOutflank"></bootstrap>
+    </thing>
   </document>
