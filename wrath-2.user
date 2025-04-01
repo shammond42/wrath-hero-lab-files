@@ -1159,8 +1159,8 @@ hero.child[svRef].field[BonTrait].value += 2</eval>
       doneif (field[gIsEquip].value = 0)
 
       #enhancementbonus[hero.child[aINT], 2]
-      #enhancementbonus[hero.child[aWIS], 2]
-      #enhancementbonus[hero.child[aCHA], 4]
+      #enhancementbonus[hero.child[aWIS], 4]
+      #enhancementbonus[hero.child[aCHA], 2]
 
       ~ add to our languages known
       herofield[tLangsSpk].value += 1]]></eval>
